@@ -65,28 +65,28 @@ Legend: `[x]` built and verified · `[ ]` not built yet (link 404s until it is)
 
 **Core pages (8)**
 - [x] `index.html` — homepage / hub
-- [ ] `free-inspection.html` — the main conversion page (form + what happens on an inspection)
-- [ ] `about.html`
-- [ ] `contact.html`
-- [ ] `faq.html`
-- [ ] `service-areas/index.html` — areas hub
-- [ ] `privacy-policy.html`
-- [ ] `terms.html`
+- [x] `free-inspection.html` — the main conversion page (form + what happens on an inspection)
+- [x] `about.html`
+- [x] `contact.html`
+- [x] `faq.html`
+- [x] `service-areas/index.html` — areas hub
+- [x] `privacy-policy.html`
+- [x] `terms.html`
 
 **Service pages (5)**
-- [ ] `services/crawl-space-repair.html`
-- [ ] `services/foundation-piering.html`
-- [ ] `services/concrete-slab-leveling.html`
-- [ ] `services/foundation-crack-repair.html`
-- [ ] `services/crawl-space-encapsulation.html`
+- [x] `services/crawl-space-repair.html`
+- [x] `services/foundation-piering.html`
+- [x] `services/concrete-slab-leveling.html`
+- [x] `services/foundation-crack-repair.html`
+- [x] `services/crawl-space-encapsulation.html`
 
 **Location pages — Phase 1 (6)** — each needs real per-location research first
-- [ ] `service-areas/downtown-savannah-ga.html` (31401)
-- [ ] `service-areas/pooler-ga.html` (31322)
-- [ ] `service-areas/richmond-hill-ga.html` (31324)
-- [ ] `service-areas/skidaway-island-ga.html` (31411)
-- [ ] `service-areas/wilmington-island-ga.html` (31410)
-- [ ] `service-areas/georgetown-ga.html` (31419)
+- [x] `service-areas/downtown-savannah-ga.html` (31401)
+- [x] `service-areas/pooler-ga.html` (31322)
+- [x] `service-areas/richmond-hill-ga.html` (31324)
+- [x] `service-areas/skidaway-island-ga.html` (31411)
+- [x] `service-areas/wilmington-island-ga.html` (31410)
+- [x] `service-areas/georgetown-ga.html` (31419)
 
 **Assets / supporting**
 - [x] `css/style.css` — re-themed palette + type
@@ -94,8 +94,8 @@ Legend: `[x]` built and verified · `[ ]` not built yet (link 404s until it is)
 - [x] `images/foundation-inspection-savannah.jpg` — hero
 - [ ] one photo per service page (5)
 - [ ] logo (`images/logo.svg`) — currently a text `SFR` monogram mark
-- [ ] `llms.txt`
-- [ ] `robots.txt` + `sitemap.xml`
+- [x] `llms.txt`
+- [x] `robots.txt` + `sitemap.xml`
 
 **Live preview:** https://roman2002bol-pixel.github.io/savannah-foundation-repair/
 (public repo, temporary host — production is Cloudflare once the domain is bought)
@@ -140,3 +140,38 @@ research before writing (see skill). Phase 2 later.
 - Market research + live SERP checks logged above.
 - **Next:** homepage build, then the 5 service pages, then Phase-1
   location research.
+
+### 2026-09-15 — Site built out: all 19 pages live
+
+Built with three one-off generator scripts (`build_pages.py` shared
+templates + `build_services.py` / `build_areas.py` / `build_core.py`), per
+the skill's rule that structure should be generated while content stays a
+required per-page input.
+
+- 5 service pages — each with its own situations list, method explanation,
+  cost drivers and 3 FAQs. Genuinely per-trade content, not one template
+  with the service name swapped.
+- 6 location pages + areas hub — each built on the researched facts logged
+  above, each linking out to its real source (Wikipedia for place history,
+  savannahga.gov and landings.org for the two regulatory notes).
+- 6 core pages: free-inspection (main conversion page), about, contact,
+  faq (10 Q&As), privacy-policy, terms.
+- llms.txt, robots.txt, sitemap.xml (19 URLs).
+
+Verification, all clean: broken-link check, FAQ-schema match on 13 pages,
+and the new markup-contract check across all 19 files. Rendered-page audit
+run on homepage + a service page: zero low-contrast text, no oversized
+SVGs, no horizontal overflow. Mobile QA at 375px: nav toggle, nav close,
+accordion label and mobile action bar all confirmed genuinely visible via
+getBoundingClientRect (not just by dispatching clicks), and the action
+bar's 64px height matches body padding-bottom exactly.
+
+**Honesty position held throughout:** no warranty claim, no financing
+claim, no licensing/insurance/bonding claim, and no named team members —
+none of those are true of anyone yet. The About page says plainly that
+there is no walk-in office rather than implying one.
+
+**Still open before this can go live for real:** real phone number, real
+email inbox, a form backend (currently mailto fallback,
+`data-endpoint-ready="false"`), the domain purchase, service-page photos,
+and a logo beyond the SFR monogram.
