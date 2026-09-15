@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <!-- Верхня дуга для назви бренду -->
+    <path id="top-text-arc" d="M 68,300 A 232,232 0 1,1 532,300" fill="none" />
+    
+    <!-- Нижня дуга для спеціалізації -->
+    <path id="bottom-text-arc" d="M 68,300 A 232,232 0 0,0 532,300" fill="none" />
+
+    <!-- Коло обрізки для внутрішньої графіки -->
+    <clipPath id="center-circle-clip">
+      <circle cx="300" cy="300" r="188" />
+    </clipPath>
+  </defs>
+
+  <!-- Біла основа -->
+  <circle cx="300" cy="300" r="295" fill="#FFFFFF" />
+
+  <!-- Зовнішнє товсте кільце бренду -->
+  <circle cx="300" cy="300" r="282" fill="none" stroke="#0F2942" stroke-width="26" />
+
+  <!-- Внутрішнє тонке кільце -->
+  <circle cx="300" cy="300" r="192" fill="none" stroke="#0F2942" stroke-width="5" />
+
+  <!-- Верхній текст: SAVANNAH FOUNDATION REPAIR CO -->
+  <text fill="#0F2942" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="31" letter-spacing="3.2">
+    <textPath href="#top-text-arc" startOffset="50%" text-anchor="middle">
+      SAVANNAH FOUNDATION REPAIR CO
+    </textPath>
+  </text>
+
+  <!-- Золоті зірки-розділювачі по боках -->
+  <g fill="#D97706">
+    <polygon points="62,300 65,291 74,291 67,297 70,306 62,301 54,306 57,297 50,291 59,291" />
+    <polygon points="538,300 541,291 550,291 543,297 546,306 538,301 530,306 533,297 526,291 535,291" />
+  </g>
+
+  <!-- Нижній текст: STRUCTURAL & CRAWL SPACE SPECIALISTS -->
+  <text fill="#0F2942" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="21.5" letter-spacing="3.8">
+    <textPath href="#bottom-text-arc" startOffset="50%" text-anchor="middle">
+      STRUCTURAL &amp; CRAWL SPACE SPECIALISTS
+    </textPath>
+  </text>
+
+  <!-- Внутрішня графіка -->
+  <g clip-path="url(#center-circle-clip)">
+    <!-- Шари підземного ґрунту та скельних порід -->
+    <rect x="110" y="305" width="380" height="185" fill="#F8FAFC" />
+    <path d="M 110,380 Q 200,365 300,380 T 490,370 L 490,490 L 110,490 Z" fill="#E2E8F0" />
+    <path d="M 110,425 Q 230,410 320,430 T 490,420 L 490,490 L 110,490 Z" fill="#CBD5E1" />
+
+    <!-- Текстура скельного шару (Bedrock) -->
+    <circle cx="170" cy="445" r="7" fill="#94A3B8" />
+    <circle cx="215" cy="460" r="5" fill="#94A3B8" />
+    <circle cx="380" cy="450" r="9" fill="#94A3B8" />
+    <circle cx="430" cy="465" r="6" fill="#94A3B8" />
+    <circle cx="305" cy="470" r="7" fill="#94A3B8" />
+
+    <!-- Бетонна балка / плита фундаменту -->
+    <rect x="180" y="296" width="240" height="18" rx="3" fill="#334155" />
+    <rect x="185" y="299" width="230" height="3" fill="#64748B" />
+
+    <!-- Будинок (темно-синій силует) -->
+    <path d="M 180,236 L 300,140 L 420,236 L 396,236 L 300,158 L 204,236 Z" fill="#0F2942" />
+    <rect x="365" y="166" width="22" height="36" fill="#0F2942" />
+    <rect x="215" y="236" width="170" height="60" fill="#0F2942" />
+
+    <!-- Вікна -->
+    <g fill="#FFFFFF">
+      <rect x="236" y="250" width="25" height="28" rx="2" />
+      <rect x="339" y="250" width="25" height="28" rx="2" />
+    </g>
+    <line x1="248.5" y1="250" x2="248.5" y2="278" stroke="#0F2942" stroke-width="2" />
+    <line x1="236" y1="264" x2="261" y2="264" stroke="#0F2942" stroke-width="2" />
+    <line x1="351.5" y1="250" x2="351.5" y2="278" stroke="#0F2942" stroke-width="2" />
+    <line x1="339" y1="264" x2="364" y2="264" stroke="#0F2942" stroke-width="2" />
+
+    <!-- Двері (бурштиновий акцент) -->
+    <path d="M 288,252 H 312 V 296 H 288 Z" fill="#D97706" />
+    <circle cx="294" cy="275" r="2.5" fill="#FFFFFF" />
+
+    <!-- Сталеві гвинтові палі (Helical Underpinning Piers) з домкратами -->
+    <!-- Ліва паля -->
+    <g transform="translate(225, 314)">
+      <rect x="-6" y="0" width="12" height="115" fill="#D97706" rx="2" />
+      <path d="M -16,0 L 16,0 L 11,15 L -11,15 Z" fill="#B45309" />
+      <path d="M -20,45 L 20,33 L 20,43 L -20,55 Z" fill="#92400E" />
+      <path d="M -20,78 L 20,66 L 20,76 L -20,88 Z" fill="#92400E" />
+      <polygon points="-6,115 6,115 0,128" fill="#B45309" />
+    </g>
+
+    <!-- Центральна опорна паля -->
+    <g transform="translate(300, 314)">
+      <rect x="-7.5" y="0" width="15" height="135" fill="#D97706" rx="2" />
+      <path d="M -18,0 L 18,0 L 13,16 L -13,16 Z" fill="#B45309" />
+      <path d="M -24,50 L 24,37 L 24,48 L -24,61 Z" fill="#92400E" />
+      <path d="M -24,86 L 24,73 L 24,84 L -24,97 Z" fill="#92400E" />
+      <polygon points="-7.5,135 7.5,135 0,150" fill="#B45309" />
+    </g>
+
+    <!-- Права паля -->
+    <g transform="translate(375, 314)">
+      <rect x="-6" y="0" width="12" height="115" fill="#D97706" rx="2" />
+      <path d="M -16,0 L 16,0 L 11,15 L -11,15 Z" fill="#B45309" />
+      <path d="M -20,45 L 20,33 L 20,43 L -20,55 Z" fill="#92400E" />
+      <path d="M -20,78 L 20,66 L 20,76 L -20,88 Z" fill="#92400E" />
+      <polygon points="-6,115 6,115 0,128" fill="#B45309" />
+    </g>
+
+    <!-- Символ інженерного рівня та підйому -->
+    <g transform="translate(300, 204)">
+      <circle cx="0" cy="0" r="18" fill="#FFFFFF" stroke="#0F2942" stroke-width="2.5" />
+      <path d="M 0,-10 L -8,2 L -3.5,2 L -3.5,9 L 3.5,9 L 3.5,2 L 8,2 Z" fill="#D97706" />
+    </g>
+  </g>
+</svg>

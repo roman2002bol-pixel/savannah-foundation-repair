@@ -20,7 +20,7 @@ PAGES = [
         "photo": "downtown-savannah-home.jpg",
         "photo_alt": "Historic brick building in downtown Savannah under live oaks",
         "name": "Downtown &amp; Historic Savannah",
-        "plain": "Downtown & Historic Savannah",
+        "plain": "Downtown Savannah, GA",
         "zip": "31401",
         "lede": "Brick pier foundations under houses older than the state's building codes, on ground that has been built up and built over for nearly three centuries.",
         "facts": 'Savannah\'s historic core is the hardest foundation work in the county, and the reason is age. Many houses here sit on <a href="https://en.wikipedia.org/wiki/Savannah_Historic_District_(Georgia)" target="_blank" rel="noopener">Historic District</a> pier-and-beam foundations of brick or tabby laid long before compaction standards existed – including Savannah Grey brick, which is soft, porous, and unforgiving once mortar starts washing out of the joints. Add a water table a few feet down and crawl spaces that stay humid most of the year, and you get the two failure modes we see constantly downtown: piers that have settled or lost mortar, and sill plates and joists softened by decades of moisture.',
@@ -83,7 +83,7 @@ PAGES = [
         "photo": "skidaway-marsh.jpg",
         "photo_alt": "Tidal marsh and creeks surrounding Skidaway Island at sunset",
         "name": "Skidaway Island",
-        "plain": "Skidaway Island",
+        "plain": "Skidaway Island, GA",
         "zip": "31411",
         "lede": "A private island community whose oldest homes are now past fifty, built among tidal marsh and maritime forest.",
         "facts": 'The first homes at <a href="https://en.wikipedia.org/wiki/Skidaway_Island,_Georgia" target="_blank" rel="noopener">The Landings on Skidaway Island</a> went up in 1972, once the two bridges connecting the island to the mainland were finished, and the bulk of the community was built out between then and the late 1990s. That puts a large share of the housing stock in the window where original framing, original crawl spaces and original support posts are all reaching the age where coastal humidity has had time to do real damage. The island is surrounded by tidal marsh and estuary, so the moisture load under these houses is relentless even well back from the water.',
@@ -104,7 +104,7 @@ PAGES = [
         "photo": "wilmington-island-marsh.jpg",
         "photo_alt": "Coastal marshland of the kind that surrounds Wilmington Island",
         "name": "Wilmington Island",
-        "plain": "Wilmington Island",
+        "plain": "Wilmington Island, GA",
         "zip": "31410",
         "lede": "Sixties and seventies ranch houses on pier-and-beam foundations, between the Wilmington River and the marsh – the toughest moisture conditions in the county.",
         "facts": '<a href="https://en.wikipedia.org/wiki/Wilmington_Island,_Georgia" target="_blank" rel="noopener">Wilmington Island</a> is characteristically sprawling ranch homes from the 1960s and 70s, a great many of them on pier-and-beam foundations suited to the low-lying ground. The groundwater table here is extremely shallow, so even an ordinary rain event can put water into a crawl space, and high-tide flooding reaches some streets through ageing stormwater infrastructure. Salt is the extra factor most inland contractors underestimate: it corrodes metal fasteners, connectors and hardware, and it stays in building materials afterward, drawing moisture back in long after the water has gone.',
@@ -125,7 +125,7 @@ PAGES = [
         "photo": "georgetown-ranch-home.jpg",
         "photo_alt": "Single-storey ranch home typical of Georgetown's 1970s and 1980s build-out",
         "name": "Georgetown",
-        "plain": "Georgetown",
+        "plain": "Georgetown, Savannah",
         "zip": "31419",
         "lede": "A large seventies and eighties suburb southwest of the city, across the Little Ogeechee – now at the age where original foundations start showing their history.",
         "facts": '<a href="https://en.wikipedia.org/wiki/Georgetown,_Chatham_County,_Georgia" target="_blank" rel="noopener">Georgetown</a> sits about fourteen miles southwest of downtown Savannah, across the Little Ogeechee River, and was built out mostly through the 1970s and 1980s with brick ranch homes and Lowcountry cottages, plus newer phases since. That build era is the useful detail: these houses are now forty to fifty years old, which is exactly when original crawl space framing, support posts, and driveway slabs reach the end of their first service life in this climate. The failures here are less dramatic than on the islands and more a matter of accumulated age.',
@@ -146,7 +146,7 @@ PAGES = [
 
 def build(page):
     url = f"{SITE}/service-areas/{page['slug']}.html"
-    title = f"Foundation Repair in {page['plain']} | {BRAND}"
+    title = f"Foundation Repair in {page['plain']} ({page['zip']})"
     desc = (f"Foundation repair and crawl space work in {page['plain']} "
             f"({page['zip']}) – {page['focus'][0].lower()}. Free structural inspection.")
     schemas = [
@@ -319,7 +319,7 @@ def build_hub():
   </section>
 {cta_band(D, "Ready for a look at it?", "Free structural inspection anywhere in our service area, with measurements and a written scope.")}'''
 
-    return (head(D, f"Service Areas | Foundation Repair Across Savannah &amp; Chatham County",
+    return (head(D, "Service Areas – Savannah &amp; Chatham County, GA",
                  "Foundation repair and crawl space services across Savannah, Pooler, Richmond Hill, Skidaway Island, Wilmington Island, and Georgetown, GA.",
                  url, schemas)
             + header(D) + body + footer(D))

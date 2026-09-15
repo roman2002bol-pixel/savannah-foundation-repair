@@ -66,7 +66,7 @@ PAGES = [
         "nav": "Foundation Piering",
         "h1": "Foundation Piering &amp; Underpinning in Savannah, GA",
         "title": "Foundation Piering &amp; Underpinning in Savannah, GA",
-        "desc": "Helical and push pier installation in Savannah, GA – underpinning for settling foundations, sinking corners, and stair-step brick cracks. Free structural inspection.",
+        "desc": "Helical and push pier installation in Savannah, GA – underpinning for settling foundations, sinking corners, and stair-step brick cracks. Free inspection.",
         "service_type": "Foundation Piering and Underpinning",
         "lede": "When part of the house is genuinely sinking, no amount of patching the symptoms helps. Piering transfers the weight off the soil that gave way and onto soil deep enough to hold it.",
         "intro": [

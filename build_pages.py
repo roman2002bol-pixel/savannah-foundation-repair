@@ -115,7 +115,7 @@ def header(depth):
 <header class="site-header">
   <div class="container nav-row">
     <a href="{p(depth, 'index.html')}" class="logo">
-      <span class="logo-mark">SFR</span>
+      <img class="logo-img" src="{p(depth, 'images/logo.svg')}" alt="{BRAND}" width="38" height="38">
       {BRAND}
     </a>
     <nav class="main-nav" data-nav aria-label="Primary">
@@ -170,7 +170,7 @@ def footer(depth):
   <div class="container">
     <div>
       <div class="footer-logo">
-        <span class="logo-mark">SFR</span>
+        <img class="logo-img" src="{p(depth, 'images/logo.svg')}" alt="{BRAND}" width="38" height="38">
         {BRAND}
       </div>
       <p class="muted">Foundation repair, crawl space stabilization, piering, slab leveling, and encapsulation for homes across Savannah and Chatham County, Georgia. Free structural inspections, written scope before any work starts.</p>

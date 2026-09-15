@@ -319,36 +319,36 @@ TERMS_BODY = f'''
 if __name__ == "__main__":
     write("free-inspection.html", page(
         "free-inspection.html",
-        f"Free Structural Inspection in Savannah, GA | {BRAND}",
+        "Free Structural Inspection – Savannah, GA",
         "Book a free foundation and crawl space inspection in Savannah, GA – elevation readings, findings in writing, and no obligation.",
         INSPECTION_BODY))
 
     write("about.html", page(
         "about.html",
-        f"About Us | {BRAND}",
+        "About Us | Savannah Foundation Repair",
         "A Savannah-focused foundation and crawl space specialist – why coastal Lowcountry conditions need a different approach than inland Georgia.",
         ABOUT_BODY))
 
     write("contact.html", page(
         "contact.html",
-        f"Contact | {BRAND}",
+        "Contact | Savannah Foundation Repair Co",
         f"Contact {BRAND} – call {PHONE_DISPLAY}, text a photo of the problem, or send a message. Serving Savannah and Chatham County, GA.",
         CONTACT_BODY))
 
     write("faq.html", page(
         "faq.html",
-        f"Foundation Repair FAQ – Savannah, GA | {BRAND}",
+        "Foundation Repair FAQ – Savannah, GA",
         "Answers to common foundation repair questions in Savannah – costs, crack severity, sagging floors, crawl space humidity, and what an inspection involves.",
         FAQ_BODY,
         schemas=[breadcrumb([("Home", f"{SITE}/"), ("FAQ", None)]), faq_schema(FAQS)]))
 
     write("privacy-policy.html", page(
-        "privacy-policy.html", f"Privacy Policy | {BRAND}",
+        "privacy-policy.html", "Privacy Policy | Savannah Foundation Repair",
         "How Savannah Foundation Repair Co collects, uses, and protects the details you provide when requesting an inspection.",
         PRIVACY_BODY))
 
     write("terms.html", page(
-        "terms.html", f"Terms of Service | {BRAND}",
+        "terms.html", "Terms of Service | Savannah Foundation",
         "Terms on which this website and our inspections and estimates are provided.",
         TERMS_BODY))
 
