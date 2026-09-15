@@ -768,6 +768,60 @@ was copied into the second site along with the stylesheet. When you adapt a
 stylesheet from a sibling project, its latent bugs come with it — run the
 rendered-page contrast audit on the *source* site too, and fix both.
 
+## Account linkage, Search Console, and what actually creates risk
+
+Roman raised this 2026-09-15 after the Skool material said not to put
+microsites in Google Search Console "because Google will link them and flag
+them as spam", and asked whether creating the sites' email accounts on one
+phone does the same. These are two different questions with two different
+answers, and conflating them leads to giving up something valuable for no
+protection.
+
+**Search Console: the stated mechanism is folklore. Use GSC.**
+Google's position and the industry consensus are that multiple properties in
+one Search Console account do not algorithmically associate those sites or
+cause a penalty. Enforcement is at site level and is driven by what is on
+the site. Note also that the source material contradicts itself: its own
+answer on early rankings says to put Search Console on a site and read the
+real queries, because third-party tools badly undercount small local search
+volume — which is exactly the highest-value thing GSC gives you, and the
+main input for deciding which page to build next.
+
+More to the point, GSC is the *weakest* of the many links Google already
+has. It can associate sites through hosting IP/ASN, DNS and registrar
+patterns, a shared Analytics or AdSense ID, shared NAP or phone number,
+overlapping backlinks, and content similarity. Declining GSC while leaving
+all of those in place hides nothing; it just gives up the query data.
+
+If the owner still wants belt-and-braces, the answer is a separate Google
+account per site — free, and it costs no capability. What it does not
+justify is going without search query data.
+
+**Email/device linkage: irrelevant for web ranking, genuinely real for GBP.**
+Google's web index does not rank a page by which Gmail account created it,
+so accounts made on one phone have no bearing on whether a site ranks. But
+for **Google Business Profile** the linkage is real and documented: shared
+recovery phone numbers, shared devices, and especially the same business
+phone number across listings are known suspension risk factors, and a
+suspension on one profile can take linked profiles with it. So:
+- Site contact email should be **domain email per site**
+  (`info@thatsitesdomain.com`), never a shared Gmail shown publicly. This
+  dissolves the question entirely and looks more professional anyway.
+- Each site needs its **own phone number**. Sharing one number across two
+  local businesses is both a NAP-consistency problem and a live GBP
+  suspension factor — this is the one place the caution is fully warranted.
+- Don't rush to create GBPs across a portfolio from one device/number.
+
+**The honest reframe to give the owner:** Google connects same-owner sites
+whether or not you help it, and being connected is not itself a problem —
+agencies legitimately own hundreds. What matters is what Google finds when
+it connects them. Two sites with genuinely different research, content and
+purpose survive being obviously same-owner. Twenty near-identical templated
+sites get flagged either way. Everything this playbook already requires
+(real per-location research, no cross-linking, no shared footer credit,
+distinct palette and type per site) is the actual protection; account
+hygiene is a rounding error next to it.
+
 ## Verification scripts
 
 Two scripts live in `scripts/` and should be run after any batch of new
