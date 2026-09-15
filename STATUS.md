@@ -59,6 +59,47 @@ any affiliation with them on the site.
 Cost data point found in research: floor joist repair in Savannah runs
 ~$1,285–$4,875 (consistent with the $1,600–$4,100 ticket estimate).
 
+## Full page plan — build checklist
+
+Legend: `[x]` built and verified · `[ ]` not built yet (link 404s until it is)
+
+**Core pages (8)**
+- [x] `index.html` — homepage / hub
+- [ ] `free-inspection.html` — the main conversion page (form + what happens on an inspection)
+- [ ] `about.html`
+- [ ] `contact.html`
+- [ ] `faq.html`
+- [ ] `service-areas/index.html` — areas hub
+- [ ] `privacy-policy.html`
+- [ ] `terms.html`
+
+**Service pages (5)**
+- [ ] `services/crawl-space-repair.html`
+- [ ] `services/foundation-piering.html`
+- [ ] `services/concrete-slab-leveling.html`
+- [ ] `services/foundation-crack-repair.html`
+- [ ] `services/crawl-space-encapsulation.html`
+
+**Location pages — Phase 1 (6)** — each needs real per-location research first
+- [ ] `service-areas/downtown-savannah-ga.html` (31401)
+- [ ] `service-areas/pooler-ga.html` (31322)
+- [ ] `service-areas/richmond-hill-ga.html` (31324)
+- [ ] `service-areas/skidaway-island-ga.html` (31411)
+- [ ] `service-areas/wilmington-island-ga.html` (31410)
+- [ ] `service-areas/georgetown-ga.html` (31419)
+
+**Assets / supporting**
+- [x] `css/style.css` — re-themed palette + type
+- [x] `js/main.js` — re-branded, multi-form fix applied
+- [x] `images/foundation-inspection-savannah.jpg` — hero
+- [ ] one photo per service page (5)
+- [ ] logo (`images/logo.svg`) — currently a text `SFR` monogram mark
+- [ ] `llms.txt`
+- [ ] `robots.txt` + `sitemap.xml`
+
+**Live preview:** https://roman2002bol-pixel.github.io/savannah-foundation-repair/
+(public repo, temporary host — production is Cloudflare once the domain is bought)
+
 ## Planned architecture
 
 **Core pages:** Home, About, Free Structural Inspection, Contact, FAQ,

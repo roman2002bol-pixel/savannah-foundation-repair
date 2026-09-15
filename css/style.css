@@ -256,6 +256,12 @@ section{padding-block:clamp(3rem,6vw,4.5rem);}
 @media (min-width:760px){ .site-footer .container{grid-template-columns:1.4fr 1fr 1fr 1fr;} }
 .footer-logo{display:flex; align-items:center; gap:.6rem; font-family:var(--font-head); font-weight:800; color:#fff; font-size:1.1rem; margin-bottom:.75rem;}
 .site-footer h4{color:#fff; font-size:.95rem; margin-bottom:.9rem;}
+/* .muted is a dark grey by design, which is correct on the light page body
+   but drops to ~2.7:1 against the dark footer -- near-invisible. Scope a
+   light variant to the footer rather than dropping the class from the
+   markup. Same bug class as an inline colour override that matches its own
+   background: a global colour utility used inside a dark component. */
+.site-footer .muted{color:#9fb0c4;}
 .footer-links{display:flex; flex-direction:column; gap:.55rem; font-size:.9rem;}
 .footer-links a{color:#c8d2de;}
 .footer-links a:hover{color:#fff;}

@@ -68,9 +68,13 @@
     }
   });
 
-  /* ---------- quote form ---------- */
-  var form = document.querySelector("[data-quote-form]");
-  if (form) {
+  /* ---------- quote form ----------
+     querySelectorAll, not querySelector: this site has a form on the
+     homepage AND on free-inspection.html. A singular querySelector binds
+     only the first one in the DOM and the other form's submit button
+     silently does nothing – a real bug already hit once on a sibling
+     project, so don't "simplify" this back. */
+  document.querySelectorAll("[data-quote-form]").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       var status = form.querySelector("[data-form-status]");
       var endpointConfigured = form.getAttribute("data-endpoint-ready") === "true";
@@ -90,7 +94,7 @@
       }
       trackLead("quote_form");
     });
-  }
+  });
 
   /* ---------- lead tracking (GA4) ----------
      No-ops silently until a real gtag.js snippet is added to <head>
