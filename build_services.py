@@ -13,6 +13,8 @@ D = 1  # services/ pages are one directory deep
 PAGES = [
     {
         "slug": "crawl-space-repair",
+        "photo": "crawl-space-framing.jpg",
+        "photo_alt": "Timber floor framing and support beams of the kind stabilised in a Savannah crawl space",
         "nav": "Crawl Space Repair",
         "h1": "Crawl Space Repair &amp; Sagging Floor Jacks in Savannah, GA",
         "title": "Crawl Space Repair in Savannah, GA | Sagging Floor Jacks",
@@ -59,6 +61,8 @@ PAGES = [
     },
     {
         "slug": "foundation-piering",
+        "photo": "foundation-excavation.jpg",
+        "photo_alt": "Excavated trench alongside a foundation, the access needed to install piers",
         "nav": "Foundation Piering",
         "h1": "Foundation Piering &amp; Underpinning in Savannah, GA",
         "title": "Foundation Piering &amp; Underpinning in Savannah, GA",
@@ -105,6 +109,8 @@ PAGES = [
     },
     {
         "slug": "concrete-slab-leveling",
+        "photo": "settled-concrete-slab.jpg",
+        "photo_alt": "Concrete slab sections separated and dropped at the joint",
         "nav": "Concrete Slab Leveling",
         "h1": "Concrete Slab Leveling &amp; Polyjacking in Savannah, GA",
         "title": "Concrete Slab Leveling in Savannah, GA | Polyjacking",
@@ -151,6 +157,8 @@ PAGES = [
     },
     {
         "slug": "foundation-crack-repair",
+        "photo": "masonry-crack-repair.jpg",
+        "photo_alt": "Hands repointing mortar in a cracked masonry wall with a trowel",
         "nav": "Foundation Crack Repair",
         "h1": "Foundation Crack Repair in Savannah, GA",
         "title": "Foundation Crack Repair in Savannah, GA | Structural Sealing",
@@ -197,6 +205,8 @@ PAGES = [
     },
     {
         "slug": "crawl-space-encapsulation",
+        "photo": "crawl-space-insulation.jpg",
+        "photo_alt": "Insulation and moisture control work being installed between floor framing",
         "nav": "Crawl Space Encapsulation",
         "h1": "Crawl Space Encapsulation &amp; Dehumidifiers in Savannah, GA",
         "title": "Crawl Space Encapsulation in Savannah, GA | Dehumidifiers",
@@ -285,7 +295,7 @@ def build(page):
     )
 
     body = f'''
-  <section class="page-hero">
+  <section class="page-hero" style="background-image:linear-gradient(180deg, rgba(11,26,41,.62), rgba(11,26,41,.84)), url(&quot;../images/{page["photo"]}&quot;)">
     <div class="container">
       <div class="breadcrumbs"><a href="../index.html">Home</a> / Services / {page["nav"]}</div>
       <h1>{page["h1"]}</h1>
@@ -302,6 +312,10 @@ def build(page):
       <div class="two-col-layout">
         <div>
 {intro}
+          <div class="img-slot" style="--ar:16/9; margin-top:1.5rem">
+            <img src="../images/{page["photo"]}" alt="{page["photo_alt"]}" loading="lazy">
+            <span class="img-slot-label">{page["nav"]}</span>
+          </div>
         </div>
         <div class="local-callout">
           <h3 style="margin-top:0">{page["situations_head"]}</h3>

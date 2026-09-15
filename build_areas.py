@@ -17,6 +17,8 @@ D = 1
 PAGES = [
     {
         "slug": "downtown-savannah-ga",
+        "photo": "downtown-savannah-home.jpg",
+        "photo_alt": "Historic brick building in downtown Savannah under live oaks",
         "name": "Downtown &amp; Historic Savannah",
         "plain": "Downtown & Historic Savannah",
         "zip": "31401",
@@ -36,6 +38,8 @@ PAGES = [
     },
     {
         "slug": "pooler-ga",
+        "photo": "pooler-new-home.jpg",
+        "photo_alt": "Newer two-storey home with a concrete driveway, typical of Pooler subdivisions",
         "name": "Pooler, GA",
         "plain": "Pooler, GA",
         "zip": "31322",
@@ -55,6 +59,8 @@ PAGES = [
     },
     {
         "slug": "richmond-hill-ga",
+        "photo": "richmond-hill-home.jpg",
+        "photo_alt": "Brick family home of the kind built across Richmond Hill's newer neighbourhoods",
         "name": "Richmond Hill, GA",
         "plain": "Richmond Hill, GA",
         "zip": "31324",
@@ -74,6 +80,8 @@ PAGES = [
     },
     {
         "slug": "skidaway-island-ga",
+        "photo": "skidaway-marsh.jpg",
+        "photo_alt": "Tidal marsh and creeks surrounding Skidaway Island at sunset",
         "name": "Skidaway Island",
         "plain": "Skidaway Island",
         "zip": "31411",
@@ -93,6 +101,8 @@ PAGES = [
     },
     {
         "slug": "wilmington-island-ga",
+        "photo": "wilmington-island-marsh.jpg",
+        "photo_alt": "Coastal marshland of the kind that surrounds Wilmington Island",
         "name": "Wilmington Island",
         "plain": "Wilmington Island",
         "zip": "31410",
@@ -112,6 +122,8 @@ PAGES = [
     },
     {
         "slug": "georgetown-ga",
+        "photo": "georgetown-ranch-home.jpg",
+        "photo_alt": "Single-storey ranch home typical of Georgetown's 1970s and 1980s build-out",
         "name": "Georgetown",
         "plain": "Georgetown",
         "zip": "31419",
@@ -170,7 +182,7 @@ def build(page):
     )
 
     body = f'''
-  <section class="page-hero">
+  <section class="page-hero" style="background-image:linear-gradient(180deg, rgba(11,26,41,.58), rgba(11,26,41,.82)), url(&quot;../images/{page["photo"]}&quot;)">
     <div class="container">
       <div class="breadcrumbs"><a href="../index.html">Home</a> / <a href="index.html">Service Areas</a> / {page["name"]}</div>
       <h1>Foundation Repair in {page["name"]}</h1>
@@ -191,6 +203,10 @@ def build(page):
           <p>{page["facts"]}</p>
           <div class="badge-list">
             <span>Free Inspections</span><span>Written Scope</span><span>ZIP {page["zip"]}</span>
+          </div>
+          <div class="img-slot" style="--ar:16/9; margin-top:1.5rem">
+            <img src="../images/{page["photo"]}" alt="{page["photo_alt"]}" loading="lazy">
+            <span class="img-slot-label">{page["plain"]}</span>
           </div>
         </div>
         <div class="local-callout">
@@ -247,6 +263,10 @@ def build(page):
 def build_hub():
     url = f"{SITE}/service-areas/index.html"
     cards = "\n".join(f'''        <div class="service-card">
+          <div class="img-slot" style="--ar:16/9">
+            <img src="../images/{a["photo"]}" alt="{a["photo_alt"]}" loading="lazy">
+            <span class="img-slot-label">{a["plain"]}</span>
+          </div>
           <h3><a href="{a["slug"]}.html" style="color:inherit">{a["name"]}</a></h3>
           <p>{a["lede"]}</p>
           <a class="link" href="{a["slug"]}.html">Foundation repair in {a["name"]} →</a>
@@ -254,7 +274,7 @@ def build_hub():
 
     schemas = [breadcrumb([("Home", f"{SITE}/"), ("Service Areas", None)])]
     body = f'''
-  <section class="page-hero">
+  <section class="page-hero" style="background-image:linear-gradient(180deg, rgba(11,26,41,.58), rgba(11,26,41,.82)), url(&quot;../images/skidaway-marsh.jpg&quot;)">
     <div class="container">
       <div class="breadcrumbs"><a href="../index.html">Home</a> / Service Areas</div>
       <h1>Service Areas – Savannah &amp; Chatham County</h1>
