@@ -13,8 +13,8 @@ D = 1  # services/ pages are one directory deep
 PAGES = [
     {
         "slug": "crawl-space-repair",
-        "photo": "crawl-space-framing.jpg",
-        "photo_alt": "Timber floor framing and support beams of the kind stabilised in a Savannah crawl space",
+        "photo": "crawl-space-timber-work.jpg",
+        "photo_alt": "Drilling into a timber joist -- the framing replacement work a sagging floor needs",
         "nav": "Crawl Space Repair",
         "h1": "Crawl Space Repair &amp; Sagging Floor Jacks in Savannah, GA",
         "title": "Crawl Space Repair in Savannah, GA | Sagging Floor Jacks",
