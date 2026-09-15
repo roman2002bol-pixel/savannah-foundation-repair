@@ -313,7 +313,7 @@ def build(page):
         <div>
 {intro}
           <div class="img-slot" style="--ar:16/9; margin-top:1.5rem">
-            <img src="../images/{page["photo"]}" alt="{page["photo_alt"]}" loading="lazy">
+            <img src="../images/{page["photo"]}" alt="{page["photo_alt"]}" loading="lazy" width="1200" height="675">
             <span class="img-slot-label">{page["nav"]}</span>
           </div>
         </div>

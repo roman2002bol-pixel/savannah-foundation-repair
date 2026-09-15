@@ -205,7 +205,7 @@ def build(page):
             <span>Free Inspections</span><span>Written Scope</span><span>ZIP {page["zip"]}</span>
           </div>
           <div class="img-slot" style="--ar:16/9; margin-top:1.5rem">
-            <img src="../images/{page["photo"]}" alt="{page["photo_alt"]}" loading="lazy">
+            <img src="../images/{page["photo"]}" alt="{page["photo_alt"]}" loading="lazy" width="1200" height="675">
             <span class="img-slot-label">{page["plain"]}</span>
           </div>
         </div>
@@ -264,7 +264,7 @@ def build_hub():
     url = f"{SITE}/service-areas/index.html"
     cards = "\n".join(f'''        <div class="service-card">
           <div class="img-slot" style="--ar:16/9">
-            <img src="../images/{a["photo"]}" alt="{a["photo_alt"]}" loading="lazy">
+            <img src="../images/{a["photo"]}" alt="{a["photo_alt"]}" loading="lazy" width="1200" height="675">
             <span class="img-slot-label">{a["plain"]}</span>
           </div>
           <h3><a href="{a["slug"]}.html" style="color:inherit">{a["name"]}</a></h3>
