@@ -812,6 +812,30 @@ suspension on one profile can take linked profiles with it. So:
   suspension factor — this is the one place the caution is fully warranted.
 - Don't rush to create GBPs across a portfolio from one device/number.
 
+**Contact email, practically (asked 2026-09-15 when the owner was using
+Gmail rather than buying mailboxes):** a Gmail address as the site's public
+contact has no effect on ranking, and real small contractors use one
+constantly, so it is not a credibility problem either. The one hard rule is
+**never put the same address on two sites** — that is a visible public link
+at NAP level, not a hypothetical one.
+
+Creating one Gmail per site is not an SEO risk, it is an account-operations
+one: roughly four accounts per phone number before Google demands extra
+verification, a practical ceiling around five to ten, and anti-abuse flags
+that fire mainly when several are created back to back. Two or three, spaced
+out, is nothing.
+
+**And the owner usually does not need to buy mailboxes at all.** If the
+domain is registered at Cloudflare (the recommended registrar anyway),
+**Cloudflare Email Routing is free**: it adds the MX and SPF records itself
+and forwards `info@thedomain.com` into an existing Gmail. Honest caveat —
+it is receive-only; replying from Gmail still sends as the Gmail address
+unless an SMTP relay is added for "Send mail as". For lead capture that is
+irrelevant, since leads travel inbound. So the sequence is: brand-named
+Gmail per site now, domain purchase, then Email Routing — after which the
+public site shows a domain address and the Gmail becomes back-end plumbing
+that nothing external can see.
+
 **The honest reframe to give the owner:** Google connects same-owner sites
 whether or not you help it, and being connected is not itself a problem —
 agencies legitimately own hundreds. What matters is what Google finds when
