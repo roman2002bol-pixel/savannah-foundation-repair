@@ -108,6 +108,25 @@ INSPECTION_BODY = f'''
       </div>
     </div>
   </section>
+
+  <section>
+    <div class="container">
+      <div class="two-col-layout">
+        <div>
+          <span class="eyebrow">Permits</span>
+          <h2>Does foundation work need a permit here?</h2>
+          <p>Structural repair usually does. In unincorporated Chatham County the authority is <a href="https://buildingsafety.chathamcountyga.gov/PermitsInspections/WhenPermitsRequired" target="_blank" rel="noopener">Chatham County Building Safety &amp; Regulatory Services</a>, which publishes exactly when a permit is required – underpinning, structural framing replacement and foundation alterations generally fall inside that. Inside Savannah city limits, and in a historic district especially, the city is the authority instead.</p>
+          <p>Work in Bryan County (Richmond Hill) goes through that county rather than Chatham, and a gated community such as The Landings adds its own architectural review on top of the public permit.</p>
+          <p class="muted">We raise whichever applies at the inspection rather than discovering it once a crew is on site. If a job genuinely does not need a permit, we will say so rather than padding the timeline.</p>
+        </div>
+        <div class="feature-card">
+          <h3 style="margin-top:0">Check before you schedule</h3>
+          <p class="muted">The county publishes its own guidance on when a building permit is required, which is worth a look if you are comparing quotes.</p>
+          <p style="margin-bottom:0"><a class="btn btn-outline btn-block" href="https://buildingsafety.chathamcountyga.gov/PermitsInspections/WhenPermitsRequired" target="_blank" rel="noopener">Chatham County permit guidance</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
 {cta_band(D, "Prefer to just talk it through first?", "Call and describe it – sometimes that is enough to tell you whether a visit is even warranted.")}'''
 
 # --------------------------------------------------------------------- about
