@@ -180,6 +180,23 @@ section{padding-block:clamp(3rem,6vw,4.5rem);}
 .service-card p{color:var(--text-muted); font-size:.95rem; margin:0;}
 .service-card .link{font-weight:700; color:var(--slate); margin-top:auto;}
 
+/* Photo-header variant: the image sits flush to the card edge, so padding
+   moves off the card and onto an inner .card-body. Used on the homepage
+   services grid, where a photo does more work than an icon. */
+.service-card.has-photo{padding:0; overflow:hidden;}
+.service-card.has-photo .card-photo{aspect-ratio:16/9; overflow:hidden; background:#e2e8ef;}
+.service-card.has-photo .card-photo img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
+.service-card.has-photo:hover .card-photo img{transform:scale(1.045);}
+.service-card.has-photo .card-body{padding:1.5rem; display:flex; flex-direction:column; gap:.7rem; flex:1;}
+
+/* Numbered step badge for the How It Works row */
+.step-num{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:2.4rem; height:2.4rem; border-radius:50%; flex:none;
+  background:var(--orange); color:#fff;
+  font-family:var(--font-head); font-weight:800; font-size:1.05rem;
+}
+
 .package-list{list-style:none; margin:0 0 1.4rem; padding:0; display:flex; flex-direction:column; gap:.5rem;}
 .package-list li{display:flex; align-items:flex-start; gap:.55rem; font-size:.92rem;}
 .package-list svg{width:1.1rem; height:1.1rem; color:var(--slate); flex:none; margin-top:.15rem;}
