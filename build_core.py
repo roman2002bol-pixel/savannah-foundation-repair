@@ -30,8 +30,8 @@ def service_tabs():
         panels.append(
             f'        <div class="svc-panel" role="tabpanel" data-svc-panel id="{pid}"'
             f' aria-labelledby="{tid}"'
-            f' style="background-image:linear-gradient(100deg, rgba(11,26,41,.96) 0%,'
-            f' rgba(11,26,41,.92) 46%, rgba(11,26,41,.35) 100%),'
+            f' style="background-image:linear-gradient(100deg, rgba(11,26,41,.97) 0%,'
+            f' rgba(11,26,41,.93) 38%, rgba(11,26,41,.12) 100%),'
             f' url(&quot;images/{svc["photo"]}&quot;)">\n'
             f'          <div class="svc-panel-body">\n'
             f'            <h3>{svc["nav"]} <span class="accent">{t["accent"]}</span></h3>\n'
