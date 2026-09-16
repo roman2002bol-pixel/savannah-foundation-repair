@@ -3,9 +3,53 @@
 from build_pages import (ROOT, SITE, BRAND, AREAS, PHONE_DISPLAY, PHONE_HREF, EMAIL,
                          SERVICES, head, header, footer, cta_band, breadcrumb,
                          faq_blocks, faq_schema, write)
+from build_services import PAGES as SERVICE_PAGES, TABS as SERVICE_TABS
 import json
 
 D = 0
+
+
+def service_tabs():
+    """The homepage services showcase: a tab rail plus one panel per service.
+
+    Single-sourced from build_services.TABS so a service cannot appear on the
+    homepage with copy that contradicts its own page. Without JS every panel
+    stays visible (nothing carries [hidden] until main.js runs), so the block
+    degrades to a readable stack rather than to one panel and four dead tabs.
+    """
+    nl = chr(10)
+    tabs, panels = [], []
+    for i, svc in enumerate(SERVICE_PAGES):
+        t = SERVICE_TABS[svc["slug"]]
+        tid, pid = f'svctab-{svc["slug"]}', f'svcpanel-{svc["slug"]}'
+        sel = "true" if i == 0 else "false"
+        tabs.append(
+            f'          <button class="svc-tab" type="button" role="tab" data-svc-tab'
+            f' id="{tid}" aria-controls="{pid}" aria-selected="{sel}">{svc["nav"]}</button>')
+        points = nl.join(f'              <li>{pt}</li>' for pt in t["points"])
+        panels.append(
+            f'        <div class="svc-panel" role="tabpanel" data-svc-panel id="{pid}"'
+            f' aria-labelledby="{tid}"'
+            f' style="background-image:linear-gradient(100deg, rgba(11,26,41,.96) 0%,'
+            f' rgba(11,26,41,.92) 46%, rgba(11,26,41,.35) 100%),'
+            f' url(&quot;images/{svc["photo"]}&quot;)">\n'
+            f'          <div class="svc-panel-body">\n'
+            f'            <h3>{svc["nav"]} <span class="accent">{t["accent"]}</span></h3>\n'
+            f'            <p>{t["blurb"]}</p>\n'
+            f'            <ul class="svc-points">\n{points}\n            </ul>\n'
+            f'            <div class="svc-actions">\n'
+            f'              <a class="btn btn-primary" href="services/{svc["slug"]}.html">'
+            f'See how it is done</a>\n'
+            f'              <a class="btn btn-ghost" href="free-inspection.html">'
+            f'Get a free inspection</a>\n'
+            f'            </div>\n'
+            f'          </div>\n'
+            f'        </div>')
+    return ('      <div class="svc-tabs" data-svc-tabs>\n'
+            '        <div class="svc-tablist" role="tablist" aria-label="Services">\n'
+            + nl.join(tabs) + '\n        </div>\n'
+            '        <div class="svc-panels">\n' + nl.join(panels) + '\n        </div>\n'
+            '      </div>')
 
 
 def patch_home_faq():
@@ -30,7 +74,9 @@ def patch_home_faq():
                    f'All service areas {chev}</a>')
     for start, end, new in (("<!-- FAQ-BODY:START -->", "<!-- FAQ-BODY:END -->", body),
                             ("<!-- FAQ-SCHEMA:START -->", "<!-- FAQ-SCHEMA:END -->", schema),
-                            ("<!-- AREAS:START -->", "<!-- AREAS:END -->", areas)):
+                            ("<!-- AREAS:START -->", "<!-- AREAS:END -->", areas),
+                            ("<!-- SERVICE-TABS:START -->", "<!-- SERVICE-TABS:END -->",
+                             service_tabs())):
         pattern = re.escape(start) + r".*?" + re.escape(end)
         s, n = re.subn(pattern, lambda _m: start + nl + new + nl + end, s, flags=re.S)
         assert n == 1, f"marker {start} not found exactly once in index.html"

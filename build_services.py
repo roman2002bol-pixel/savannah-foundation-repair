@@ -255,6 +255,54 @@ PAGES = [
 
 SERVICE_BY_SLUG = {s["slug"]: s for s in PAGES}
 
+# Homepage services showcase. Every `points` line below is a condensed
+# restatement of something already on that service's own page (its `method`
+# or `situations`) -- nothing here introduces a capability the site does not
+# already describe in full. build_core.py stamps this into index.html.
+TABS = {
+    "crawl-space-repair": {
+        "accent": "&amp; Floor Jacks",
+        "blurb": "If the floor flexes when you walk across it, the problem is almost never the floor – it is the joists, girders, or support posts underneath, and in a Savannah crawl space moisture is usually what weakened them.",
+        "points": ["Elevation survey before anything is quoted",
+                   "Rotted joists, girders and sill plate replaced",
+                   "Steel jacks on poured footings, not bare dirt",
+                   "Settled floors lifted gradually, across visits"],
+    },
+    "foundation-piering": {
+        "accent": "&amp; Underpinning",
+        "blurb": "When a corner or a wall is genuinely sinking, the fix is transferring its weight past the soil that moved and onto soil that will not – piers driven to load-bearing depth.",
+        "points": ["Helical piers torqued to a measured capacity",
+                   "Push piers driven to refusal under load",
+                   "Galvanized steel within reach of salt air",
+                   "Stabilize first, lift only where it is safe"],
+    },
+    "concrete-slab-leveling": {
+        "accent": "&amp; Polyjacking",
+        "blurb": "Driveways, patios, walkways and garage slabs that dropped at one edge get lifted back with injected polyurethane foam – hours of work rather than days of demolition.",
+        "points": ["Pencil-width injection ports, not core holes",
+                   "Foam adds a fraction of the weight of slurry",
+                   "Cures in minutes – drive on it the same day",
+                   "Closed-cell, so groundwater cannot wash it out"],
+    },
+    "foundation-crack-repair": {
+        "accent": "– Structural or Not",
+        "blurb": "Not every crack is structural, and telling the difference is most of the job. We seal what is cosmetic and address the movement behind the ones that are not.",
+        "points": ["Epoxy and polyurethane injection where sealing is the fix",
+                   "Active settlement addressed with piering first",
+                   "Horizontal wall cracks treated as the urgent case",
+                   "Marked, dated and re-measured where we are not sure"],
+    },
+    "crawl-space-encapsulation": {
+        "accent": "&amp; Dehumidifiers",
+        "blurb": "A sealed vapor barrier and a properly sized dehumidifier stop the ground moisture that rots framing – the repair that keeps the structural work from having to happen twice.",
+        "points": ["Drainage and grading dealt with before any liner",
+                   "Reinforced barrier sealed to the walls and piers",
+                   "Vents closed and sealed, no half-measures",
+                   "Dehumidifier sized to the actual space"],
+    },
+}
+assert set(TABS) == {p["slug"] for p in PAGES}, "TABS must cover every service"
+
 
 def build(page):
     url = f"{SITE}/services/{page['slug']}.html"

@@ -116,6 +116,38 @@
     link.addEventListener("click", function () { trackLead("click_to_email"); });
   });
 
+  /* ---------- services showcase tabs ----------
+     Progressive enhancement: the markup ships with no [hidden] on any panel,
+     so with JS off all five stack and stay readable. This is what turns them
+     into a tab set, so this is also where [hidden] first gets applied. */
+  document.querySelectorAll("[data-svc-tabs]").forEach(function (root) {
+    var tabs = Array.prototype.slice.call(root.querySelectorAll("[data-svc-tab]"));
+    var panels = Array.prototype.slice.call(root.querySelectorAll("[data-svc-panel]"));
+    if (!tabs.length || tabs.length !== panels.length) return;
+
+    function select(index, moveFocus) {
+      tabs.forEach(function (tab, i) {
+        tab.setAttribute("aria-selected", i === index ? "true" : "false");
+        tab.tabIndex = i === index ? 0 : -1;
+      });
+      panels.forEach(function (panel, i) { panel.hidden = i !== index; });
+      if (moveFocus) tabs[index].focus();
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () { select(i); });
+      tab.addEventListener("keydown", function (e) {
+        var step = e.key === "ArrowDown" || e.key === "ArrowRight" ? 1
+                 : e.key === "ArrowUp" || e.key === "ArrowLeft" ? -1 : 0;
+        if (!step) return;
+        e.preventDefault();
+        select((i + step + tabs.length) % tabs.length, true);
+      });
+    });
+
+    select(0);
+  });
+
   /* ---------- footer year ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
