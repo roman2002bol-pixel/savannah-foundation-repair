@@ -257,3 +257,30 @@ ageing, localised, recognise.
 All four checkers clean across 31 pages. Honesty sweep re-run: the only
 "warranty" on the site is a reference to the homeowner's own builder
 warranty on the Port Wentworth page.
+
+### 2026-09-16 (later) — Homepage reworked toward a reference design
+
+Roman sent screenshots of a pool-builder site and asked for three things.
+
+**Hero:** eyebrow pill above the H1, location line in `--orange-light`
+(#ff8a3d — the body orange only just clears 3:1 on the navy). Found and
+fixed the `.hero` gradient, which was still the tree site's green and only
+looked right here because the inline style overrode it.
+
+**Proof band replaces the trust strip, back in front of Services.** Two
+columns plus a photo with a floating badge, then four stat boxes. The
+reference's stats are 18+ years / 900+ jobs / lifetime warranty — all
+untrue of us and not invented. Ours are 4 counties, 18 areas, 5 repairs,
+1–3 days: same visual weight, every figure checkable against the site.
+See the skill's "take the form, never the unverifiable claims".
+
+**Services is now a tab showcase** — tab rail plus a dark photo panel per
+service with an accent heading, blurb, four scope points and two CTAs.
+Data lives in `build_services.TABS`, stamped into `index.html` through the
+marker mechanism, and every point restates something already on that
+service's own page. Keyboard accessible; ships with no `[hidden]`, so
+without JS all five stack instead of leaving four dead buttons.
+
+Also: homepage `areaServed` had still listed the original six areas, now
+16 entries. Five unused `card-*.jpg` crops deleted. Assets at `?v=5`.
+All five checkers clean; mobile verified at 375px via DOM geometry.
