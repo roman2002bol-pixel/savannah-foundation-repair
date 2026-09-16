@@ -284,3 +284,36 @@ without JS all five stack instead of leaving four dead buttons.
 Also: homepage `areaServed` had still listed the original six areas, now
 16 entries. Five unused `card-*.jpg` crops deleted. Assets at `?v=5`.
 All five checkers clean; mobile verified at 375px via DOM geometry.
+
+### 2026-09-16 (later still) — No image twice on a page
+
+Roman spotted the same excavation photo twice on the homepage. Scanning
+all 31 pages found it was not a homepage slip: every one of the 18 area
+pages and 5 service pages used the same file for its hero background and
+its body image. The skill had explicitly told me to do that; the rule has
+been rewritten and `check_image_reuse.py` now enforces the opposite.
+
+**Homepage** now carries 8 distinct photos, none repeated. The proof band
+got a real inspection shot (an inspector checking the base of a wall,
+clipboard in hand) which matches "why start with a diagnosis" far better
+than the excavation photo did, and the geology section got a tidal-creek
+aerial, which is literally what the paragraph is describing.
+
+**Interior pages** keep their place/service photo in the hero and now show
+a *work* photo in the body, chosen per page by primary failure mode from a
+shared `WORK_SHOTS` pool in `build_pages.py`. The pages gained something
+in the process: an area page now shows the place AND the work, instead of
+the place twice.
+
+**Two accuracy defects found on the way.** `foundation-excavation.jpg`,
+the hero on the piering page, was actually a perforated drain pipe in a
+gravel trench — renamed `drainage-pipe-trench.jpg` and moved to the
+encapsulation page. And a Pexels result downloaded during this pass turned
+out to be byte-identical to that same file under another name.
+
+Two new photos added: `foundation-inspection-clipboard.jpg`,
+`floor-level-laser.jpg`. All six checkers clean across 31 pages.
+
+**Open, not fixed:** the tree site has the same fault on 6 pages
+(homepage + all five service pages). Same cause, same fix, needs six new
+photos. Flagged to Roman rather than done unasked.

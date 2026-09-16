@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Service page content + generation. Run: python build_services.py"""
-from build_pages import (SITE, BRAND, PHONE_DISPLAY, PHONE_HREF, AREAS,
+from build_pages import (SITE, BRAND, PHONE_DISPLAY, PHONE_HREF, AREAS, WORK_SHOTS,
                          head, header, footer, cta_band, breadcrumb,
                          faq_blocks, faq_schema, write, p)
 import json
@@ -13,6 +13,7 @@ D = 1  # services/ pages are one directory deep
 PAGES = [
     {
         "slug": "crawl-space-repair",
+        "body": "level",
         "photo": "crawl-space-timber-work.jpg",
         "photo_alt": "Drilling into a timber joist -- the framing replacement work a sagging floor needs",
         "nav": "Crawl Space Repair",
@@ -61,8 +62,9 @@ PAGES = [
     },
     {
         "slug": "foundation-piering",
-        "photo": "foundation-excavation.jpg",
-        "photo_alt": "Excavated trench alongside a foundation, the access needed to install piers",
+        "body": "crack",
+        "photo": "foundation-excavation-work.jpg",
+        "photo_alt": "A worker excavating alongside a foundation, the access underpinning needs",
         "nav": "Foundation Piering",
         "h1": "Foundation Piering &amp; Underpinning in Savannah, GA",
         "title": "Foundation Piering &amp; Underpinning in Savannah, GA",
@@ -109,6 +111,7 @@ PAGES = [
     },
     {
         "slug": "concrete-slab-leveling",
+        "body": "driveway",
         "photo": "settled-concrete-slab.jpg",
         "photo_alt": "Concrete slab sections separated and dropped at the joint",
         "nav": "Concrete Slab Leveling",
@@ -157,6 +160,7 @@ PAGES = [
     },
     {
         "slug": "foundation-crack-repair",
+        "body": "inspection",
         "photo": "masonry-crack-repair.jpg",
         "photo_alt": "Hands repointing mortar in a cracked masonry wall with a trowel",
         "nav": "Foundation Crack Repair",
@@ -205,6 +209,7 @@ PAGES = [
     },
     {
         "slug": "crawl-space-encapsulation",
+        "body": "drainage",
         "photo": "crawl-space-insulation.jpg",
         "photo_alt": "Insulation and moisture control work being installed between floor framing",
         "nav": "Crawl Space Encapsulation",
@@ -336,6 +341,7 @@ def build(page):
         f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>'
         for r in page["related"]
     )
+    body_photo, body_alt = WORK_SHOTS[page["body"]]
     areas = "\n".join(
         f'        <a class="area-chip" href="../service-areas/{slug}.html">{label} '
         f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>'
@@ -361,7 +367,7 @@ def build(page):
         <div>
 {intro}
           <div class="img-slot" style="--ar:16/9; margin-top:1.5rem">
-            <img src="../images/{page["photo"]}" alt="{page["photo_alt"]}" loading="lazy" width="1200" height="675">
+            <img src="../images/{body_photo}" alt="{body_alt}" loading="lazy" width="1200" height="675">
             <span class="img-slot-label">{page["nav"]}</span>
           </div>
         </div>

@@ -32,6 +32,23 @@ SERVICES = [
     ("crawl-space-encapsulation", "Crawl Space Encapsulation"),
 ]
 
+# Work photos, shared. A page may show any of these ONCE -- the rule is no
+# image twice on the same page (check_image_reuse.py enforces it). The same
+# shot appearing on several different pages is fine and expected: it is our
+# work, not a picture of that specific place.
+WORK_SHOTS = {
+    "crack":        ("masonry-crack-repair.jpg", "Hands repointing mortar in a cracked masonry wall with a trowel"),
+    "drainage":     ("drainage-pipe-trench.jpg", "Perforated drainage pipe bedded in gravel in an open trench"),
+    "framing":      ("crawl-space-timber-work.jpg", "Drilling into a floor joist during crawl space framing repair"),
+    "slab":         ("settled-concrete-slab.jpg", "Concrete slab sections separated and dropped at the joint"),
+    "driveway":     ("southside-cracked-driveway.jpg", "A concrete driveway cracked and dropped alongside a house"),
+    "excavation":   ("foundation-excavation-work.jpg", "A worker excavating alongside a foundation to reach the footing"),
+    "encapsulation":("crawl-space-insulation.jpg", "Insulation and moisture control being installed between floor framing"),
+    "level":        ("floor-level-laser.jpg", "A laser level projecting a line across a floor during an elevation survey"),
+    "inspection":   ("foundation-inspection-clipboard.jpg", "An inspector in hi-vis checking the base of an exterior wall, clipboard in hand"),
+}
+
+
 AREAS = [
     ("downtown-savannah-ga", "Downtown &amp; Historic Savannah", "Downtown & Historic Savannah"),
     ("midtown-savannah-ga", "Midtown Savannah &amp; Ardsley Park", "Midtown Savannah & Ardsley Park"),

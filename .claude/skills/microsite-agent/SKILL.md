@@ -597,10 +597,43 @@ return usable direct image URLs for this):
 8. No attribution is required under Pexels' license, but double-check
    there's no visible watermark in the final crop regardless.
 
-**Homepage/service-page hero backgrounds**: once a page's main content
-image is sourced, reuse it as the section's full-bleed background too
-(rather than sourcing a second image) — apply the same dark-green
-gradient-overlay treatment used sitewide:
+**No image twice on the same page. This rule replaces what used to be
+here.** The old version of this section said to reuse a page's content
+image as its hero background rather than sourcing a second one. That was
+wrong, and it produced the defect at scale: on the foundation site the
+homepage showed one excavation photo twice at full size a screen apart,
+and all 23 interior pages had their hero background and body image set to
+the same file. Roman spotted it immediately. While you are writing one
+section at a time it is invisible; to anyone scrolling it is the first
+thing they notice. A dark gradient over the hero does not make it a
+different picture — it reads as texture to the person who placed it and as
+a repeat to everyone else.
+
+So: a hero background and a body image on the same page are **two images**,
+and they need two photos. `scripts/check_image_reuse.py` enforces it.
+
+The same photo on *several different pages* is fine and expected — a shot
+of your own work is not a picture of one specific place. What made this
+cheap to fix on the foundation site was a shared `WORK_SHOTS` pool in
+`build_pages.py` (nine work photos, each with its alt text written once)
+plus a one-word key per page saying which one its body slot gets, matched
+to that page's primary failure mode. Eighteen area pages and five service
+pages, no new photos needed beyond the ones that were missing, and the
+pairing is visible in the data instead of buried in a template.
+
+Two things that only surfaced because of this pass, both worth copying:
+
+- **Check that the file's name matches what the photo shows.** The piering
+  page's hero was called `foundation-excavation.jpg` and was actually a
+  perforated drain pipe in a gravel trench — wrong service entirely, and
+  invisible for as long as nobody re-opened the file. It got renamed to
+  `drainage-pipe-trench.jpg` and moved to the encapsulation page, where
+  "deal with the water first" is literally step one.
+- **Before downloading, check the candidate is not already in the project.**
+  One search result was byte-for-byte a photo already in `images/` under a
+  different name.
+
+Apply the gradient-overlay treatment to whichever photo the hero does get:
 ```html
 <section class="page-hero" style="background-image:linear-gradient(180deg, rgba(15,46,33,.86), rgba(15,46,33,.86)), url(&quot;../images/whatever.jpg&quot;)">
 ```
@@ -981,20 +1014,21 @@ not actually materialise, and quietly copying the claim would have.
 
 ## Verification scripts
 
-Five scripts live in `scripts/` and should all be run after any batch of
+Six scripts live in `scripts/` and should all be run after any batch of
 new or edited pages, before committing — each exits non-zero with a
 specific report if something's wrong, and 0 with a one-line summary if
 clean:
 
 ```bash
-for s in check_broken_links check_faq_schema check_markup_contract check_seo_basics check_us_english; do
+for s in check_broken_links check_faq_schema check_markup_contract check_seo_basics check_us_english check_image_reuse; do
   python ".claude/skills/microsite-agent/scripts/$s.py" .
 done
 ```
 
 Each one exists because a real defect shipped that no amount of care was
 catching by eye. Do not skip one because the change "was only content" —
-`check_us_english` and `check_seo_basics` both fire on pure content edits.
+`check_us_english`, `check_seo_basics` and `check_image_reuse` all fire on
+pure content edits.
 
 - **`check_broken_links.py`** — walks every `*.html` file, extracts every
   `href=`/`src=` that isn't external/`tel:`/`sms:`/`mailto:`/`#`/`data:`,
@@ -1028,6 +1062,12 @@ catching by eye. Do not skip one because the change "was only content" —
   inside otherwise good prose, which is exactly why eyes miss them.
   **Fix the generator, not the generated HTML** — the script says so in
   its own output, because the next build puts them straight back.
+
+- **`check_image_reuse.py`** — the same photo used twice on one page,
+  counting CSS `url()` backgrounds as well as `<img src>`. Written after
+  the hero-background-reuse rule above turned out to be wrong; it found the
+  fault on 24 of 31 pages on this site and 6 on the sibling site in the
+  first run. Repeats *across* pages are allowed and not reported.
 
 The scripts are intentionally simple (regex over the raw HTML, no DOM
 parser dependency) so they run instantly with zero setup on any machine

@@ -7,7 +7,7 @@ Nothing here is a template with the place name swapped -- the construction
 era, foundation type, soil and the failure mode genuinely differ per area,
 which is the whole reason these pages are defensible.
 """
-from build_pages import (SITE, BRAND, PHONE_DISPLAY, PHONE_HREF, SERVICES,
+from build_pages import (SITE, BRAND, PHONE_DISPLAY, PHONE_HREF, SERVICES, WORK_SHOTS,
                          head, header, footer, cta_band, breadcrumb,
                          faq_blocks, faq_schema, write)
 import json
@@ -17,6 +17,7 @@ D = 1
 PAGES = [
     {
         "slug": "downtown-savannah-ga",
+        "work": "crack",
         "photo": "downtown-savannah-home.jpg",
         "photo_alt": "Historic brick building in downtown Savannah under live oaks",
         "name": "Downtown &amp; Historic Savannah",
@@ -38,6 +39,7 @@ PAGES = [
     },
     {
         "slug": "pooler-ga",
+        "work": "slab",
         "photo": "pooler-new-home.jpg",
         "photo_alt": "Newer two-story home with a concrete driveway, typical of Pooler subdivisions",
         "name": "Pooler, GA",
@@ -59,6 +61,7 @@ PAGES = [
     },
     {
         "slug": "richmond-hill-ga",
+        "work": "slab",
         "photo": "richmond-hill-home.jpg",
         "photo_alt": "Brick family home of the kind built across Richmond Hill's newer neighborhoods",
         "name": "Richmond Hill, GA",
@@ -80,6 +83,7 @@ PAGES = [
     },
     {
         "slug": "skidaway-island-ga",
+        "work": "encapsulation",
         "photo": "skidaway-marsh.jpg",
         "photo_alt": "Tidal marsh and creeks surrounding Skidaway Island at sunset",
         "name": "Skidaway Island",
@@ -101,6 +105,7 @@ PAGES = [
     },
     {
         "slug": "wilmington-island-ga",
+        "work": "framing",
         "photo": "wilmington-island-marsh.jpg",
         "photo_alt": "Coastal marshland of the kind that surrounds Wilmington Island",
         "name": "Wilmington Island",
@@ -122,6 +127,7 @@ PAGES = [
     },
     {
         "slug": "georgetown-ga",
+        "work": "slab",
         "photo": "georgetown-ranch-home.jpg",
         "photo_alt": "Single-story ranch home typical of Georgetown's 1970s and 1980s build-out",
         "name": "Georgetown",
@@ -143,6 +149,7 @@ PAGES = [
     },
     {
         "slug": "midtown-savannah-ga",
+        "work": "drainage",
         "photo": "midtown-savannah-bungalow.jpg",
         "photo_alt": "Clapboard bungalow with a deep front porch, the housing type across Savannah's midtown streets",
         "name": "Midtown Savannah &amp; Ardsley Park",
@@ -166,6 +173,7 @@ PAGES = [
     },
     {
         "slug": "southside-savannah-ga",
+        "work": "framing",
         "photo": "southside-cracked-driveway.jpg",
         "photo_alt": "Cracked concrete driveway running alongside a suburban house and garage",
         "name": "Southside Savannah",
@@ -189,6 +197,7 @@ PAGES = [
     },
     {
         "slug": "isle-of-hope-ga",
+        "work": "framing",
         "photo": "isle-of-hope-southern-home.jpg",
         "photo_alt": "Raised Southern house with double porches under live oaks draped in Spanish moss",
         "name": "Isle of Hope",
@@ -212,6 +221,7 @@ PAGES = [
     },
     {
         "slug": "thunderbolt-ga",
+        "work": "excavation",
         "photo": "thunderbolt-shrimp-dock.jpg",
         "photo_alt": "Shrimp boat and stacked crab pots tied up at a working river dock",
         "name": "Thunderbolt",
@@ -233,6 +243,7 @@ PAGES = [
     },
     {
         "slug": "whitemarsh-island-ga",
+        "work": "drainage",
         "photo": "whitemarsh-tidal-creeks.jpg",
         "photo_alt": "Tidal creeks winding through salt marsh at the edge of an island community",
         "name": "Whitemarsh Island",
@@ -254,6 +265,7 @@ PAGES = [
     },
     {
         "slug": "tybee-island-ga",
+        "work": "excavation",
         "photo": "tybee-raised-beach-house.jpg",
         "photo_alt": "Beachfront house raised on pilings above the dune line",
         "name": "Tybee Island",
@@ -277,6 +289,7 @@ PAGES = [
     },
     {
         "slug": "garden-city-ga",
+        "work": "slab",
         "photo": "garden-city-port-terminal.jpg",
         "photo_alt": "Stacked shipping containers and a gantry crane at a river container terminal",
         "name": "Garden City",
@@ -298,6 +311,7 @@ PAGES = [
     },
     {
         "slug": "port-wentworth-ga",
+        "work": "driveway",
         "photo": "port-wentworth-new-subdivision.jpg",
         "photo_alt": "Aerial view of a recently built subdivision of similar houses on curving streets",
         "name": "Port Wentworth",
@@ -319,6 +333,7 @@ PAGES = [
     },
     {
         "slug": "bloomingdale-ga",
+        "work": "drainage",
         "photo": "bloomingdale-rural-lot.jpg",
         "photo_alt": "House set well back on a large rural lot with a gravel track and open field",
         "name": "Bloomingdale",
@@ -340,6 +355,7 @@ PAGES = [
     },
     {
         "slug": "rincon-ga",
+        "work": "driveway",
         "photo": "rincon-house-framing.jpg",
         "photo_alt": "New house under construction with the wood framing up before the exterior goes on",
         "name": "Rincon",
@@ -361,6 +377,7 @@ PAGES = [
     },
     {
         "slug": "springfield-ga",
+        "work": "framing",
         "photo": "springfield-historic-corner.jpg",
         "photo_alt": "Old white timber building on a small-town street corner",
         "name": "Springfield",
@@ -382,6 +399,7 @@ PAGES = [
     },
     {
         "slug": "hinesville-ga",
+        "work": "level",
         "photo": "hinesville-brick-home.jpg",
         "photo_alt": "Single-story brick home with a lawn and attached garage, typical of the area's rental housing",
         "name": "Hinesville",
@@ -477,6 +495,7 @@ def build(page):
           <a class="link" href="../services/{slug}.html">See details →</a>
         </div>''' for slug, name in SERVICES)
 
+    work_photo, work_alt = WORK_SHOTS[page["work"]]
     others = [BY_SLUG[s] for s in NEAR[page["slug"]]]
     nearby = "\n".join(
         f'        <a class="area-chip" href="{o["slug"]}.html">{o["name"]} '
@@ -508,7 +527,7 @@ def build(page):
             <span>Free Inspections</span><span>Written Scope</span><span>ZIP {page["zip"]}</span>
           </div>
           <div class="img-slot" style="--ar:16/9; margin-top:1.5rem">
-            <img src="../images/{page["photo"]}" alt="{page["photo_alt"]}" loading="lazy" width="1200" height="675">
+            <img src="../images/{work_photo}" alt="{work_alt}" loading="lazy" width="1200" height="675">
             <span class="img-slot-label">{page["plain"]}</span>
           </div>
         </div>
@@ -591,7 +610,7 @@ def build_hub():
 
     schemas = [breadcrumb([("Home", f"{SITE}/"), ("Service Areas", None)])]
     body = f'''
-  <section class="page-hero" style="background-image:linear-gradient(180deg, rgba(11,26,41,.58), rgba(11,26,41,.82)), url(&quot;../images/skidaway-marsh.jpg&quot;)">
+  <section class="page-hero" style="background-image:linear-gradient(180deg, rgba(11,26,41,.58), rgba(11,26,41,.82)), url(&quot;../images/savannah-historic-home.jpg&quot;)">
     <div class="container">
       <div class="breadcrumbs"><a href="../index.html">Home</a> / Service Areas</div>
       <h1>Service Areas – Savannah &amp; the Lowcountry</h1>
