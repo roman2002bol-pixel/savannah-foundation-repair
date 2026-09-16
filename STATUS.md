@@ -80,13 +80,34 @@ Legend: `[x]` built and verified · `[ ]` not built yet (link 404s until it is)
 - [x] `services/foundation-crack-repair.html`
 - [x] `services/crawl-space-encapsulation.html`
 
-**Location pages — Phase 1 (6)** — each needs real per-location research first
-- [x] `service-areas/downtown-savannah-ga.html` (31401)
-- [x] `service-areas/pooler-ga.html` (31322)
-- [x] `service-areas/richmond-hill-ga.html` (31324)
-- [x] `service-areas/skidaway-island-ga.html` (31411)
-- [x] `service-areas/wilmington-island-ga.html` (31410)
-- [x] `service-areas/georgetown-ga.html` (31419)
+**Location pages (18)** — each needed real per-location research first, and
+the `facts` block on each cites the source it came from
+
+*Savannah proper*
+- [x] `downtown-savannah-ga.html` (31401) — historic brick/tabby piers, city review
+- [x] `midtown-savannah-ga.html` (31405) — Ardsley Park 1909–30s, Casey Canal basin
+- [x] `southside-savannah-ga.html` (31406) — Windsor Forest, late-50s planned suburb
+- [x] `georgetown-ga.html` (31419) — 1970s–80s build-out
+
+*The islands and the riverside*
+- [x] `isle-of-hope-ga.html` (31406) — 19th-c river cottages, oldest piers outside downtown
+- [x] `thunderbolt-ga.html` (31404) — separate town, shrimp port, own permitting
+- [x] `whitemarsh-island-ga.html` (31410) — 1980s–2000s, marsh-edge lots, flood risk
+- [x] `wilmington-island-ga.html` (31410) — 1960s–70s pier-and-beam, salt corrosion
+- [x] `skidaway-island-ga.html` (31411) — The Landings, 1972+, Association review
+- [x] `tybee-island-ga.html` (31328) — barrier island, BFE 9ft+2ft, FEMA elevation grants
+
+*West Chatham*
+- [x] `garden-city-ga.html` (31408) — 1939 workforce housing, port-side filled ground
+- [x] `port-wentworth-ga.html` (31407) — +344% since 2000, split old core / new fill
+- [x] `pooler-ga.html` (31322) — new construction on fill, slab market
+- [x] `bloomingdale-ga.html` (31302) — rural west, no storm sewer, own drainage
+
+*Beyond Chatham County*
+- [x] `richmond-hill-ga.html` (31324) — Bryan County
+- [x] `rincon-ga.html` (31326) — Effingham, +163% since 2000
+- [x] `springfield-ga.html` (31329) — Effingham county seat, two-era town
+- [x] `hinesville-ga.html` (31313) — Liberty County, Fort Stewart, rental-heavy
 
 **Assets / supporting**
 - [x] `css/style.css` — re-themed palette + type
@@ -118,10 +139,25 @@ thin/doorway content): "cracked foundation repair" (= #4), "sinking /
 settlement foundation repair" (= #2), "house / structural foundation
 repair" (= homepage), "basement waterproofing" (wrong market entirely).
 
-**Location pages — Phase 1 (not yet built):** Downtown/Historic Savannah
-31401, Pooler 31322, Richmond Hill 31324, Skidaway Island 31411,
-Wilmington Island 31410, Georgetown 31419. Each needs real per-location
-research before writing (see skill). Phase 2 later.
+**Location pages (18, all built):** grouped as Savannah proper / the
+islands and the riverside / West Chatham / beyond Chatham County. The
+grouping is not decoration -- it maps onto four genuinely different
+foundation stories (old piers, salt and tide, fill settlement, other
+counties' permitting).
+
+**Why all 18 shipped at once rather than in phases.** The skill's default
+is a phased location rollout, because a pile of near-identical town pages
+published in one day is exactly the scaled-content pattern Google acts on.
+Roman's argument for going wide immediately was that Savannah is not
+Dallas: the realistic list of distinct places in and around this metro is
+about eighteen, not two hundred, so "all of them" is a complete map of a
+small market rather than a generated long tail. That holds, with one
+condition attached -- each page had to earn its place with researched,
+genuinely different content (build era, soil, foundation type, failure
+mode, permitting authority), not a template with the name swapped. That
+condition was met: every `facts` block links the source it came from, and
+no two pages share a focus list, a note, or an FAQ. The site is also not
+indexed yet, so all 31 pages go live together regardless.
 
 ---
 
@@ -175,3 +211,49 @@ there is no walk-in office rather than implying one.
 email inbox, a form backend (currently mailto fallback,
 `data-endpoint-ready="false"`), the domain purchase, service-page photos,
 and a logo beyond the SFR monogram.
+
+### 2026-09-16 — Homepage restructure + location coverage to 18 areas
+
+**Homepage, on Roman's notes:** removed the orange `::before` rule in front
+of every eyebrow label (deleted from the stylesheet, so it cannot come back
+on a later page). Services moved directly under the hero with the trust
+strip after it, background classes swapped so the alternation still holds.
+Removed the decorative outline icons -- four in the trust strip, three dark
+tiles in How It Works, three on the inspection page -- keeping the numbered
+step badges. All 13 FAQ questions now render on the homepage.
+
+**FAQ is now single-sourced.** `index.html` is hand-written, so its FAQ
+could previously drift from `faq.html`. Both are now stamped from `FAQS` in
+`build_core.py`, visible markup and FAQPage JSON-LD together, into marker
+comments in `index.html`. The same mechanism stamps the 18 area chips into
+the homepage service-area block.
+
+**`sitemap.xml` and the `llms.txt` area list are now generated** by
+`build_meta.py` from the same data the pages are built from. They were
+hand-maintained, which meant adding a page and forgetting the sitemap was
+a matter of time.
+
+**12 new location pages** (see the checklist above), each with researched
+facts and an outbound authority link: Midtown/Ardsley Park, Southside,
+Isle of Hope, Thunderbolt, Whitemarsh Island, Tybee Island, Garden City,
+Port Wentworth, Bloomingdale, Rincon, Springfield, Hinesville. Nearby-area
+links are now real geographic adjacency (`NEAR` in `build_areas.py`)
+instead of the first three in the list, which had put the same three
+neighbours on every page.
+
+**12 new photos**, Pexels, each downloaded once at the final 1200x675
+rather than re-encoded. No AI-looking images and no third-party business
+names on people or equipment.
+
+**Two honest scope limits written into the new pages** rather than left
+vague: we do not raise houses to flood elevation (Tybee) and we do not
+relevel manufactured homes on HUD pier sets (Bloomingdale). Both say so
+plainly and say who does.
+
+**Language pass:** 116 British spellings removed from a Georgia site --
+levelling, stabilisation, vapour, neighbourhood, galvanised, storey,
+ageing, localised, recognise.
+
+All four checkers clean across 31 pages. Honesty sweep re-run: the only
+"warranty" on the site is a reference to the homeowner's own builder
+warranty on the Port Wentworth page.

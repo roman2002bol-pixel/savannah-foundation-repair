@@ -86,7 +86,7 @@ PAGES = [
         "method": [
             "<strong>Helical piers</strong> are screwed into the ground with a measured torque that correlates to capacity, so you know what each one will hold as it goes in. They suit lighter loads and situations where you need confirmation of capacity during installation.",
             "<strong>Push piers</strong> use the weight of the structure itself to drive sections down until they meet refusal on a firm bearing layer. They suit heavier loads and deeper unstable soil.",
-            "<strong>Galvanised steel, not raw.</strong> Within reach of salt air, corrosion protection on anything permanently in the ground isn't an upgrade, it's the baseline.",
+            "<strong>Galvanized steel, not raw.</strong> Within reach of salt air, corrosion protection on anything permanently in the ground isn't an upgrade, it's the baseline.",
             "<strong>Stabilize, then lift where it's safe.</strong> Every pier job stops the movement. Recovering the original elevation is a separate judgement call, made from the measurements and what the structure can take.",
         ],
         "cost_head": "What drives the cost",
@@ -214,7 +214,7 @@ PAGES = [
         "service_type": "Crawl Space Encapsulation",
         "lede": "A vented crawl space in coastal Georgia doesn't dry out in summer – it pulls humid outside air onto cool surfaces and condenses it. Encapsulation ends that cycle.",
         "intro": [
-            "The logic behind crawl space vents assumed outdoor air is drier than crawl space air. On the Georgia coast in July it very often isn't. Warm, humid air entering a cool crawl space raises the relative humidity against the framing, and wood that stays above roughly twenty percent moisture content is wood that rots and grows mould.",
+            "The logic behind crawl space vents assumed outdoor air is drier than crawl space air. On the Georgia coast in July it very often isn't. Warm, humid air entering a cool crawl space raises the relative humidity against the framing, and wood that stays above roughly twenty percent moisture content is wood that rots and grows mold.",
             "Encapsulation treats the crawl space as part of the building rather than as outdoors: a heavy sealed liner across the ground and up the piers and walls, vents closed, and a dehumidifier sized for the volume to hold the space at a stable humidity year-round.",
         ],
         "situations_head": "Signs your crawl space needs it",
@@ -222,7 +222,7 @@ PAGES = [
             "Musty smell in the house, strongest near floor vents or closets",
             "Visible condensation on ducts, pipes, or the underside of the floor",
             "Insulation sagging out of the joist bays or lying on the ground",
-            "Mould or dark staining on joists, girders, or subfloor",
+            "Mold or dark staining on joists, girders, or subfloor",
             "Standing water or consistently damp soil after ordinary rain",
             "Floors that feel cold and humid, or cupping hardwood above",
         ],

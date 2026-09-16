@@ -34,11 +34,23 @@ SERVICES = [
 
 AREAS = [
     ("downtown-savannah-ga", "Downtown &amp; Historic Savannah", "Downtown & Historic Savannah"),
-    ("pooler-ga", "Pooler, GA", "Pooler, GA"),
-    ("richmond-hill-ga", "Richmond Hill, GA", "Richmond Hill, GA"),
-    ("skidaway-island-ga", "Skidaway Island", "Skidaway Island"),
-    ("wilmington-island-ga", "Wilmington Island", "Wilmington Island"),
+    ("midtown-savannah-ga", "Midtown Savannah &amp; Ardsley Park", "Midtown Savannah & Ardsley Park"),
+    ("southside-savannah-ga", "Southside Savannah", "Southside Savannah"),
     ("georgetown-ga", "Georgetown", "Georgetown"),
+    ("isle-of-hope-ga", "Isle of Hope", "Isle of Hope"),
+    ("thunderbolt-ga", "Thunderbolt", "Thunderbolt"),
+    ("whitemarsh-island-ga", "Whitemarsh Island", "Whitemarsh Island"),
+    ("wilmington-island-ga", "Wilmington Island", "Wilmington Island"),
+    ("skidaway-island-ga", "Skidaway Island", "Skidaway Island"),
+    ("tybee-island-ga", "Tybee Island", "Tybee Island"),
+    ("garden-city-ga", "Garden City", "Garden City"),
+    ("port-wentworth-ga", "Port Wentworth", "Port Wentworth"),
+    ("pooler-ga", "Pooler, GA", "Pooler, GA"),
+    ("bloomingdale-ga", "Bloomingdale", "Bloomingdale"),
+    ("richmond-hill-ga", "Richmond Hill, GA", "Richmond Hill, GA"),
+    ("rincon-ga", "Rincon", "Rincon"),
+    ("springfield-ga", "Springfield", "Springfield"),
+    ("hinesville-ga", "Hinesville", "Hinesville"),
 ]
 
 
@@ -161,7 +173,7 @@ def footer(depth):
     )
     ar = "\n".join(
         f'        <a href="{p(depth, "service-areas/" + slug + ".html")}">{label}</a>'
-        for slug, label, _ in AREAS[:4]
+        for slug, label, _ in AREAS[:6]
     )
     return f'''
 </main>

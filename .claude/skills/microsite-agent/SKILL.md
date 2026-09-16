@@ -84,6 +84,40 @@ For this site (Savannah, GA / tree removal), Phase 1 locations are:
 Phase 2 (do not build yet) adds the remaining smaller suburbs once Phase 1
 is indexed and ranking.
 
+### The exception: a small metro's *complete* list is not a long tail
+
+Phasing exists to stop a generated tail of near-identical pages, not to cap
+a number. Roman pushed back on it for the Savannah foundation site
+(2026-09-16) with an argument that is correct: the rank-and-rent material
+everyone learns this from is filmed in Dallas, where "every suburb" means
+two hundred pages and phasing is obviously right. Savannah is not Dallas.
+The realistic list of distinct places in and around this metro is about
+eighteen. Publishing all eighteen is a complete map of a small market, not
+a scaled tail — and eighteen is fewer pages than the Dallas Phase 1.
+
+So the real test is **differentiation, not count**:
+
+- Can each page state a different *build era*, *foundation type*, *soil or
+  water condition*, *failure mode* and *permitting authority*? If the
+  honest answer for page fourteen is "same as page three", that page is
+  the tail and should wait, or not exist.
+- Does each page cite a source for its facts (see the outbound-authority
+  rule)? A page you had to research is a page you can defend.
+- Do the `focus` list, the local note and the FAQs differ page to page?
+  If any of the three is shared, it was templated.
+
+When all three hold, ship the whole set. When they don't, phase — and the
+default is still phasing, because the failure mode is much more common
+than the exception. On the foundation site all eighteen shipped at once
+and it is logged in STATUS.md with this reasoning, so the decision is
+reviewable later if the site ever does get hit.
+
+One more thing that made it safe there: the site had no domain and no
+index yet, so *all* 31 pages were going live on day one regardless. Adding
+twelve to a set of nineteen changes nothing about the launch pattern.
+Adding twelve to an established, indexed site a year in is a different
+decision, and that one should still be phased.
+
 ## Non-negotiable honesty rules
 
 These are the things that must never be reintroduced without a real fact
@@ -846,16 +880,82 @@ sites get flagged either way. Everything this playbook already requires
 distinct palette and type per site) is the actual protection; account
 hygiene is a rounding error next to it.
 
+## Decorative chrome: default to none
+
+Roman's review of the foundation homepage (2026-09-16) killed two things
+that had been on both sites from the start, and the reasoning generalizes.
+
+**The little rule before a section label.** `.eyebrow::before` drew a 24x2
+orange dash in front of every "SERVICES" / "FAQ" / "HOW IT WORKS" label.
+It is a stock template tic, it appears on every section of every page, and
+it says nothing. Deleted from the stylesheet rather than from the markup,
+so it cannot reappear on a page generated later. **Do not add it to a new
+site.**
+
+**Outline icons above a heading.** Four in a trust strip, three in a
+"How It Works" row, three on the inspection page — generic line-art house,
+checkmark, globe, pin. Two problems: they are disproportionate next to the
+text they sit above, and in the How It Works row a dark 48px icon tile sat
+directly above an orange numbered badge, so two graphics competed to say
+"step 2". The number was doing the work; the icon was decoration
+pretending to be information. Removed all of them.
+
+The rule: **an icon has to carry meaning the text does not.** A chevron in
+a link chip earns its place (it signals direction). A checkmark in a list
+of symptoms earns its place (it scans as a list). A house glyph above the
+words "We Diagnose First" does not.
+
+## Anything hand-written next to something generated will drift
+
+`index.html` on the foundation site is hand-written while every other page
+is generated. Its FAQ therefore duplicated `faq.html`'s content by hand,
+and the two had already diverged in wording before anyone noticed — same
+class of bug the FAQ-vs-JSON-LD rule exists to prevent, one level up.
+
+The fix, and the pattern to reuse: put marker comments in the hand-written
+file and have the generator stamp the block between them.
+
+```html
+<!-- FAQ-BODY:START -->
+<!-- FAQ-BODY:END -->
+```
+
+```python
+pattern = re.escape(start) + r".*?" + re.escape(end)
+s, n = re.subn(pattern, lambda _m: start + nl + new + nl + end, s, flags=re.S)
+assert n == 1, f"marker {start} not found exactly once"
+```
+
+The `assert n == 1` matters: a silently-missing marker means the page
+quietly stops being updated, which is worse than a crash. Use `lambda _m:`
+for the replacement rather than a plain string — the content contains
+backslashes and ``-style sequences would be interpreted.
+
+Three blocks on that site are stamped this way now: the visible FAQ, the
+FAQPage JSON-LD, and the service-area chip list.
+
+**Same rule for `sitemap.xml` and `llms.txt`.** Both were hand-maintained,
+which meant "add a page, forget the sitemap" was a matter of time. They
+are generated by `build_meta.py` from the same data the pages are built
+from. `llms.txt` keeps its hand-written prose and only the area list sits
+between markers.
+
 ## Verification scripts
 
-Two scripts live in `scripts/` and should be run after any batch of new
-or edited pages, before committing — both exit non-zero with a specific
-report if something's wrong, and exit 0 with a one-line summary if clean:
+Five scripts live in `scripts/` and should all be run after any batch of
+new or edited pages, before committing — each exits non-zero with a
+specific report if something's wrong, and 0 with a one-line summary if
+clean:
 
 ```bash
-python .claude/skills/microsite-agent/scripts/check_broken_links.py .
-python .claude/skills/microsite-agent/scripts/check_faq_schema.py .
+for s in check_broken_links check_faq_schema check_markup_contract check_seo_basics check_us_english; do
+  python ".claude/skills/microsite-agent/scripts/$s.py" .
+done
 ```
+
+Each one exists because a real defect shipped that no amount of care was
+catching by eye. Do not skip one because the change "was only content" —
+`check_us_english` and `check_seo_basics` both fire on pure content edits.
 
 - **`check_broken_links.py`** — walks every `*.html` file, extracts every
   `href=`/`src=` that isn't external/`tel:`/`sms:`/`mailto:`/`#`/`data:`,
@@ -872,7 +972,25 @@ python .claude/skills/microsite-agent/scripts/check_faq_schema.py .
   markup) — treat any mismatch it reports as a real bug to fix, not a
   false positive, until proven otherwise.
 
-Both scripts are intentionally simple (regex over the raw HTML, no DOM
+- **`check_markup_contract.py`** — every class in the HTML resolves to a
+  rule in the stylesheet, every inline SVG has a sizing rule, every
+  `data-*` hook is bound by JS. Written after twelve nonexistent CSS
+  classes shipped on a homepage: CSS silently ignores selectors it does
+  not know, so the page just looks wrong with no error anywhere.
+- **`check_seo_basics.py`** — titles unique and <=62 chars, descriptions
+  unique and 70-160, exactly one H1, canonical present, JSON-LD parses,
+  every `<img>` has alt text. Written after a 29-character brand suffix
+  quietly pushed ten titles past SERP truncation; it then found nine of
+  the same defect on the sibling site.
+- **`check_us_english.py`** — British spellings on a US local site.
+  Written after 58 of them (levelling, stabilisation, vapour,
+  neighbourhood) were found in one pass and 58 more (galvanised, storey,
+  ageing, mould, enquiry, centre) in the next. They arrive one at a time
+  inside otherwise good prose, which is exactly why eyes miss them.
+  **Fix the generator, not the generated HTML** — the script says so in
+  its own output, because the next build puts them straight back.
+
+The scripts are intentionally simple (regex over the raw HTML, no DOM
 parser dependency) so they run instantly with zero setup on any machine
 that has Python — that's deliberate, don't "improve" them into needing
 `pip install` something for a one-shot pre-commit check.

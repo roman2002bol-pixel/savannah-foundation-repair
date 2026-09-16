@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Core page generation. Run: python build_core.py"""
-from build_pages import (ROOT, SITE, BRAND, PHONE_DISPLAY, PHONE_HREF, EMAIL,
+from build_pages import (ROOT, SITE, BRAND, AREAS, PHONE_DISPLAY, PHONE_HREF, EMAIL,
                          SERVICES, head, header, footer, cta_band, breadcrumb,
                          faq_blocks, faq_schema, write)
 import json
@@ -21,8 +21,16 @@ def patch_home_faq():
               'you are looking at? <a class="link" href="free-inspection.html">Book a free '
               'inspection →</a></p>')
     schema = '<script type="application/ld+json">' + nl + faq_schema(FAQS) + nl + '</script>'
+    chev = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'
+            '<path d="M9 18l6-6-6-6"/></svg>')
+    areas = nl.join(
+        f'        <a class="area-chip" href="service-areas/{slug}.html">{label} {chev}</a>'
+        for slug, label, _ in AREAS)
+    areas += (nl + '        <a class="area-chip" href="service-areas/index.html">'
+                   f'All service areas {chev}</a>')
     for start, end, new in (("<!-- FAQ-BODY:START -->", "<!-- FAQ-BODY:END -->", body),
-                            ("<!-- FAQ-SCHEMA:START -->", "<!-- FAQ-SCHEMA:END -->", schema)):
+                            ("<!-- FAQ-SCHEMA:START -->", "<!-- FAQ-SCHEMA:END -->", schema),
+                            ("<!-- AREAS:START -->", "<!-- AREAS:END -->", areas)):
         pattern = re.escape(start) + r".*?" + re.escape(end)
         s, n = re.subn(pattern, lambda _m: start + nl + new + nl + end, s, flags=re.S)
         assert n == 1, f"marker {start} not found exactly once in index.html"
@@ -168,7 +176,7 @@ ABOUT_BODY = f'''
           <p>So every job starts with the same thing: elevation readings, a look at the actual failure, and a written explanation of what those measurements mean. Sometimes that ends with a repair scope. Fairly often it ends with us saying the movement looks historic rather than active and suggesting you monitor it for a season. Both are useful outcomes.</p>
           <h2 style="margin-top:2rem">Why the coast is its own problem</h2>
           <p>Foundation repair in Atlanta and foundation repair in Savannah are not the same trade. Inland Georgia deals with expansive clay. Here it is sandy soil over a water table that is rarely more than a few feet down, humidity that never really breaks, and on the islands, salt that quietly corrodes anything metal you put in the ground.</p>
-          <p>That is why the recommendations on this site look different from a national contractor's: galvanised hardware as standard rather than an upgrade, encapsulation treated as part of a structural repair rather than a separate product, and slab work priced around drainage as much as concrete.</p>
+          <p>That is why the recommendations on this site look different from a national contractor's: galvanized hardware as standard rather than an upgrade, encapsulation treated as part of a structural repair rather than a separate product, and slab work priced around drainage as much as concrete.</p>
         </div>
         <div class="local-callout">
           <h3 style="margin-top:0">Straight about what we are</h3>
@@ -281,7 +289,7 @@ FAQS = [
     ("Do you charge for a second opinion?",
      "No. If you have a quote from another contractor and want the reasoning checked, the inspection is the same free visit. Bring the quote – comparing what was proposed against what the measurements show is often the most useful hour in the whole process."),
     ("Which areas do you cover?",
-     "AREAS_ANSWER"),
+     "Chatham County in full – downtown, midtown, the Southside and Georgetown, plus every one of the islands from Isle of Hope and Thunderbolt out to Tybee – and the west side at Garden City, Port Wentworth, Pooler and Bloomingdale. Outside Chatham we cover Richmond Hill in Bryan County, Rincon and Springfield in Effingham, and Hinesville in Liberty. There are eighteen area pages on the site with the detail for each. If you are somewhere small in between, call and ask, because the answer is usually yes."),
 ]
 
 FAQ_BODY = f'''
@@ -317,11 +325,11 @@ PRIVACY_BODY = f'''
       </div>
       <p>When you submit a form on this site or contact us by phone, text, or email, we collect the details you give us – typically your name, phone number, email address, property ZIP code, and a description of the problem you are asking about.</p>
       <h2>What we use it for</h2>
-      <p>We use those details solely to respond to your enquiry, arrange and carry out an inspection, and follow up about the work discussed. We do not sell your information, and we do not add you to marketing lists you did not ask to join.</p>
+      <p>We use those details solely to respond to your inquiry, arrange and carry out an inspection, and follow up about the work discussed. We do not sell your information, and we do not add you to marketing lists you did not ask to join.</p>
       <h2>Who else sees it</h2>
       <p>Your details may be shared with the contractor who carries out the inspection or the repair at your property, because they cannot do the work without them. They are not shared with anyone else for any other purpose.</p>
       <h2>How long we keep it</h2>
-      <p>Enquiry records are kept for as long as needed to serve you and to meet ordinary business and tax record-keeping requirements, then deleted.</p>
+      <p>Inquiry records are kept for as long as needed to serve you and to meet ordinary business and tax record-keeping requirements, then deleted.</p>
       <h2>Cookies and analytics</h2>
       <p>This site is static and does not set advertising or tracking cookies. If website analytics are added in future, this page will be updated to say so before they are switched on.</p>
       <h2>Your choices</h2>

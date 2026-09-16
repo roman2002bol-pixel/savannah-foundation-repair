@@ -22,14 +22,30 @@ Typical residential job: about $1,600–$4,100.
 
 ## Service areas
 
-Savannah and Chatham County, plus Richmond Hill in Bryan County.
+All of Chatham County, plus Richmond Hill (Bryan), Rincon and Springfield
+(Effingham), and Hinesville (Liberty). Eighteen area pages, each covering what
+actually fails in that specific place.
 
-- [Downtown & Historic Savannah (31401)](https://www.savannahfoundationrepairco.com/service-areas/downtown-savannah-ga.html) – historic brick pier foundations, Historic District review applies to visible exterior work
-- [Pooler (31322)](https://www.savannahfoundationrepairco.com/service-areas/pooler-ga.html) – new construction on fill, slab-on-grade, settled flatwork
-- [Richmond Hill (31324)](https://www.savannahfoundationrepairco.com/service-areas/richmond-hill-ga.html) – Bryan County, sandy loam over clay, rapid new development
-- [Skidaway Island (31411)](https://www.savannahfoundationrepairco.com/service-areas/skidaway-island-ga.html) – The Landings, homes from 1972 onward, Association architectural review, tidal marsh humidity
-- [Wilmington Island (31410)](https://www.savannahfoundationrepairco.com/service-areas/wilmington-island-ga.html) – 1960s–70s pier-and-beam ranches, very shallow groundwater, salt corrosion
-- [Georgetown (31419)](https://www.savannahfoundationrepairco.com/service-areas/georgetown-ga.html) – 1970s–80s build-out now reaching first service life of original framing
+<!-- areas:start -->
+- [Downtown & Historic Savannah (31401)](https://www.savannahfoundationrepairco.com/service-areas/downtown-savannah-ga.html) – settled and cracked masonry piers, rotted sill plates and joist ends, crawl space moisture in tight, low clearances
+- [Midtown Savannah & Ardsley Park (31405)](https://www.savannahfoundationrepairco.com/service-areas/midtown-savannah-ga.html) – century-old masonry piers under wood-frame houses, crawl spaces that stay wet in the casey canal basin, cracked plaster and sticking doors from uneven settlement
+- [Southside Savannah (31406)](https://www.savannahfoundationrepairco.com/service-areas/southside-savannah-ga.html) – sixty-year-old crawl space framing and support posts, 1960s slabs cracking over lightly prepared subgrade, settled driveways, walkways and carport slabs
+- [Georgetown (31419)](https://www.savannahfoundationrepairco.com/service-areas/georgetown-ga.html) – aging crawl space framing and support posts, settled driveways and walkways, original-era piers reaching end of service life
+- [Isle of Hope (31406)](https://www.savannahfoundationrepairco.com/service-areas/isle-of-hope-ga.html) – nineteenth-century brick and tabby pier foundations, sill plate and joist-end rot around the perimeter, tidal-river humidity under raised cottages
+- [Thunderbolt (31404)](https://www.savannahfoundationrepairco.com/service-areas/thunderbolt-ga.html) – pier-and-beam settling on low riverside lots, shallow groundwater under the crawl space, salt corrosion of jacks, fasteners and connectors
+- [Whitemarsh Island (31410)](https://www.savannahfoundationrepairco.com/service-areas/whitemarsh-island-ga.html) – crawl space moisture on lots cut close to the marsh, corroded hardware and fasteners in salt air, drainage failures around 1980s–2000s foundations
+- [Wilmington Island (31410)](https://www.savannahfoundationrepairco.com/service-areas/wilmington-island-ga.html) – pier-and-beam settling on low-lying lots, rotted framing from repeated crawl space wetting, salt corrosion of fasteners, connectors, and support hardware
+- [Skidaway Island (31411)](https://www.savannahfoundationrepairco.com/service-areas/skidaway-island-ga.html) – fifty-year-old crawl space framing and support posts, persistent humidity from surrounding tidal marsh, coordinating work inside a gated community
+- [Tybee Island (31328)](https://www.savannahfoundationrepairco.com/service-areas/tybee-island-ga.html) – pier and piling support under raised cottages, salt corrosion of every metal connector under the house, framing damage from repeated flood exposure
+- [Garden City (31408)](https://www.savannahfoundationrepairco.com/service-areas/garden-city-ga.html) – shallow footings under 1940s–60s workforce housing, slab cracking on low, filled river-plain ground, settled driveways, steps and entry slabs
+- [Port Wentworth (31407)](https://www.savannahfoundationrepairco.com/service-areas/port-wentworth-ga.html) – fill settlement under new-construction slabs and driveways, older core housing on shallow mid-century footings, drainage washing fines out from under flatwork
+- [Pooler, GA (31322)](https://www.savannahfoundationrepairco.com/service-areas/pooler-ga.html) – sunken driveways, aprons, and patios on newer lots, slab cracking over poorly compacted fill, drainage washing soil out from under flatwork
+- [Bloomingdale (31302)](https://www.savannahfoundationrepairco.com/service-areas/bloomingdale-ga.html) – standing water in crawl spaces on large rural lots, older frame houses on original pier foundations, grading and drainage as the primary fix, not an add-on
+- [Richmond Hill, GA (31324)](https://www.savannahfoundationrepairco.com/service-areas/richmond-hill-ga.html) – fill settlement under newer construction, slab and flatwork leveling, crawl space moisture on older riverside properties
+- [Rincon (31326)](https://www.savannahfoundationrepairco.com/service-areas/rincon-ga.html) – fill settlement under recent subdivision slabs, sunken driveways, garage aprons and patios, drainage undercutting new flatwork
+- [Springfield (31329)](https://www.savannahfoundationrepairco.com/service-areas/springfield-ga.html) – century-old pier foundations in the historic core, fill settlement in the newer subdivisions, crawl space moisture under original, pre-code framing
+- [Hinesville (31313)](https://www.savannahfoundationrepairco.com/service-areas/hinesville-ga.html) – sagging floors reported late in rental property, original crawl space framing in mid-century housing, moisture damage found between tenancies
+<!-- areas:end -->
 
 ## Company
 
