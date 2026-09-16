@@ -1,11 +1,33 @@
 #!/usr/bin/env python3
 """Core page generation. Run: python build_core.py"""
-from build_pages import (SITE, BRAND, PHONE_DISPLAY, PHONE_HREF, EMAIL,
+from build_pages import (ROOT, SITE, BRAND, PHONE_DISPLAY, PHONE_HREF, EMAIL,
                          SERVICES, head, header, footer, cta_band, breadcrumb,
                          faq_blocks, faq_schema, write)
 import json
 
 D = 0
+
+
+def patch_home_faq():
+    """index.html is hand-written, but its FAQ is NOT -- it is stamped in here
+    from the same FAQS list faq.html uses, between the marker comments. That is
+    what keeps the homepage FAQ, the FAQ page, and both FAQPage blocks in sync."""
+    import re
+    path = ROOT / "index.html"
+    s = path.read_text(encoding="utf-8")
+    nl = chr(10)
+    body = (faq_blocks(FAQS) + nl
+            + '      <p class="text-center" style="margin-top:1.5rem">Still not sure what '
+              'you are looking at? <a class="link" href="free-inspection.html">Book a free '
+              'inspection →</a></p>')
+    schema = '<script type="application/ld+json">' + nl + faq_schema(FAQS) + nl + '</script>'
+    for start, end, new in (("<!-- FAQ-BODY:START -->", "<!-- FAQ-BODY:END -->", body),
+                            ("<!-- FAQ-SCHEMA:START -->", "<!-- FAQ-SCHEMA:END -->", schema)):
+        pattern = re.escape(start) + r".*?" + re.escape(end)
+        s, n = re.subn(pattern, lambda _m: start + nl + new + nl + end, s, flags=re.S)
+        assert n == 1, f"marker {start} not found exactly once in index.html"
+    path.write_text(s, encoding="utf-8")
+    print(f"  patched index.html FAQ ({len(FAQS)} questions)")
 
 
 def page(slug, title, desc, body, schemas=None):
@@ -91,18 +113,15 @@ INSPECTION_BODY = f'''
       </div>
       <div class="service-grid">
         <div class="service-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
-          <h3>Elevation readings</h3>
+          <h3><span class="step-num">1</span> Elevation readings</h3>
           <p>Measurements across the floor to establish where the low points are and how far out of level things have gone. This is the part that turns opinion into numbers.</p>
         </div>
         <div class="service-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h18v12H3zM3 8l9-5 9 5"/></svg></div>
-          <h3>Under the house</h3>
+          <h3><span class="step-num">2</span> Under the house</h3>
           <p>Into the crawl space where there is one, checking framing, piers, moisture, and drainage – or a close look at the slab and the exterior where there isn't.</p>
         </div>
         <div class="service-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6"/></svg></div>
-          <h3>Findings, in writing</h3>
+          <h3><span class="step-num">3</span> Findings, in writing</h3>
           <p>What we found, what it means, what it costs to fix, and what happens if you leave it. If nothing needs doing, that is what the report says.</p>
         </div>
       </div>
@@ -233,27 +252,36 @@ CONTACT_BODY = f'''
 {cta_band(D, "Need it looked at sooner?", "Call rather than emailing – especially if there is water under the house right now.")}'''
 
 # ----------------------------------------------------------------------- faq
+# ONE source for the whole site's FAQ. faq.html and the homepage FAQ section
+# are both generated from this list, and so is the FAQPage JSON-LD on each --
+# so the visible text and the structured data physically cannot disagree.
 FAQS = [
+    ("Why do so many Savannah homes have crawl space and foundation problems?",
+     "Savannah sits on the coastal Lowcountry plain, where sandy soil and a high water table sit just a few feet below the surface. Soil that holds and sheds water unevenly moves seasonally, which shifts pier and footing support over time, and subtropical humidity under a vented crawl space is what rots joists and girders from below. It's the combination – moving soil plus constant moisture – rather than any one of them alone."),
     ("What does foundation repair cost in Savannah?",
-     "Most residential jobs land somewhere between about $1,600 and $4,100, with crawl space framing and jack work commonly in the $1,300 to $4,900 range. Piering a settling corner costs more; slab levelling usually costs less. The number depends on how many support points are affected and how accessible the work is, which is what the free inspection establishes."),
+     "Most residential jobs land somewhere between about $1,600 and $4,100, and repairs involving several rotted floor joists or a run of new support jacks commonly fall in the $1,300 to $4,900 range. A full pier installation under a settling corner of the house goes higher; slab leveling usually costs less. The honest answer is that the number depends on how many support points are affected and how accessible the work is, which is exactly what the free inspection establishes before you're quoted anything."),
     ("Do homes in Savannah have basements?",
-     "Almost never. The water table here is high enough that digging more than a few feet tends to reach it, so Savannah homes are built as raised crawl spaces or slab-on-grade instead. That's why the work here is crawl space stabilisation, piering, and slab levelling rather than basement waterproofing."),
-    ("Is the inspection really free?",
-     "Yes, including the elevation readings and the written findings, and whether or not you go ahead with any work. If the honest answer is that nothing needs doing yet, that is what the report says."),
+     "Almost never. The water table here is high enough that digging more than a few feet tends to reach it, so Savannah homes are built as raised crawl spaces or slab-on-grade instead. That's why the work here is crawl space stabilization, piering, and slab leveling rather than the basement waterproofing you'd see further inland or up north."),
+    ("How do I know if a sagging or bouncy floor is actually structural?",
+     "A floor that flexes as you walk across it, a noticeable dip toward the middle of a room, doors and windows that stopped latching properly, or new cracks appearing above door frames are the usual signs that something under the floor has moved or lost support. Any one of them on its own can be minor. Two or three of them together in the same part of the house usually means the support below needs looking at."),
     ("How do I know if a crack is serious?",
      "Horizontal cracks in a foundation wall are the ones to act on soonest, because they indicate lateral pressure rather than settling. Stair-step cracks through mortar joints and cracks that keep reopening after repair suggest active movement. Fine vertical cracks in poured concrete that haven't changed in years are usually shrinkage."),
     ("Can you fix a sagging floor without replacing it?",
      "Usually, yes. Sagging floors are almost always a support problem rather than a floor problem – rotted joists or settled posts underneath. Replacing the failed framing and setting adjustable jacks on proper footings addresses it from below, without pulling up the finished floor."),
     ("Why does everyone here talk about crawl space humidity?",
      "Because in this climate it's what destroys the structure. Vented crawl spaces pull humid coastal air onto cool surfaces where it condenses, and wood held above roughly twenty percent moisture content rots. Structural repairs in a crawl space that stays damp have a limited lifespan, which is why encapsulation gets quoted alongside them."),
-    ("Do you charge for a second opinion?",
-     "No. If you have a quote from another contractor and want the reasoning checked, the inspection is the same free visit. Bring the quote – comparing what was proposed against what the measurements show is often the most useful hour in the whole process."),
     ("How long does the work take?",
-     "Most residential jobs run one to three days on site. Slab levelling is often finished in a few hours. Where a badly settled floor is being recovered, the lift itself is staged over several visits across a few weeks so the structure moves gradually rather than cracking finishes."),
+     "Most residential jobs run one to three days on site. Slab leveling is often finished in a few hours. Where a badly settled floor is being recovered, the lift itself is staged over several visits across a few weeks so the structure moves gradually rather than cracking finishes."),
     ("Do I have to move out during the repair?",
      "Almost never. Crawl space and piering work happens under and outside the house, and slab work is entirely exterior. You may hear equipment, but the living space stays usable."),
+    ("Is the inspection really free?",
+     "Yes, including the elevation readings and the written findings, and whether or not you go ahead with any work. If the honest answer is that nothing needs doing yet, that is what the report says."),
+    ("Do I need to be home for the inspection?",
+     "It helps, because we walk the findings with you at the end rather than leaving a report behind. We do need access to the crawl space hatch or the affected area, and enough room to work around the exterior of the house."),
+    ("Do you charge for a second opinion?",
+     "No. If you have a quote from another contractor and want the reasoning checked, the inspection is the same free visit. Bring the quote – comparing what was proposed against what the measurements show is often the most useful hour in the whole process."),
     ("Which areas do you cover?",
-     "Savannah and Chatham County, plus Richmond Hill in Bryan County. The service areas section covers the six areas we work in most often, and if you're elsewhere nearby – Thunderbolt, Garden City, Isle of Hope, Tybee – call and ask, because the answer is usually yes."),
+     "AREAS_ANSWER"),
 ]
 
 FAQ_BODY = f'''
@@ -371,4 +399,5 @@ if __name__ == "__main__":
         "Terms on which this website and our inspections and estimates are provided.",
         TERMS_BODY))
 
+    patch_home_faq()
     print("\n6 core pages generated")

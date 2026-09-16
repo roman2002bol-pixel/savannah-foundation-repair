@@ -111,7 +111,7 @@ equipment, which is how a real contractor actually prices them):**
 2. `services/foundation-piering.html` — helical/push piers, underpinning
 3. `services/concrete-slab-leveling.html` — polyjacking / foam lifting
 4. `services/foundation-crack-repair.html` — crack sealing, structural
-5. `services/crawl-space-encapsulation.html` — vapour barrier + dehumidifier
+5. `services/crawl-space-encapsulation.html` — vapor barrier + dehumidifier
 
 Deliberately NOT built as separate pages (near-duplicate intent — would be
 thin/doorway content): "cracked foundation repair" (= #4), "sinking /

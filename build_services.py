@@ -18,17 +18,17 @@ PAGES = [
         "nav": "Crawl Space Repair",
         "h1": "Crawl Space Repair &amp; Sagging Floor Jacks in Savannah, GA",
         "title": "Crawl Space Repair in Savannah, GA | Sagging Floor Jacks",
-        "desc": "Crawl space repair in Savannah, GA – rotted joists, failed piers, and sagging floors stabilised with adjustable steel jacks on proper footings. Free inspection.",
+        "desc": "Crawl space repair in Savannah, GA – rotted joists, failed piers, and sagging floors stabilized with adjustable steel jacks on proper footings. Free inspection.",
         "service_type": "Crawl Space Repair",
         "lede": "If the floor flexes when you walk across it, the problem is almost never the floor. It's the joists, girders, or support posts underneath – and in a Savannah crawl space, moisture is usually what weakened them.",
         "intro": [
             "Most Savannah homes sit on a raised crawl space, supported by a grid of piers and wood framing that was sized correctly the day it was built. Two things degrade that over the decades here: soil that shifts under the footings as it wets and dries, and humidity that never leaves the crawl space, softening the wood from below until it can no longer carry the span.",
-            "Repair means restoring the load path, not levelling the surface. We identify which support points have dropped and by how much, replace the framing that's gone soft, and set adjustable steel jacks on poured footings that bear on stable soil instead of loose fill.",
+            "Repair means restoring the load path, not leveling the surface. We identify which support points have dropped and by how much, replace the framing that's gone soft, and set adjustable steel jacks on poured footings that bear on stable soil instead of loose fill.",
         ],
         "situations_head": "What this covers",
         "situations": [
             "Floors that bounce, flex, or feel spongy underfoot",
-            "A visible dip or slope toward the centre of a room",
+            "A visible dip or slope toward the center of a room",
             "Joists, girders, or sill plates with rot or insect damage",
             "Crawl space support posts that have sunk into the soil",
             "Masonry piers that have cracked, leaned, or lost mortar",
@@ -36,7 +36,7 @@ PAGES = [
         ],
         "method_head": "How the repair is done",
         "method": [
-            "<strong>Elevation survey first.</strong> Readings across the floor establish where the low points are and how far out of level the structure has actually gone – which is also the only honest way to tell you what levelling back is realistic.",
+            "<strong>Elevation survey first.</strong> Readings across the floor establish where the low points are and how far out of level the structure has actually gone – which is also the only honest way to tell you what leveling back is realistic.",
             "<strong>Replace what's failed.</strong> Rotted joist sections, girders, and sill plate get cut out and replaced with treated lumber, sistered to sound framing.",
             "<strong>New footings, then jacks.</strong> Adjustable steel jacks are set on poured concrete footings sized for the load. Putting a jack on bare dirt or a stacked block just moves the settling problem a few years down the road.",
             "<strong>Lift gradually.</strong> Recovery happens over multiple visits, not in one afternoon. Lifting a settled floor too fast is how you crack drywall and bind doors upstairs.",
@@ -87,7 +87,7 @@ PAGES = [
             "<strong>Helical piers</strong> are screwed into the ground with a measured torque that correlates to capacity, so you know what each one will hold as it goes in. They suit lighter loads and situations where you need confirmation of capacity during installation.",
             "<strong>Push piers</strong> use the weight of the structure itself to drive sections down until they meet refusal on a firm bearing layer. They suit heavier loads and deeper unstable soil.",
             "<strong>Galvanised steel, not raw.</strong> Within reach of salt air, corrosion protection on anything permanently in the ground isn't an upgrade, it's the baseline.",
-            "<strong>Stabilise, then lift where it's safe.</strong> Every pier job stops the movement. Recovering the original elevation is a separate judgement call, made from the measurements and what the structure can take.",
+            "<strong>Stabilize, then lift where it's safe.</strong> Every pier job stops the movement. Recovering the original elevation is a separate judgement call, made from the measurements and what the structure can take.",
         ],
         "cost_head": "What drives the cost",
         "cost": [
@@ -144,7 +144,7 @@ PAGES = [
             "Slab thickness and whether it is reinforced",
             "Whether the drainage that caused the washout needs correcting too",
         ],
-        "cost_note": "Slab levelling is generally the most affordable repair we do and is priced by the area lifted and the volume of foam it takes. It is also the one where doing nothing is most tempting and least wise: the void keeps growing, and a slab that eventually cracks through has to be replaced instead of lifted.",
+        "cost_note": "Slab leveling is generally the most affordable repair we do and is priced by the area lifted and the volume of foam it takes. It is also the one where doing nothing is most tempting and least wise: the void keeps growing, and a slab that eventually cracks through has to be replaced instead of lifted.",
         "faqs": [
             ("How long before I can drive on it?",
              "Usually the same day. The polyurethane reaches most of its strength within about fifteen to thirty minutes of injection, which is the main practical advantage over older mudjacking methods."),
@@ -181,7 +181,7 @@ PAGES = [
         "method_head": "How each type gets handled",
         "method": [
             "<strong>Non-structural cracks</strong> are sealed – epoxy or polyurethane injection that fills the crack through its full depth and keeps water and humidity out of the wall.",
-            "<strong>Cracks from active settlement</strong> need the settlement addressed first with <a href=\"foundation-piering.html\">piering</a>. Sealing before stabilising is the most common wasted repair in this trade.",
+            "<strong>Cracks from active settlement</strong> need the settlement addressed first with <a href=\"foundation-piering.html\">piering</a>. Sealing before stabilizing is the most common wasted repair in this trade.",
             "<strong>Horizontal cracks</strong> in a foundation wall indicate lateral pressure rather than settlement, and are assessed separately – this is the pattern that deserves a prompt look rather than a wait-and-see.",
             "<strong>Where we are not sure,</strong> we say so and monitor: mark the crack, date it, measure it again. That costs you nothing and beats guessing.",
         ],
@@ -192,7 +192,7 @@ PAGES = [
             "Access to the affected wall, inside and out",
             "Whether water intrusion through the crack also needs addressing",
         ],
-        "cost_note": "Sealing work on its own is at the affordable end. What changes the number is whether the crack is a symptom of settlement, because then the real repair is stabilisation and the sealing is the last step rather than the whole job. The inspection is what tells the two apart, and it is free either way.",
+        "cost_note": "Sealing work on its own is at the affordable end. What changes the number is whether the crack is a symptom of settlement, because then the real repair is stabilization and the sealing is the last step rather than the whole job. The inspection is what tells the two apart, and it is free either way.",
         "faqs": [
             ("Which foundation cracks are actually serious?",
              "Horizontal cracks are the ones to take seriously soonest, because they indicate pressure against the wall rather than settling beneath it. Stair-step cracks through mortar joints and any crack that keeps reopening after repair point to active movement. Fine vertical cracks in poured concrete that haven't changed in years are usually shrinkage and not a structural concern."),
@@ -210,7 +210,7 @@ PAGES = [
         "nav": "Crawl Space Encapsulation",
         "h1": "Crawl Space Encapsulation &amp; Dehumidifiers in Savannah, GA",
         "title": "Crawl Space Encapsulation in Savannah, GA | Dehumidifiers",
-        "desc": "Crawl space encapsulation in Savannah, GA – sealed vapour barrier and sized dehumidifier to stop the ground moisture that rots framing in coastal Georgia.",
+        "desc": "Crawl space encapsulation in Savannah, GA – sealed vapor barrier and sized dehumidifier to stop the ground moisture that rots framing in coastal Georgia.",
         "service_type": "Crawl Space Encapsulation",
         "lede": "A vented crawl space in coastal Georgia doesn't dry out in summer – it pulls humid outside air onto cool surfaces and condenses it. Encapsulation ends that cycle.",
         "intro": [
@@ -229,7 +229,7 @@ PAGES = [
         "method_head": "What a proper encapsulation includes",
         "method": [
             "<strong>Deal with the water first.</strong> Sealing a liner over standing water traps the problem. Grading, drainage, and a sump where it's needed come before the plastic.",
-            "<strong>Heavy liner, sealed – not a loose sheet.</strong> A reinforced vapour barrier across the ground and up the piers and walls, with seams and penetrations sealed and the edges mechanically fastened.",
+            "<strong>Heavy liner, sealed – not a loose sheet.</strong> A reinforced vapor barrier across the ground and up the piers and walls, with seams and penetrations sealed and the edges mechanically fastened.",
             "<strong>Close and seal the vents.</strong> Half-measures leave a humid-air path straight back in.",
             "<strong>A dehumidifier sized to the space.</strong> An undersized household unit runs constantly and never wins. Sizing matters more than brand.",
         ],
