@@ -30,8 +30,29 @@ REF = re.compile(r'(?:src="|srcset="|url\(&quot;|url\(\'|url\("|url\()'
                  r'[^"\')]*?images/([A-Za-z0-9._@-]+)')
 
 
+def load_derivatives(root):
+    """images/.derivatives maps a crop to the photo it was cut from, one
+    `crop.jpg: source.jpg` per line.
+
+    Filenames alone cannot show that `card-trimming.jpg` is the same
+    photograph as `tree-trimming-savannah.jpg`, so a page could show both and
+    read as a repeat to a visitor while passing this check. Declaring the pair
+    makes the crop count as its source."""
+    f = root / "images" / ".derivatives"
+    pairs = {}
+    if f.exists():
+        for line in f.read_text(encoding="utf-8").splitlines():
+            line = line.split("#", 1)[0].strip()
+            if ":" in line:
+                crop, src = (x.strip() for x in line.split(":", 1))
+                if crop and src:
+                    pairs[crop] = src
+    return pairs
+
+
 def main(root="."):
     root = pathlib.Path(root).resolve()
+    derived = load_derivatives(root)
     problems = []
     pages = 0
     for f in sorted(root.rglob("*.html")):
@@ -39,13 +60,15 @@ def main(root="."):
             continue
         pages += 1
         text = f.read_text(encoding="utf-8", errors="replace")
-        counts = collections.Counter(
-            name for name in REF.findall(text)
-            if not name.lower().endswith(ALLOW_SUFFIX) and name not in ALLOW_NAMES
-        )
+        names = [n for n in REF.findall(text)
+                 if not n.lower().endswith(ALLOW_SUFFIX) and n not in ALLOW_NAMES]
+        # a crop counts as the photo it came from
+        counts = collections.Counter(derived.get(n, n) for n in names)
         for name, n in sorted(counts.items()):
             if n > 1:
-                problems.append((f.relative_to(root), name, n))
+                shown = sorted({x for x in names if derived.get(x, x) == name})
+                label = name if shown == [name] else name + " (as " + " + ".join(shown) + ")"
+                problems.append((f.relative_to(root), label, n))
 
     if not problems:
         print(f"OK - no image is used twice on the same page, across {pages} "

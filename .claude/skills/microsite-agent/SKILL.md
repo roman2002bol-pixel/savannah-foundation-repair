@@ -1068,6 +1068,12 @@ pure content edits.
   the hero-background-reuse rule above turned out to be wrong; it found the
   fault on 24 of 31 pages on this site and 6 on the sibling site in the
   first run. Repeats *across* pages are allowed and not reported.
+  **Declare crops in `images/.derivatives`** (`card-trimming.jpg:
+  tree-trimming-savannah.jpg`, one per line). A small card crop and its
+  full-size original are the same photograph to a visitor and two different
+  filenames to a checker, so without the manifest that repeat passes
+  silently. With it, the crop counts as its source and the report names
+  both.
 
 The scripts are intentionally simple (regex over the raw HTML, no DOM
 parser dependency) so they run instantly with zero setup on any machine
