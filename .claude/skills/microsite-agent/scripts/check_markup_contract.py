@@ -73,23 +73,40 @@ def main(root_arg: str) -> int:
         rel = path.relative_to(root)
         html = path.read_text(encoding="utf-8")
 
-        # 1. classes used but never defined in any stylesheet
+        # 1. classes used but never defined in any stylesheet.
+        #    An element the browser is already told to hide inline needs no
+        #    rule -- Web3Forms' honeypot ships as
+        #    `class="hidden" style="display:none"`, which is not a bug.
         used = set()
-        for m in re.finditer(r'class="([^"]*)"', html):
+        for m in re.finditer(r'<[^>]*class="([^"]*)"[^>]*>', html):
+            tag = m.group(0)
+            if re.search(r'style="[^"]*display\s*:\s*none', tag):
+                continue
             used.update(m.group(1).split())
         for cls in sorted(used - defined_classes - KNOWN_UNSTYLED):
             problems.append(f"{rel}: class '{cls}' is used but defined in no stylesheet")
 
-        # 2. inline SVGs whose nearest class has no svg sizing rule.
+        # 2. inline SVGs with no effective sizing.
         #    An SVG with a viewBox and no width/height fills its container.
-        for m in re.finditer(r'<(\w+)[^>]*class="([^"]*)"[^>]*>\s*<svg', html):
-            classes = m.group(2).split()
+        #    Three things can size it, and all three count:
+        #      a) its own width/height attributes
+        #      b) a rule on a class the <svg> itself carries
+        #      c) an `<ancestor-class> svg {width|height}` rule
+        #    Missing (a) and (b) is how this check used to report a sized icon
+        #    as broken -- a checker that cries wolf stops being read.
+        for m in re.finditer(r'<(\w+)[^>]*class="([^"]*)"[^>]*>\s*(<svg[^>]*>)', html):
+            classes, svg_tag = m.group(2).split(), m.group(3)
             if not classes:
                 continue
+            if re.search(r'\swidth\s*=', svg_tag) and re.search(r'\sheight\s*=', svg_tag):
+                continue                                              # (a)
+            own = re.search(r'class="([^"]*)"', svg_tag)
+            candidates = classes + (own.group(1).split() if own else [])
             sized = any(
                 re.search(re.escape(c) + r"[^{}]*svg\s*\{[^}]*(width|height)", css_text)
-                for c in classes
-            )
+                or re.search(r"\." + re.escape(c) + r"\s*\{[^}]*(width|height)", css_text)
+                for c in candidates
+            )                                                         # (b) and (c)
             if not sized:
                 problems.append(
                     f"{rel}: <svg> directly inside .{'.'.join(classes)} -- no "
