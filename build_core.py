@@ -60,11 +60,11 @@ def patch_home_faq():
     path = ROOT / "index.html"
     s = path.read_text(encoding="utf-8")
     nl = chr(10)
-    body = (faq_blocks(FAQS) + nl
+    body = (faq_blocks(FAQS[:5]) + nl
             + '      <p class="text-center" style="margin-top:1.5rem">Still not sure what '
               'you are looking at? <a class="link" href="free-inspection.html">Book a free '
               'inspection →</a></p>')
-    schema = '<script type="application/ld+json">' + nl + faq_schema(FAQS) + nl + '</script>'
+    schema = '<script type="application/ld+json">' + nl + faq_schema(FAQS[:5]) + nl + '</script>'
     chev = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'
             '<path d="M9 18l6-6-6-6"/></svg>')
     areas = nl.join(
@@ -208,7 +208,7 @@ ABOUT_BODY = f'''
     <div class="container">
       <div class="breadcrumbs"><a href="index.html">Home</a> / About</div>
       <h1>About {BRAND}</h1>
-      <p class="lede">A foundation and crawl space specialist focused on one metro, because what fails here is specific to here.</p>
+      <p class="lede">Foundation and crawl-space repair planning for Savannah and nearby communities, based on the condition of each property.</p>
     </div>
   </section>
 
@@ -218,16 +218,16 @@ ABOUT_BODY = f'''
         <div>
           <span class="eyebrow">Our Approach</span>
           <h2>Diagnose first, quote second</h2>
-          <p>A lot of foundation work gets sold the other way round – a price over the phone, a crew the following week, and no measurements taken until someone is already under the house. We think that is backwards, and it is how people end up paying for piers when what they had was a drainage problem.</p>
-          <p>So every job starts with the same thing: elevation readings, a look at the actual failure, and a written explanation of what those measurements mean. Sometimes that ends with a repair scope. Fairly often it ends with us saying the movement looks historic rather than active and suggesting you monitor it for a season. Both are useful outcomes.</p>
-          <h2 style="margin-top:2rem">Why the coast is its own problem</h2>
-          <p>Foundation repair in Atlanta and foundation repair in Savannah are not the same trade. Inland Georgia deals with expansive clay. Here it is sandy soil over a water table that is rarely more than a few feet down, humidity that never really breaks, and on the islands, salt that quietly corrodes anything metal you put in the ground.</p>
-          <p>That is why the recommendations on this site look different from a national contractor's: galvanized hardware as standard rather than an upgrade, encapsulation treated as part of a structural repair rather than a separate product, and slab work priced around drainage as much as concrete.</p>
+          <p>A useful inspection connects visible symptoms to the supports below. Record elevation readings, accessible framing and footing condition, water paths and any earlier repairs before selecting a method.</p>
+          <p>Ask for the findings in writing, including any area that could not be inspected. The outcome may be a repair scope, monitoring or further investigation; each recommendation should explain the evidence supporting it.</p>
+          <h2 style="margin-top:2rem">Moisture, materials and the repair scope</h2>
+          <p>For a Savannah-area home, investigate water entry and material condition alongside movement. Soil, drainage, foundation type and exposure vary between properties. Corroded connectors or damaged timber need to be documented rather than assumed from the address.</p>
+          <p>The proposed materials, corrosion protection, drainage work and structural connections should be stated in the scope. Enclosure or dehumidification is considered where the moisture assessment supports it, not automatically attached to every structural repair.</p>
         </div>
         <div class="local-callout">
           <h3 style="margin-top:0">Straight about what we are</h3>
-          <p>We connect homeowners in this area with the structural work they need and stand behind how that work is scoped. We do not operate a walk-in office, and we are not going to invent a founding date or a staff roster to look older than we are.</p>
-          <p style="margin-bottom:0">What we will tell you is exactly what the measurements say, what the repair costs, and what happens if you wait – which is the part that actually matters when you are deciding.</p>
+          <p>We connect homeowners in the Savannah area with foundation and crawl-space repair services. Inspections take place at the property; there is no walk-in office.</p>
+          <p style="margin-bottom:0">Before authorizing work, confirm the contractor carrying it out, the written scope, permit responsibilities, payment terms and any warranty offered for that specific repair.</p>
         </div>
       </div>
     </div>
@@ -309,34 +309,63 @@ CONTACT_BODY = f'''
 # ONE source for the whole site's FAQ. faq.html and the homepage FAQ section
 # are both generated from this list, and so is the FAQPage JSON-LD on each --
 # so the visible text and the structured data physically cannot disagree.
-FAQS = [
-    ("Why do so many Savannah homes have crawl space and foundation problems?",
-     "Savannah sits on the coastal Lowcountry plain, where sandy soil and a high water table sit just a few feet below the surface. Soil that holds and sheds water unevenly moves seasonally, which shifts pier and footing support over time, and subtropical humidity under a vented crawl space is what rots joists and girders from below. It's the combination – moving soil plus constant moisture – rather than any one of them alone."),
-    ("What does foundation repair cost in Savannah?",
-     "Most residential jobs land somewhere between about $1,600 and $4,100, and repairs involving several rotted floor joists or a run of new support jacks commonly fall in the $1,300 to $4,900 range. A full pier installation under a settling corner of the house goes higher; slab leveling usually costs less. The honest answer is that the number depends on how many support points are affected and how accessible the work is, which is exactly what the free inspection establishes before you're quoted anything."),
-    ("Do homes in Savannah have basements?",
-     "Almost never. The water table here is high enough that digging more than a few feet tends to reach it, so Savannah homes are built as raised crawl spaces or slab-on-grade instead. That's why the work here is crawl space stabilization, piering, and slab leveling rather than the basement waterproofing you'd see further inland or up north."),
-    ("How do I know if a sagging or bouncy floor is actually structural?",
-     "A floor that flexes as you walk across it, a noticeable dip toward the middle of a room, doors and windows that stopped latching properly, or new cracks appearing above door frames are the usual signs that something under the floor has moved or lost support. Any one of them on its own can be minor. Two or three of them together in the same part of the house usually means the support below needs looking at."),
-    ("How do I know if a crack is serious?",
-     "Horizontal cracks in a foundation wall are the ones to act on soonest, because they indicate lateral pressure rather than settling. Stair-step cracks through mortar joints and cracks that keep reopening after repair suggest active movement. Fine vertical cracks in poured concrete that haven't changed in years are usually shrinkage."),
-    ("Can you fix a sagging floor without replacing it?",
-     "Usually, yes. Sagging floors are almost always a support problem rather than a floor problem – rotted joists or settled posts underneath. Replacing the failed framing and setting adjustable jacks on proper footings addresses it from below, without pulling up the finished floor."),
-    ("Why does everyone here talk about crawl space humidity?",
-     "Because in this climate it's what destroys the structure. Vented crawl spaces pull humid coastal air onto cool surfaces where it condenses, and wood held above roughly twenty percent moisture content rots. Structural repairs in a crawl space that stays damp have a limited lifespan, which is why encapsulation gets quoted alongside them."),
-    ("How long does the work take?",
-     "Most residential jobs run one to three days on site. Slab leveling is often finished in a few hours. Where a badly settled floor is being recovered, the lift itself is staged over several visits across a few weeks so the structure moves gradually rather than cracking finishes."),
-    ("Do I have to move out during the repair?",
-     "Almost never. Crawl space and piering work happens under and outside the house, and slab work is entirely exterior. You may hear equipment, but the living space stays usable."),
-    ("Is the inspection really free?",
-     "Yes, including the elevation readings and the written findings, and whether or not you go ahead with any work. If the honest answer is that nothing needs doing yet, that is what the report says."),
-    ("Do I need to be home for the inspection?",
-     "It helps, because we walk the findings with you at the end rather than leaving a report behind. We do need access to the crawl space hatch or the affected area, and enough room to work around the exterior of the house."),
-    ("Do you charge for a second opinion?",
-     "No. If you have a quote from another contractor and want the reasoning checked, the inspection is the same free visit. Bring the quote – comparing what was proposed against what the measurements show is often the most useful hour in the whole process."),
-    ("Which areas do you cover?",
-     "Chatham County in full – downtown, midtown, the Southside and Georgetown, plus every one of the islands from Isle of Hope and Thunderbolt out to Tybee – and the west side at Garden City, Port Wentworth, Pooler and Bloomingdale. Outside Chatham we cover Richmond Hill in Bryan County, Rincon and Springfield in Effingham, and Hinesville in Liberty. There are eighteen area pages on the site with the detail for each. If you are somewhere small in between, call and ask, because the answer is usually yes."),
-]
+FAQS = [('What should a Savannah foundation inspection establish?',
+  'The assessment should distinguish movement in supports from damaged timber, surface cracking and '
+  'moisture problems. Floor readings, accessible footing and framing condition, drainage and the '
+  'history of changes provide the evidence. Soil and groundwater conditions vary by property and cannot '
+  'be inferred from the neighborhood alone.'),
+ ('What determines the price of foundation repair?',
+  'Access, the number and condition of affected supports, engineering requirements, drainage work and '
+  'the repair method determine the scope. Request an itemized written proposal after inspection, '
+  'including exclusions and any allowance for concealed damage.'),
+ ('Does the foundation type change the inspection?',
+  'Yes. A raised floor needs inspection of accessible framing and bearings, while a concrete slab needs '
+  'a different assessment. Identify the actual construction before choosing a repair; a Savannah '
+  'address does not establish the foundation type.'),
+ ('How do I know if a sagging or bouncy floor is actually structural?',
+  'A floor that flexes as you walk across it, a noticeable dip toward the middle of a room, doors and '
+  'windows that stopped latching properly, or new cracks appearing above door frames are the usual '
+  'signs that something under the floor has moved or lost support. Any one of them on its own can be '
+  'minor. Two or three of them together in the same part of the house usually means the support below '
+  'needs looking at.'),
+ ('How should a foundation crack be assessed?',
+  'Record its location, width, direction and whether it changes. Compare it with floor readings, wall '
+  'alignment and drainage. Crack shape alone is not a diagnosis; the surrounding structure and evidence '
+  'of movement determine whether monitoring, repair or further engineering assessment is appropriate.'),
+ ('Can you fix a sagging floor without replacing it?',
+  'Usually, yes. Sagging floors are almost always a support problem rather than a floor problem – '
+  'rotted joists or settled posts underneath. Replacing the failed framing and setting adjustable jacks '
+  'on proper footings addresses it from below, without pulling up the finished floor.'),
+ ('Why does everyone here talk about crawl space humidity?',
+  "Because in this climate it's what destroys the structure. Vented crawl spaces pull humid coastal air "
+  'onto cool surfaces where it condenses, and wood held above roughly twenty percent moisture content '
+  'rots. Structural repairs in a crawl space that stays damp have a limited lifespan, which is why '
+  'encapsulation gets quoted alongside them.'),
+ ('How long does the work take?',
+  'Most residential jobs run one to three days on site. Slab leveling is often finished in a few hours. '
+  'Where a badly settled floor is being recovered, the lift itself is staged over several visits across '
+  'a few weeks so the structure moves gradually rather than cracking finishes.'),
+ ('Do I have to move out during the repair?',
+  'Almost never. Crawl space and piering work happens under and outside the house, and slab work is '
+  'entirely exterior. You may hear equipment, but the living space stays usable.'),
+ ('Is the inspection really free?',
+  'Yes, including the elevation readings and the written findings, and whether or not you go ahead with '
+  'any work. If the honest answer is that nothing needs doing yet, that is what the report says.'),
+ ('Do I need to be home for the inspection?',
+  'It helps, because we walk the findings with you at the end rather than leaving a report behind. We '
+  'do need access to the crawl space hatch or the affected area, and enough room to work around the '
+  'exterior of the house.'),
+ ('Do you charge for a second opinion?',
+  'No. If you have a quote from another contractor and want the reasoning checked, the inspection is '
+  'the same free visit. Bring the quote – comparing what was proposed against what the measurements '
+  'show is often the most useful hour in the whole process.'),
+ ('Which areas do you cover?',
+  'Chatham County in full – downtown, midtown, the Southside and Georgetown, plus every one of the '
+  'islands from Isle of Hope and Thunderbolt out to Tybee – and the west side at Garden City, Port '
+  'Wentworth, Pooler and Bloomingdale. Outside Chatham we cover Richmond Hill in Bryan County, Rincon '
+  'and Springfield in Effingham, and Hinesville in Liberty. There are eighteen area pages on the site '
+  'with the detail for each. If you are somewhere small in between, call and ask, because the answer is '
+  'usually yes.')]
 
 FAQ_BODY = f'''
   <section class="page-hero">

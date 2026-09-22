@@ -22,7 +22,7 @@ BRAND = "Savannah Foundation Repair Co"
 PHONE_DISPLAY = "(912) 555-0142"
 PHONE_HREF = "+19125550142"
 EMAIL = "info@savannahfoundationrepairco.com"
-ASSET_V = "5"
+ASSET_V = "20260922"
 
 SERVICES = [
     ("crawl-space-repair", "Crawl Space Repair"),
@@ -285,4 +285,6 @@ def write(relpath, content):
     out = ROOT / relpath
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(content, encoding="utf-8")
+    from content_review import apply_site
+    apply_site(ROOT)
     print("wrote", relpath)

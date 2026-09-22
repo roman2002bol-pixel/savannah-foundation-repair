@@ -14,412 +14,584 @@ import json
 
 D = 1
 
-PAGES = [
-    {
-        "slug": "downtown-savannah-ga",
-        "work": "crack",
-        "photo": "downtown-savannah-home.jpg",
-        "photo_alt": "Historic brick building in downtown Savannah under live oaks",
-        "name": "Downtown &amp; Historic Savannah",
-        "plain": "Downtown Savannah, GA",
-        "zip": "31401",
-        "lede": "Brick pier foundations under houses older than the state's building codes, on ground that has been built up and built over for nearly three centuries.",
-        "facts": 'Savannah\'s historic core is the hardest foundation work in the county, and the reason is age. Many houses here sit on <a href="https://en.wikipedia.org/wiki/Savannah_Historic_District_(Georgia)" target="_blank" rel="noopener">Historic District</a> pier-and-beam foundations of brick or tabby laid long before compaction standards existed – including Savannah Grey brick, which is soft, porous, and unforgiving once mortar starts washing out of the joints. Add a water table a few feet down and crawl spaces that stay humid most of the year, and you get the two failure modes we see constantly downtown: piers that have settled or lost mortar, and sill plates and joists softened by decades of moisture.',
-        "note_head": "Work in the Historic District has an extra step",
-        "note": 'Exterior work on a contributing structure in the Historic District generally goes through the city\'s review process before it starts. Foundation and pier work that changes anything visible from the street can fall under that, so the timeline needs to account for it. The <a href="https://www.savannahga.gov/" target="_blank" rel="noopener">City of Savannah</a> is the authority on what applies to a specific address, and confirming it early beats discovering it mid-job.',
-        "focus": ["Settled and cracked masonry piers", "Rotted sill plates and joist ends", "Crawl space moisture in tight, low clearances"],
-        "faqs": [
-            ("Do you work on historic homes downtown?",
-             "Yes, and they need a different approach than a 1990s slab house. Soft historic brick, original framing, and plaster finishes all limit how fast a structure can be lifted, so recovery is staged more gradually and the target elevation is set from what the building will actually tolerate."),
-            ("Does foundation work downtown need approval first?",
-             "It can. Exterior work on a contributing structure in the Historic District generally goes through the city's review process, and foundation or pier work visible from the street can fall under it. Check with the City of Savannah for your specific address before scheduling – we'll flag it at the inspection if it looks likely."),
-            ("Do you serve all of downtown Savannah?",
-             "Yes, all of the 31401 ZIP – the Historic District, the Victorian District, and the surrounding downtown blocks."),
-        ],
-    },
-    {
-        "slug": "pooler-ga",
-        "work": "slab",
-        "photo": "pooler-new-home.jpg",
-        "photo_alt": "Newer two-story home with a concrete driveway, typical of Pooler subdivisions",
-        "name": "Pooler, GA",
-        "plain": "Pooler, GA",
-        "zip": "31322",
-        "lede": "One of Georgia's fastest-growing cities, and almost all of it built recently on ground that used to be farm and forest.",
-        "facts": '<a href="https://en.wikipedia.org/wiki/Pooler,_Georgia" target="_blank" rel="noopener">Pooler</a> has grown faster than almost anywhere in the state, and nearly all of that growth is new subdivisions along the I-16 and I-95 corridors built on land that was agricultural or wooded a decade or two ago. That matters structurally: a new-construction lot is usually graded and filled before the slab is poured, and fill that was not compacted properly settles under load afterward. It shows up first in the flatwork – a driveway or garage apron dropping at one edge – and sometimes later in the slab itself. Pooler is mostly a slab-on-grade market rather than a crawl space one, which changes which repairs apply.',
-        "note_head": "Newer house, still settling",
-        "note": "A five-year-old home with a cracked, dropping driveway is not a defective house – it is fill soil finishing its settlement. Lifting the slab and correcting the drainage that is washing fines out from under it usually resolves it for good, and it is a much smaller job than owners fear when they first see the crack.",
-        "focus": ["Sunken driveways, aprons, and patios on newer lots", "Slab cracking over poorly compacted fill", "Drainage washing soil out from under flatwork"],
-        "faqs": [
-            ("My house is nearly new – why is the concrete already sinking?",
-             "Because the concrete is sitting on fill, not on undisturbed ground. Most new Pooler lots are graded and filled before building, and if that fill wasn't compacted to spec it keeps consolidating under load for years afterward. It's the single most common thing we see out here, and slab lifting handles it without replacing the concrete."),
-            ("Do Pooler homes have crawl spaces?",
-             "Mostly not. The newer subdivisions here are predominantly slab-on-grade, so the work is usually slab leveling, crack repair, and occasionally piering rather than the crawl space stabilization that dominates closer to the water."),
-            ("Do you serve all of Pooler?",
-             "Yes, all of Pooler, GA (31322), including the newer neighborhoods off Pooler Parkway and the older sections toward Pine Barren Road."),
-        ],
-    },
-    {
-        "slug": "richmond-hill-ga",
-        "work": "slab",
-        "photo": "richmond-hill-home.jpg",
-        "photo_alt": "Brick family home of the kind built across Richmond Hill's newer neighborhoods",
-        "name": "Richmond Hill, GA",
-        "plain": "Richmond Hill, GA",
-        "zip": "31324",
-        "lede": "Bryan County, not Chatham – sandy loam over clay, the Ogeechee River on the eastern edge, and a building boom that has not slowed down.",
-        "facts": '<a href="https://en.wikipedia.org/wiki/Richmond_Hill,_Georgia" target="_blank" rel="noopener">Richmond Hill</a> sits in Bryan County rather than Chatham, southwest of Savannah with the Ogeechee River forming its eastern boundary. The soil here is coastal-plain sandy loam over clay layers, with the same high water table as the rest of the region – a profile that drains fast at the surface and holds water below. The county has been growing hard, and a great deal of the housing stock is recent construction on newly developed ground, which brings the same fill-settlement pattern seen in Pooler. Closer to the river, older properties add moisture exposure on top of it.',
-        "note_head": "Different county, same coastal-plain soil",
-        "note": "Being in Bryan County changes the permitting authority, not the engineering. The sandy-loam-over-clay profile and the shallow water table behave the same way here as in Chatham, so the repairs are the same ones – it is worth stating plainly because the county line confuses people looking for a local contractor.",
-        "focus": ["Fill settlement under newer construction", "Slab and flatwork leveling", "Crawl space moisture on older riverside properties"],
-        "faqs": [
-            ("You're a Savannah company – do you actually come to Richmond Hill?",
-             "Yes. Richmond Hill is in Bryan County rather than Chatham, but it is part of the same metro and the same drive, and the soil conditions are effectively identical. It is a regular part of our service area, not an outlying exception."),
-            ("Is the soil here different from Savannah proper?",
-             "Not meaningfully. It's the same coastal-plain profile – sandy loam over clay layers with a high water table. What differs is the housing stock: a lot of Richmond Hill is recent construction on newly developed ground, so fill settlement is proportionally more of what we see."),
-            ("Do you serve all of Richmond Hill?",
-             "Yes, all of Richmond Hill, GA (31324), including the newer master-planned communities and the older neighborhoods nearer the Ogeechee River."),
-        ],
-    },
-    {
-        "slug": "skidaway-island-ga",
-        "work": "encapsulation",
-        "photo": "skidaway-marsh.jpg",
-        "photo_alt": "Tidal marsh and creeks surrounding Skidaway Island at sunset",
-        "name": "Skidaway Island",
-        "plain": "Skidaway Island, GA",
-        "zip": "31411",
-        "lede": "A private island community whose oldest homes are now past fifty, built among tidal marsh and maritime forest.",
-        "facts": 'The first homes at <a href="https://en.wikipedia.org/wiki/Skidaway_Island,_Georgia" target="_blank" rel="noopener">The Landings on Skidaway Island</a> went up in 1972, once the two bridges connecting the island to the mainland were finished, and the bulk of the community was built out between then and the late 1990s. That puts a large share of the housing stock in the window where original framing, original crawl spaces and original support posts are all reaching the age where coastal humidity has had time to do real damage. The island is surrounded by tidal marsh and estuary, so the moisture load under these houses is relentless even well back from the water.',
-        "note_head": "The Landings Association reviews exterior work",
-        "note": 'Tree removal at The Landings already goes through the Association, and exterior alterations generally fall under its architectural review as well. Foundation work that changes anything visible – exterior piers, grading, drainage runs – is worth confirming with <a href="https://landings.org/" target="_blank" rel="noopener">The Landings Association</a> before scheduling. Gate access for crews and equipment needs arranging in advance too.',
-        "focus": ["Fifty-year-old crawl space framing and support posts", "Persistent humidity from surrounding tidal marsh", "Coordinating work inside a gated community"],
-        "faqs": [
-            ("Do you need approval from the Association for foundation work?",
-             "Often, yes, where the work changes something visible from outside – exterior piers, grading, or drainage. The Landings Association's architectural review covers exterior alterations, so confirming with them before scheduling avoids a stoppage mid-job. We'll raise it at the inspection if it looks like it applies."),
-            ("Why do homes here have so much crawl space moisture?",
-             "The island is ringed by tidal marsh and estuary, so the ground and the air under these houses stay humid year-round, not just in summer. Combine that with a housing stock largely built between the 1970s and 1990s, and you get framing that has been in a damp environment for decades."),
-            ("Do you serve all of Skidaway Island?",
-             "Yes, all of Skidaway Island and The Landings (31411). Gate access for our crew is arranged ahead of the visit."),
-        ],
-    },
-    {
-        "slug": "wilmington-island-ga",
-        "work": "framing",
-        "photo": "wilmington-island-marsh.jpg",
-        "photo_alt": "Coastal marshland of the kind that surrounds Wilmington Island",
-        "name": "Wilmington Island",
-        "plain": "Wilmington Island, GA",
-        "zip": "31410",
-        "lede": "Sixties and seventies ranch houses on pier-and-beam foundations, between the Wilmington River and the marsh – the toughest moisture conditions in the county.",
-        "facts": '<a href="https://en.wikipedia.org/wiki/Wilmington_Island,_Georgia" target="_blank" rel="noopener">Wilmington Island</a> is characteristically sprawling ranch homes from the 1960s and 70s, a great many of them on pier-and-beam foundations suited to the low-lying ground. The groundwater table here is extremely shallow, so even an ordinary rain event can put water into a crawl space, and high-tide flooding reaches some streets through aging stormwater infrastructure. Salt is the extra factor most inland contractors underestimate: it corrodes metal fasteners, connectors and hardware, and it stays in building materials afterward, drawing moisture back in long after the water has gone.',
-        "note_head": "Why galvanized hardware is not optional here",
-        "note": "On the islands, anything steel that is permanently in the ground or in the crawl space gets galvanized protection as standard. Salt-laden air and repeated wetting will find untreated hardware, and a support jack that corrodes at the base has quietly stopped doing its job years before anyone notices the floor moving again.",
-        "focus": ["Pier-and-beam settling on low-lying lots", "Rotted framing from repeated crawl space wetting", "Salt corrosion of fasteners, connectors, and support hardware"],
-        "faqs": [
-            ("Water gets into my crawl space after heavy rain – is that normal here?",
-             "It's common on the island because the groundwater table is very shallow, but common isn't the same as acceptable. Repeated wetting is what rots joists and girders, so the fix is drainage and encapsulation rather than living with it. What's not normal is water that stays for days, which points to a drainage problem worth solving first."),
-            ("Does salt air really affect a foundation?",
-             "Yes, specifically the metal in it. Salt corrodes fasteners, connectors, and support hardware, and it stays in materials after the water dries, pulling moisture back in. That's why galvanized hardware is standard for us out here rather than an upgrade option."),
-            ("Do you serve all of Wilmington Island?",
-             "Yes, all of Wilmington Island (31410). Whitemarsh Island shares the same ZIP but is a separate island with newer housing, so it has its own page."),
-        ],
-    },
-    {
-        "slug": "georgetown-ga",
-        "work": "slab",
-        "photo": "georgetown-ranch-home.jpg",
-        "photo_alt": "Single-story ranch home typical of Georgetown's 1970s and 1980s build-out",
-        "name": "Georgetown",
-        "plain": "Georgetown, Savannah",
-        "zip": "31419",
-        "lede": "A large seventies and eighties suburb southwest of the city, across the Little Ogeechee – now at the age where original foundations start showing their history.",
-        "facts": '<a href="https://en.wikipedia.org/wiki/Georgetown,_Chatham_County,_Georgia" target="_blank" rel="noopener">Georgetown</a> sits about fourteen miles southwest of downtown Savannah, across the Little Ogeechee River, and was built out mostly through the 1970s and 1980s with brick ranch homes and Lowcountry cottages, plus newer phases since. That build era is the useful detail: these houses are now forty to fifty years old, which is exactly when original crawl space framing, support posts, and driveway slabs reach the end of their first service life in this climate. The failures here are less dramatic than on the islands and more a matter of accumulated age.',
-        "note_head": "A mixed-age neighborhood means mixed repairs",
-        "note": "Because Georgetown was built in phases over several decades, two houses a few streets apart can need entirely different work – one a crawl space with tired framing, the next a newer slab with settled flatwork. It is the main reason we do not quote this neighborhood over the phone.",
-        "focus": ["Aging crawl space framing and support posts", "Settled driveways and walkways", "Original-era piers reaching end of service life"],
-        "faqs": [
-            ("My house is from the eighties – is foundation work expected by now?",
-             "Not inevitable, but it's the age where original support framing and flatwork in this climate commonly need attention for the first time. Forty-odd years of Georgia coastal humidity under a crawl space adds up, and catching it at the tired stage costs considerably less than catching it at the failed stage."),
-            ("Is Georgetown in the city of Savannah?",
-             "It's an unincorporated community in Chatham County, just across the Little Ogeechee River from the city limits, about fourteen miles southwest of downtown. It's well inside our normal service area either way."),
-            ("Do you serve all of Georgetown?",
-             "Yes, all of Georgetown (31419), from the original 1970s sections through to the newer phases."),
-        ],
-    },
-    {
-        "slug": "midtown-savannah-ga",
-        "work": "drainage",
-        "photo": "midtown-savannah-bungalow.jpg",
-        "photo_alt": "Clapboard bungalow with a deep front porch, the housing type across Savannah's midtown streets",
-        "name": "Midtown Savannah &amp; Ardsley Park",
-        "plain": "Midtown Savannah, GA",
-        "zip": "31405",
-        "lede": "Wood-frame houses from the 1910s and 1920s standing on some of the city's worst-draining ground – old piers plus a stormwater basin the city is still rebuilding.",
-        "facts": 'The <a href="https://en.wikipedia.org/wiki/Ardsley_Park%E2%80%93Chatham_Crescent_Historic_District" target="_blank" rel="noopener">Ardsley Park–Chatham Crescent Historic District</a> was laid out as two subdivisions in 1909–1910 and built out through the 1930s: 400 acres, 998 contributing buildings, National Register listed since 1985, and overwhelmingly wood-frame houses on masonry pier foundations. The second fact about midtown matters just as much. These streets sit in the Casey Canal drainage basin, and the flooding here is bad enough that the City of Savannah has a multi-phase <a href="https://www.savannahga.gov/3900/Casey-South-Project" target="_blank" rel="noopener">Casey Canal drainage improvement program</a> still working through it. A hundred-year-old pier foundation that stands in water several times a year is the exact combination that undermines footings and keeps a crawl space from ever drying out.',
-        "note_head": "Drainage is half the foundation problem here",
-        "note": "Water that pools against the foundation after every heavy rain washes the fines out from under piers and holds the crawl space at a moisture level where framing cannot dry. Repairing the framing without changing where the water goes means doing the same job again. On these streets the grading and drainage part of the scope is not an upsell – it is what makes the structural repair last.",
-        "focus": ["Century-old masonry piers under wood-frame houses", "Crawl spaces that stay wet in the Casey Canal basin", "Cracked plaster and sticking doors from uneven settlement"],
-        "faqs": [
-            ("My house is from the 1920s – isn't some settling just normal at that age?",
-             "Some is. A century-old house that moved early, stopped, and has been stable since is not a project. What is worth acting on is movement that is still happening: cracks that reopen after being filled, doors that were fine last year and stick now, or a floor that has developed a slope you can feel. Elevation readings tell those two apart, which is the point of measuring rather than guessing."),
-            ("Does the flooding on my street actually affect my foundation?",
-             "Yes, though indirectly. Standing water does not push a house over. What it does is wash soil out from under pier footings and keep the crawl space humid enough that framing never dries, and both of those are slow, cumulative, and entirely fixable once the water is redirected."),
-            ("Is Ardsley Park a protected historic district?",
-             "It is a National Register historic district and also a locally designated conservation district under the Metropolitan Planning Commission. National Register listing on its own does not restrict what a private owner does, but local conservation-district rules can apply to visible exterior work, so it is worth confirming for your address before exterior foundation work starts."),
-            ("Do you serve all of Midtown Savannah?",
-             "Yes, the 31405 area – Ardsley Park, Chatham Crescent, Habersham Village, and the streets either side of Victory Drive."),
-        ],
-    },
-    {
-        "slug": "southside-savannah-ga",
-        "work": "framing",
-        "photo": "southside-cracked-driveway.jpg",
-        "photo_alt": "Cracked concrete driveway running alongside a suburban house and garage",
-        "name": "Southside Savannah",
-        "plain": "Southside Savannah, GA",
-        "zip": "31406",
-        "lede": "Savannah's first big planned suburb and everything built after it – late-fifties through seventies housing now well into its second half-century.",
-        "facts": 'Windsor Forest, developed by Delta Land Corp from the late 1950s between Abercorn and White Bluff, was marketed as Savannah\'s first planned community and at the time the largest residential development in Georgia – platted for around 3,000 home sites with its own church, school and golf-course land. The <a href="http://ghs.galileo.usg.edu/ghs/view?docId=ead%2FMS+1790-ead.xml" target="_blank" rel="noopener">Georgia Historical Society</a> holds the developer\'s papers on it. Build-out ran through the 1960s and the neighborhoods around it kept going into the 1970s. That history is the whole story structurally: the Southside housing stock is dominated by fifty- to seventy-year-old ranch homes, built quickly and at volume, on slabs and crawl spaces poured and framed to the standards of the day.',
-        "note_head": "Built fast, at scale, sixty years ago",
-        "note": "A neighborhood that went up in a few years also ages in a few years, which is why one street can produce several near-identical jobs in a season. The upside is that the failures out here are predictable. An inspection on the Southside usually confirms a known pattern for the build era rather than turning up a surprise.",
-        "focus": ["Sixty-year-old crawl space framing and support posts", "1960s slabs cracking over lightly prepared subgrade", "Settled driveways, walkways and carport slabs"],
-        "faqs": [
-            ("Why do so many houses around here seem to need the same repair?",
-             "Because they were built at the same time, by the same methods, on the same ground. Original support posts, original flatwork and original drainage all reach the end of their first service life at roughly the same point, and in this climate that point is somewhere around the fifty-year mark. It is not a defect in your house specifically."),
-            ("Is Windsor Forest part of what you cover?",
-             "Yes. Windsor Forest and the neighborhoods either side of Abercorn Street and White Bluff Road are a regular part of the work. So is the older housing closer to DeRenne."),
-            ("Slab or crawl space – which do Southside houses have?",
-             "Both, and often on the same street. The earlier phases lean toward raised crawl space construction and the later ones toward slab-on-grade, which is exactly why the inspection starts by establishing what is actually under your house rather than assuming."),
-            ("Do you serve all of Southside Savannah?",
-             "Yes, the 31406 area and the adjoining blocks, from the Windsor Forest area across to the neighborhoods off Eisenhower and Montgomery Cross Road."),
-        ],
-    },
-    {
-        "slug": "isle-of-hope-ga",
-        "work": "framing",
-        "photo": "isle-of-hope-southern-home.jpg",
-        "photo_alt": "Raised Southern house with double porches under live oaks draped in Spanish moss",
-        "name": "Isle of Hope",
-        "plain": "Isle of Hope, GA",
-        "zip": "31406",
-        "lede": "Nineteenth-century summer cottages on a bluff above the Skidaway River – the oldest residential foundations in the county outside the historic district.",
-        "facts": 'Savannah\'s wealthier residents began building summer houses on the banks of the Skidaway River here around the middle of the nineteenth century, escaping the heat and the fevers of the city, and Isle of Hope stayed a resort into the early twentieth. The <a href="https://www.myhsf.org/what-we-do/historic-districts/isle-of-hope/" target="_blank" rel="noopener">Historic Savannah Foundation</a> records the district as larger historic properties along riverfront Bluff Drive with smaller cottages on the inland lots, two frame churches from the 1870s, and a few houses believed to be early nineteenth century. In practice that means raised wood-frame cottages on brick or tabby piers, sitting directly over a tidal river, in the most humid exposure in Chatham County short of the barrier island itself.',
-        "note_head": "Old framing, new moisture",
-        "note": "These houses lasted a century and a half because they were built raised and vented over ground that drained. Where modern landscaping, an added patio slab, or a retrofitted HVAC system has changed how air and water move under the house, that balance breaks – and rot appears in framing that had been perfectly sound for generations. Working out what changed is usually more useful than replacing more wood.",
-        "focus": ["Nineteenth-century brick and tabby pier foundations", "Sill plate and joist-end rot around the perimeter", "Tidal-river humidity under raised cottages"],
-        "faqs": [
-            ("Is a house from the 1800s too old to work on?",
-             "No. Old heart-pine framing is often in better condition than people expect, and the failures are usually localized – sill plates and joist ends at the perimeter, and piers that have lost mortar. What an old house does need is a slower approach: less aggressive lifting, staged over more visits, so plaster and original finishes are not cracked to gain a level floor."),
-            ("Is Isle of Hope in a historic district?",
-             "Yes, it is a recognized historic district, roughly bounded by the Skidaway River on one side. National Register status by itself does not restrict what a private owner does to their own house, but it is still worth confirming locally before work that changes anything visible from Bluff Drive."),
-            ("Why is moisture worse here than a few miles inland?",
-             "Because the ground under the house is tidal-river bank. The water table is high, the air is humid year round, and a raised crawl space over that ground never gets the dry spell that would let framing recover. It is the same reason encapsulation gets quoted alongside structural work here more often than anywhere else in the county."),
-            ("Do you serve all of Isle of Hope?",
-             "Yes, the whole of Isle of Hope in 31406, from the Bluff Drive waterfront to the streets back from it."),
-        ],
-    },
-    {
-        "slug": "thunderbolt-ga",
-        "work": "excavation",
-        "photo": "thunderbolt-shrimp-dock.jpg",
-        "photo_alt": "Shrimp boat and stacked crab pots tied up at a working river dock",
-        "name": "Thunderbolt",
-        "plain": "Thunderbolt, GA",
-        "zip": "31404",
-        "lede": "A working river town on the Wilmington – shrimp docks, compact older houses, and ground that has been at the water's edge since 1733.",
-        "facts": 'Oglethorpe named the place in 1733; it was incorporated as Warsaw in 1856, took the name Thunderbolt back in 1921, and spent most of the twentieth century as a seafood port with hundreds of shrimp boats working both banks of the Wilmington River, according to the <a href="https://www.thunderboltga.org/community/history.php" target="_blank" rel="noopener">Town of Thunderbolt</a>. That history set the housing: compact working houses close to the water, a great many of them pier-and-beam, on low ground beside a tidal river. The foundation problems here come from the setting more than the age – shallow groundwater, tidal influence, and salt in the air working on every piece of metal under the house.',
-        "note_head": "A separate town, with its own permitting",
-        "note": "Thunderbolt is its own incorporated municipality inside Chatham County, not a Savannah neighborhood, so structural permits go through the town rather than the city. It is a small administrative difference that only matters for scheduling – but discovering it after a crew is booked is worse than raising it at the inspection.",
-        "focus": ["Pier-and-beam settling on low riverside lots", "Shallow groundwater under the crawl space", "Salt corrosion of jacks, fasteners and connectors"],
-        "faqs": [
-            ("Is Thunderbolt part of the city of Savannah?",
-             "No. It is a separate incorporated town within Chatham County with its own government, which is why permitting for structural work goes through the town rather than the city. For our purposes it is a ten-minute drive from downtown and part of the normal service area."),
-            ("Does being right on the river make the work harder?",
-             "It makes it more specific. Shallow groundwater limits how deep a footing can go before it meets water, and salt in the air shortens the life of untreated metal, so galvanized hardware and a drainage plan are standard rather than optional. The repairs themselves are the same ones we do elsewhere."),
-            ("Do you serve all of Thunderbolt?",
-             "Yes, the whole town in 31404, including the streets running down to the Wilmington River."),
-        ],
-    },
-    {
-        "slug": "whitemarsh-island-ga",
-        "work": "drainage",
-        "photo": "whitemarsh-tidal-creeks.jpg",
-        "photo_alt": "Tidal creeks winding through salt marsh at the edge of an island community",
-        "name": "Whitemarsh Island",
-        "plain": "Whitemarsh Island, GA",
-        "zip": "31410",
-        "lede": "The first island off the mainland – mostly built since the 1970s, ringed by Richardson and Turner Creeks, and tidal on almost every side.",
-        "facts": '<a href="https://en.wikipedia.org/wiki/Whitemarsh_Island,_Georgia" target="_blank" rel="noopener">Whitemarsh Island</a> is an unincorporated community and census-designated place in Chatham County, population 6,983 at the 2020 census, bordered by Richardson Creek to the north and Turner Creek to the east. The islands area developed largely from the 1970s onward, which puts the housing stock here between Wilmington Island\'s sixties ranches and Pooler\'s new subdivisions – a lot of 1980s through 2000s construction on lots cut close to the marsh edge. Flood exposure is the defining constraint rather than age: properties toward Johnny Mercer Boulevard, Grays Creek and the Turner Creek marsh carry real flood risk, and a foundation that takes water around it several times a year is a foundation whose crawl space never dries.',
-        "note_head": "Newer house, same salt and water",
-        "note": "A 1990s house on Whitemarsh is not old enough to be failing from age, but it sits in the same salt air and the same shallow groundwater as the 1960s houses one island further out. What we find here is nearly always moisture-driven – crawl space humidity, corroded hardware, drainage that has stopped working – rather than framing that has simply worn out.",
-        "focus": ["Crawl space moisture on lots cut close to the marsh", "Corroded hardware and fasteners in salt air", "Drainage failures around 1980s–2000s foundations"],
-        "faqs": [
-            ("Whitemarsh or Wilmington – aren't they the same place?",
-             "They share the 31410 ZIP and people use the names loosely, but they are separate islands with different housing. Whitemarsh is the one you cross first coming from the mainland and skews newer; Wilmington, further out, is dominated by 1960s and 70s ranch homes on pier-and-beam. The failure patterns differ enough that they are worth separating."),
-            ("The water floods my yard but never the house. Does that matter?",
-             "For the foundation, yes. Water standing around the perimeter soaks the ground the footings bear on and pushes humidity up into the crawl space, and repeated cycles of that are what rot joists and corrode support hardware. The house staying dry inside means you have time to deal with it, not that there is nothing to deal with."),
-            ("Do you serve all of Whitemarsh Island?",
-             "Yes, all of Whitemarsh Island in 31410, including Talahi Island and the neighborhoods off Johnny Mercer Boulevard."),
-        ],
-    },
-    {
-        "slug": "tybee-island-ga",
-        "work": "excavation",
-        "photo": "tybee-raised-beach-house.jpg",
-        "photo_alt": "Beachfront house raised on pilings above the dune line",
-        "name": "Tybee Island",
-        "plain": "Tybee Island, GA",
-        "zip": "31328",
-        "lede": "A barrier island where base flood elevation is nine feet and the city's own grant program is lifting houses higher still – the most demanding structural environment in the county.",
-        "facts": 'Building high is not a modern idea on Tybee: the raised Tybee cottage dates from the island\'s 1910–1939 building era, and the <a href="https://en.wikipedia.org/wiki/Tybee_Island_Strand_Cottages_Historic_District" target="_blank" rel="noopener">Strand Cottages Historic District</a> preserves eighteen of them largely unchanged. What has changed is the standard. Under the city\'s FEMA-funded elevation program, homes are raised above a base flood elevation of nine feet plus two feet of freeboard – at least eleven feet above sea level – and the island has drawn roughly $1.5 million in Hazard Mitigation Grant funding for elevations after Hurricane Irma, at 85% grant with the owner covering the rest. The <a href="https://www.cityoftybee.org/297/Flood-Information-for-Homeowners" target="_blank" rel="noopener">City of Tybee Island</a> publishes what applies to a given property.',
-        "note_head": "Elevation is a different job from repair – we will say which you need",
-        "note": "Lifting a whole house onto new piers to meet flood elevation is structural moving work, done under an engineer's design and a permit, and it is not what we do. What we do is the repair side: piers and support under a house at its existing elevation, the framing damage that salt and flooding produce, and the moisture work underneath. If elevation is genuinely what your property needs, knowing that before anyone quotes you for something else saves real money.",
-        "focus": ["Pier and piling support under raised cottages", "Salt corrosion of every metal connector under the house", "Framing damage from repeated flood exposure"],
-        "faqs": [
-            ("Can you raise my house to meet flood elevation?",
-             "No, and that is worth being direct about. Full house elevation is specialist structural moving work carried out under an engineered design and a city permit. We handle foundation repair – support, piers, framing and moisture – at the elevation your house already sits at. If elevation is what you actually need, we will tell you that at the inspection rather than quoting around it."),
-            ("Why does hardware fail so much faster out here?",
-             "Salt. It corrodes fasteners, connectors, straps and support hardware, and it stays in the material after the water has gone, drawing moisture back in. A support jack quietly corroding at its base has stopped carrying load long before anyone notices the floor moving again, which is why galvanized hardware is standard on the island rather than an upgrade."),
-            ("Is flood damage under the house covered by insurance?",
-             "That depends entirely on your policy and whether it is an NFIP flood policy or a standard homeowners policy – we are not the right people to answer it and would be guessing. What we can do is document what we find under the house in writing, which is usually what a claim needs."),
-            ("Do you serve all of Tybee Island?",
-             "Yes, all of 31328, from the north end through mid-island to the south end, including the back-river streets."),
-        ],
-    },
-    {
-        "slug": "garden-city-ga",
-        "work": "slab",
-        "photo": "garden-city-port-terminal.jpg",
-        "photo_alt": "Stacked shipping containers and a gantry crane at a river container terminal",
-        "name": "Garden City",
-        "plain": "Garden City, GA",
-        "zip": "31408",
-        "lede": "Built in 1939 to house port and factory workers, and still sitting alongside the busiest single container terminal on the East Coast.",
-        "facts": '<a href="https://www.gardencity-ga.gov/about-garden-city" target="_blank" rel="noopener">Garden City</a> was incorporated on 8 February 1939 as Industrial City Gardens – literally a community created to house the workforce for the new factories and chemical plants west of downtown Savannah – and renamed in 1941. It is now home to the Georgia Ports Authority\'s largest and busiest ocean terminal. Two things follow for foundations. The core housing stock is small, economically built mid-century workforce housing, much of it eighty years old, on shallow footings or slabs poured to the standards of the day. And the ground is low, filled, industrial river-plain land rather than the sandy ridge the older parts of Savannah sit on.',
-        "note_head": "Modest houses, real structural work",
-        "note": "Mid-century workforce housing was built to a price – thinner slabs, shallower footings, less soil preparation underneath. That does not make a house unrepairable. It does mean the fix is often adding support that was never there to begin with, rather than replacing support that failed, and that is a different conversation than the one a 1990s house needs.",
-        "focus": ["Shallow footings under 1940s–60s workforce housing", "Slab cracking on low, filled river-plain ground", "Settled driveways, steps and entry slabs"],
-        "faqs": [
-            ("Is a small older house actually worth repairing?",
-             "Usually yes, and usually for less than people assume. Support work under a modest single-story house is a smaller job than under a large two-story one, because there is less load and better access. We price on the number of support points and the difficulty of getting to them, not on what the house is worth."),
-            ("Does all the port and truck traffic nearby affect foundations?",
-             "Honestly, not much. Vibration from nearby traffic gets blamed for a lot of cracks that are actually soil and moisture movement. We would rather measure and tell you it is the ground than sell you a story about the trucks."),
-            ("Do you serve all of Garden City?",
-             "Yes, the whole of Garden City in 31408, from the older streets near Augusta Road out to the newer sections."),
-        ],
-    },
-    {
-        "slug": "port-wentworth-ga",
-        "work": "driveway",
-        "photo": "port-wentworth-new-subdivision.jpg",
-        "photo_alt": "Aerial view of a recently built subdivision of similar houses on curving streets",
-        "name": "Port Wentworth",
-        "plain": "Port Wentworth, GA",
-        "zip": "31407",
-        "lede": "An old sugar-refinery town that has more than tripled since 2000 – so a house here is usually either eighty years old or eight.",
-        "facts": '<a href="https://en.wikipedia.org/wiki/Port_Wentworth,_Georgia" target="_blank" rel="noopener">Port Wentworth</a> has grown faster than almost anywhere in the state: 5,359 residents at the 2010 census, 10,878 in 2020, and an estimated 18,600 now, still adding several percent a year. The older core grew up around the sugar refinery that has operated here for generations. That leaves a genuinely split housing stock – a small older center of mid-century houses, and a very large volume of recent subdivision building on land that was marsh, timber or farm until recently. New lots are graded and filled before the slab goes down, and fill that was not compacted to specification keeps consolidating under load for years afterward.',
-        "note_head": "Two towns in one, two different repairs",
-        "note": "A 1950s house near the refinery and a 2021 house off Highway 21 fail in completely different ways – one from age and shallow footings, the other from fill settlement under new flatwork. Both are common here in roughly equal measure, which is why this is not an area we will quote from a phone description.",
-        "focus": ["Fill settlement under new-construction slabs and driveways", "Older core housing on shallow mid-century footings", "Drainage washing fines out from under flatwork"],
-        "faqs": [
-            ("My house is three years old and the driveway has already dropped. Is that a builder defect?",
-             "Usually it is fill consolidation rather than a defect – the concrete is fine, the ground under it is still settling. Check your builder's warranty first, because some cover flatwork for a period and it costs nothing to ask. Where the warranty has expired or does not apply, lifting the slab back is a small job compared with replacing it."),
-            ("Is Port Wentworth in Chatham County?",
-             "Yes, it is an incorporated city in Chatham County on the northwest side of Savannah, next to Garden City and near the Effingham County line."),
-            ("Do you serve all of Port Wentworth?",
-             "Yes, all of 31407 – the older streets near the refinery through to the newer subdivisions along Highway 21."),
-        ],
-    },
-    {
-        "slug": "bloomingdale-ga",
-        "work": "drainage",
-        "photo": "bloomingdale-rural-lot.jpg",
-        "photo_alt": "House set well back on a large rural lot with a gravel track and open field",
-        "name": "Bloomingdale",
-        "plain": "Bloomingdale, GA",
-        "zip": "31302",
-        "lede": "The rural northwestern corner of Chatham County – bigger lots, older houses, and properties that handle their own drainage.",
-        "facts": '<a href="https://en.wikipedia.org/wiki/Bloomingdale,_Georgia" target="_blank" rel="noopener">Bloomingdale</a> is a small incorporated town on the northwestern edge of Chatham County, bordered by Port Wentworth, Pooler, the western edge of Savannah and Effingham County, with a population of 2,790 at the 2020 census. It was incorporated in 1974 and has stayed rural where everything east of it suburbanised. The pattern out here is different as a result: larger lots, a mix of older frame houses and manufactured homes, well and septic still common, and properties that manage their own stormwater rather than draining to a street system. Crawl spaces on large rural lots tend to hold more standing water and see less maintained grading than anything inside the city.',
-        "note_head": "No storm sewer to take the water away",
-        "note": "On a rural lot, water that pools against the house has nowhere to go except into the ground underneath it. Getting the grading and a drainage run right is often more than half of a lasting repair here – considerably more than it is in a neighborhood where the street takes the runoff away for you.",
-        "focus": ["Standing water in crawl spaces on large rural lots", "Older frame houses on original pier foundations", "Grading and drainage as the primary fix, not an add-on"],
-        "faqs": [
-            ("Do you actually come out this far west?",
-             "Yes. Bloomingdale is a straightforward run out Highway 80 past Pooler and it is inside our normal service area, not an outlying exception we charge extra for."),
-            ("Can you relevel a manufactured or mobile home?",
-             "Generally no, and it is better to say so. A manufactured home on a HUD-standard pier set is releveled by a manufactured-home specialist, which is a different trade with different equipment. Where a manufactured home has been placed on a permanent engineered foundation, that foundation is work we do – we will tell you which situation you are in at the inspection."),
-            ("Do you serve all of Bloomingdale?",
-             "Yes, all of Bloomingdale in 31302 and the surrounding rural west Chatham addresses."),
-        ],
-    },
-    {
-        "slug": "rincon-ga",
-        "work": "driveway",
-        "photo": "rincon-house-framing.jpg",
-        "photo_alt": "New house under construction with the wood framing up before the exterior goes on",
-        "name": "Rincon",
-        "plain": "Rincon, GA",
-        "zip": "31326",
-        "lede": "Effingham County's largest city, up more than 160% since 2000 – almost entirely new houses on ground that was farm or timber a generation ago.",
-        "facts": '<a href="https://en.wikipedia.org/wiki/Rincon,_Georgia" target="_blank" rel="noopener">Rincon</a> began as a railroad town after the South Bound Railroad laid track through in 1891, was incorporated in 1927, and still had barely a thousand residents in 1960. Growth took off in the 1980s with the arrival of the Savannah River Mill and easy access down to the interstates, and the population went from 2,697 in 1990 to 8,836 in 2010 to 10,934 in 2020, sitting near 11,900 now. Effectively every house in the subdivisions off Highway 21 stands on land converted from farm or timber within the last thirty years. This is the fill-settlement market in its purest form – the same thing that drives the work in Pooler, concentrated.',
-        "note_head": "Effingham County, not Chatham",
-        "note": "Rincon sits in Effingham County, so permitting goes through Effingham rather than Chatham. The ground is the same coastal-plain sand over clay with the same shallow water table, and the repairs are the ones we do in Pooler every week. It is the paperwork that changes, not the engineering.",
-        "focus": ["Fill settlement under recent subdivision slabs", "Sunken driveways, garage aprons and patios", "Drainage undercutting new flatwork"],
-        "faqs": [
-            ("Do you cover Effingham County?",
-             "Yes. Rincon is a normal part of the service area – it is closer to the north side of Savannah than several places inside Chatham County are."),
-            ("My subdivision is only a few years old. Why is the concrete already cracking?",
-             "Because the concrete is bearing on fill rather than undisturbed ground. Lots here are graded and filled before building, and fill that was not compacted to specification keeps consolidating under load for years. It shows up in the flatwork first because that is the thinnest, least reinforced concrete on the property."),
-            ("Do you serve all of Rincon?",
-             "Yes, all of Rincon in 31326, including the subdivisions off Highway 21 and the older center of town."),
-        ],
-    },
-    {
-        "slug": "springfield-ga",
-        "work": "framing",
-        "photo": "springfield-historic-corner.jpg",
-        "photo_alt": "Old white timber building on a small-town street corner",
-        "name": "Springfield",
-        "plain": "Springfield, GA",
-        "zip": "31329",
-        "lede": "Effingham's county seat since 1799 – a small historic core with new subdivisions spreading out around it.",
-        "facts": 'Springfield became the county seat in 1799, taking over from Ebenezer, the Salzburger settlement founded on Ebenezer Creek in 1734 about twenty-five miles up the river from Savannah, and was incorporated in 1838 – the history is set out by the <a href="https://www.georgiaencyclopedia.org/articles/counties-cities-neighborhoods/effingham-county/" target="_blank" rel="noopener">New Georgia Encyclopedia</a>. The town keeps a small older core of historic frame houses around the courthouse while newer residential growth spreads outward as Effingham absorbs commuters from the Savannah metro. Those two halves need opposite work: the old frame houses stand on original piers over crawl spaces well past a century of service, and the new ones stand on fill.',
-        "note_head": "The county seat is a two-era town",
-        "note": "Springfield is small enough that people expect one answer for the whole town, and there is not one. A house near the courthouse and a house in a subdivision two miles out have essentially nothing in common structurally – different foundations, different soil preparation, different failure modes, different repairs.",
-        "focus": ["Century-old pier foundations in the historic core", "Fill settlement in the newer subdivisions", "Crawl space moisture under original, pre-code framing"],
-        "faqs": [
-            ("Is Springfield too far out for you?",
-             "No. It is a straight run up Highway 21 from Savannah through Rincon, and Effingham County is a normal part of the service area rather than an occasional trip."),
-            ("What is different about an older county house compared with one in the city?",
-             "Mostly the water. Rural and small-town properties usually manage their own drainage rather than feeding a municipal storm system, and many are on well and septic, which adds a second set of things that keep the ground near the house wet. The framing problems are the same ones – it is the cause upstream of them that differs."),
-            ("Do you serve all of Springfield?",
-             "Yes, all of Springfield in 31329, from the historic streets near the courthouse to the newer developments on the edge of town."),
-        ],
-    },
-    {
-        "slug": "hinesville-ga",
-        "work": "level",
-        "photo": "hinesville-brick-home.jpg",
-        "photo_alt": "Single-story brick home with a lawn and attached garage, typical of the area's rental housing",
-        "name": "Hinesville",
-        "plain": "Hinesville, GA",
-        "zip": "31313",
-        "lede": "Liberty County's seat and Fort Stewart's home town – a rental-heavy housing stock that changes hands faster than anywhere else in the region.",
-        "facts": 'Hinesville became the seat of Liberty County in 1837 and was incorporated in 1916, but the event that made the modern town was 1940, when 280,000 acres next door were taken for what became Fort Stewart – the largest Army installation east of the Mississippi, today supporting around 16,000 troops. The <a href="https://www.georgiaencyclopedia.org/articles/counties-cities-neighborhoods/hinesville/" target="_blank" rel="noopener">New Georgia Encyclopedia</a> traces how the base drove the town\'s growth to the 34,891 residents counted in 2020. That history matters structurally in one specific way: a large share of the housing is rental that turns over on posting cycles, so problems get reported late, by a tenant, after several seasons of getting worse.',
-        "note_head": "A landlord's inspection beats a tenant's complaint",
-        "note": "The cheap version of this work is the one booked when a floor first feels soft underfoot. The expensive version is the one booked when a joist has already gone. For rental property changing hands every couple of years, a scheduled look under the house between tenancies costs nothing and catches it while it is still the cheap version.",
-        "focus": ["Sagging floors reported late in rental property", "Original crawl space framing in mid-century housing", "Moisture damage found between tenancies"],
-        "faqs": [
-            ("Do you work with landlords and property managers?",
-             "Yes, and the between-tenancies window is the easiest time to do it – the house is empty, access is straightforward, and the work does not have to be scheduled around anyone living there. The written findings are also the document you want if a tenant later raises the issue."),
-            ("Is Hinesville too far from Savannah?",
-             "It is around forty miles down US-84 and I-95, roughly three quarters of an hour, and it is a regular part of the service area. We schedule Liberty County visits together rather than treating each one as a special trip."),
-            ("Do you serve all of Hinesville?",
-             "Yes, all of Hinesville in 31313 and the surrounding Liberty County addresses. Work on Fort Stewart itself goes through the installation's own contracting process, not through us."),
-        ],
-    },
-]
+PAGES = [{'slug': 'downtown-savannah-ga',
+  'work': 'crack',
+  'photo': 'downtown-savannah-home.jpg',
+  'photo_alt': 'Historic brick building in downtown Savannah under live oaks',
+  'name': 'Downtown &amp; Historic Savannah',
+  'plain': 'Downtown Savannah, GA',
+  'zip': '31401',
+  'lede': 'Foundation and crawl-space assessment in Downtown Savannah, GA: start with the building, drainage '
+          'and access at your address.',
+  'facts': 'For a property in a Savannah historic district, establish whether visible exterior changes need '
+           'preservation review. Record fragile masonry and plaster before planning any lift; street access '
+           'also affects equipment staging. Reference: <a href="https://www.thempc.org/Application" '
+           'target="_blank" rel="noopener">Metropolitan Planning Commission applications</a>.',
+  'note_head': 'Historic finishes and access',
+  'note': 'Record crack width and dates, compare floor elevations, inspect the support below and check '
+          'whether doors have changed. A stable surface defect may need monitoring or masonry work. Active '
+          'movement requires a support assessment before cosmetic sealing.',
+  'focus': ['A stair-step crack beside a window',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Downtown Savannah, GA?',
+            'A masonry joint opens near a window, but a photograph does not establish whether movement is '
+            'active. Photograph the affected area safely, note when it changed, and bring any earlier repair '
+            'records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Record crack width and dates, compare floor elevations, inspect the support below and check '
+            'whether doors have changed. A stable surface defect may need monitoring or masonry work. Active '
+            'movement requires a support assessment before cosmetic sealing.'),
+           ('What local checks should happen before work?',
+            'For a property in a Savannah historic district, establish whether visible exterior changes need '
+            'preservation review. Record fragile masonry and plaster before planning any lift; street access '
+            'also affects equipment staging.')]},
+ {'slug': 'pooler-ga',
+  'work': 'slab',
+  'photo': 'pooler-new-home.jpg',
+  'photo_alt': 'Newer two-story home with a concrete driveway, typical of Pooler subdivisions',
+  'name': 'Pooler, GA',
+  'plain': 'Pooler, GA',
+  'zip': '31322',
+  'lede': 'Foundation and crawl-space assessment in Pooler, GA: start with the building, drainage and access '
+          'at your address.',
+  'facts': 'For a Pooler driveway or garage apron, determine whether the affected concrete is independent '
+           'flatwork. Review drainage and construction records where available; a newer house does not prove '
+           'poor compaction or establish a warranty outcome. Reference: <a '
+           'href="https://www.pooler-ga.gov/online-services/applications-forms/" target="_blank" '
+           'rel="noopener">City of Pooler applications and forms</a>.',
+  'note_head': 'Check the panel before choosing a repair',
+  'note': 'Check whether the panel is separate from the house foundation, map the level difference, and '
+          'inspect runoff and visible voids. Sound independent flatwork may be a lifting candidate. Broken '
+          'concrete, ongoing erosion or movement in a load-bearing slab changes the scope.',
+  'focus': ['A driveway edge drops beside the garage',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Pooler, GA?',
+            'The outside concrete is lower than the garage floor after rain. Photograph the affected area '
+            'safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Check whether the panel is separate from the house foundation, map the level difference, and '
+            'inspect runoff and visible voids. Sound independent flatwork may be a lifting candidate. Broken '
+            'concrete, ongoing erosion or movement in a load-bearing slab changes the scope.'),
+           ('What local checks should happen before work?',
+            'For a Pooler driveway or garage apron, determine whether the affected concrete is independent '
+            'flatwork. Review drainage and construction records where available; a newer house does not '
+            'prove poor compaction or establish a warranty outcome.')]},
+ {'slug': 'richmond-hill-ga',
+  'work': 'slab',
+  'photo': 'richmond-hill-home.jpg',
+  'photo_alt': "Brick family home of the kind built across Richmond Hill's newer neighborhoods",
+  'name': 'Richmond Hill, GA',
+  'plain': 'Richmond Hill, GA',
+  'zip': '31324',
+  'lede': 'Foundation and crawl-space assessment in Richmond Hill, GA: start with the building, drainage and '
+          'access at your address.',
+  'facts': 'A Richmond Hill mailing address does not by itself identify the permit authority. Bryan County '
+           'building inspection guidance applies to unincorporated areas; confirm city limits before '
+           'submitting a scope. Reference: <a '
+           'href="https://www.bryancountyga.gov/government/departments-a-g/community-development/building-and-codes/building-inspections" '
+           'target="_blank" rel="noopener">Bryan County building inspections</a>.',
+  'note_head': 'City and county boundaries matter',
+  'note': 'Check whether the panel is separate from the house foundation, map the level difference, and '
+          'inspect runoff and visible voids. Sound independent flatwork may be a lifting candidate. Broken '
+          'concrete, ongoing erosion or movement in a load-bearing slab changes the scope.',
+  'focus': ['A driveway edge drops beside the garage',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Richmond Hill, GA?',
+            'The outside concrete is lower than the garage floor after rain. Photograph the affected area '
+            'safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Check whether the panel is separate from the house foundation, map the level difference, and '
+            'inspect runoff and visible voids. Sound independent flatwork may be a lifting candidate. Broken '
+            'concrete, ongoing erosion or movement in a load-bearing slab changes the scope.'),
+           ('What local checks should happen before work?',
+            'A Richmond Hill mailing address does not by itself identify the permit authority. Bryan County '
+            'building inspection guidance applies to unincorporated areas; confirm city limits before '
+            'submitting a scope.')]},
+ {'slug': 'skidaway-island-ga',
+  'work': 'encapsulation',
+  'photo': 'skidaway-marsh.jpg',
+  'photo_alt': 'Tidal marsh and creeks surrounding Skidaway Island at sunset',
+  'name': 'Skidaway Island',
+  'plain': 'Skidaway Island, GA',
+  'zip': '31411',
+  'lede': 'Foundation and crawl-space assessment in Skidaway Island, GA: start with the building, drainage '
+          'and access at your address.',
+  'facts': 'For a property within The Landings, confirm current community requirements and contractor access '
+           'before scheduling exterior work. Provide the proposed scope rather than assuming that community '
+           'approval replaces any public permit. Reference: <a '
+           'href="https://landings.org/member-welcome-guide/" target="_blank" rel="noopener">The Landings '
+           'resident service guidance</a>.',
+  'note_head': 'Community review and work access',
+  'note': 'Check hinges and seasonal swelling, then compare nearby cracks and elevations before attributing '
+          'it to settlement. Minor joinery issues may need no foundation work. Several connected signs '
+          'justify a closer structural assessment.',
+  'focus': ['A door starts sticking after a wet season',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Skidaway Island, GA?',
+            'One door binds, but the owner has not recorded floor or crack changes. Photograph the affected '
+            'area safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Check hinges and seasonal swelling, then compare nearby cracks and elevations before '
+            'attributing it to settlement. Minor joinery issues may need no foundation work. Several '
+            'connected signs justify a closer structural assessment.'),
+           ('What local checks should happen before work?',
+            'For a property within The Landings, confirm current community requirements and contractor '
+            'access before scheduling exterior work. Provide the proposed scope rather than assuming that '
+            'community approval replaces any public permit.')]},
+ {'slug': 'wilmington-island-ga',
+  'work': 'framing',
+  'photo': 'wilmington-island-marsh.jpg',
+  'photo_alt': 'Coastal marshland of the kind that surrounds Wilmington Island',
+  'name': 'Wilmington Island',
+  'plain': 'Wilmington Island, GA',
+  'zip': '31410',
+  'lede': 'Foundation and crawl-space assessment in Wilmington Island, GA: start with the building, drainage '
+          'and access at your address.',
+  'facts': 'For a Wilmington Island raised-floor home, inspect timber and supports separately from ground '
+           'moisture. A musty crawl space does not by itself establish that piers have settled or that the '
+           'floor needs lifting. Reference: <a '
+           'href="https://engineering.chathamcountyga.gov/FloodZones/FactsForCitizens" target="_blank" '
+           'rel="noopener">Chatham County flood-map guidance</a>.',
+  'note_head': 'Moisture versus loss of support',
+  'note': 'Trace leaks, measure accessible timber moisture and inspect joists, sill plates, connections and '
+          'existing bearings. Damaged timber needs a repair design and moisture correction. Adding a jack '
+          'beneath weakened wood alone does not resolve the cause.',
+  'focus': ['A soft floor near a bathroom',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Wilmington Island, GA?',
+            'The floor gives underfoot in one room rather than sloping evenly across the house. Photograph '
+            'the affected area safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Trace leaks, measure accessible timber moisture and inspect joists, sill plates, connections '
+            'and existing bearings. Damaged timber needs a repair design and moisture correction. Adding a '
+            'jack beneath weakened wood alone does not resolve the cause.'),
+           ('What local checks should happen before work?',
+            'For a Wilmington Island raised-floor home, inspect timber and supports separately from ground '
+            'moisture. A musty crawl space does not by itself establish that piers have settled or that the '
+            'floor needs lifting.')]},
+ {'slug': 'georgetown-ga',
+  'work': 'slab',
+  'photo': 'georgetown-ranch-home.jpg',
+  'photo_alt': "Single-story ranch home typical of Georgetown's 1970s and 1980s build-out",
+  'name': 'Georgetown',
+  'plain': 'Georgetown, Savannah',
+  'zip': '31419',
+  'lede': 'Foundation and crawl-space assessment in Georgetown, Savannah: start with the building, drainage '
+          'and access at your address.',
+  'facts': 'For a Georgetown address, check the actual jurisdiction and any neighborhood drainage '
+           'responsibilities. A swale or shared drainage feature should not be altered as part of a repair '
+           'without establishing who controls it. Reference: <a '
+           'href="https://engineering.chathamcountyga.gov/FloodZones/FactsForCitizens" target="_blank" '
+           'rel="noopener">Chatham County flood-map guidance</a>.',
+  'note_head': 'Drainage beyond the property line',
+  'note': 'Follow roof discharge and surface runoff, inspect plumbing, and identify a lawful discharge route '
+          'before specifying equipment. Correct bulk-water entry first. A ground membrane or dehumidifier '
+          'addresses a different part of the moisture problem.',
+  'focus': ['Water collects at the crawl-space entrance',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Georgetown, Savannah?',
+            'A wet patch appears after heavy rain and the crawl space smells damp. Photograph the affected '
+            'area safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Follow roof discharge and surface runoff, inspect plumbing, and identify a lawful discharge '
+            'route before specifying equipment. Correct bulk-water entry first. A ground membrane or '
+            'dehumidifier addresses a different part of the moisture problem.'),
+           ('What local checks should happen before work?',
+            'For a Georgetown address, check the actual jurisdiction and any neighborhood drainage '
+            'responsibilities. A swale or shared drainage feature should not be altered as part of a repair '
+            'without establishing who controls it.')]},
+ {'slug': 'midtown-savannah-ga',
+  'work': 'drainage',
+  'photo': 'midtown-savannah-bungalow.jpg',
+  'photo_alt': "Clapboard bungalow with a deep front porch, the housing type across Savannah's midtown "
+               'streets',
+  'name': 'Midtown Savannah &amp; Ardsley Park',
+  'plain': 'Midtown Savannah, GA',
+  'zip': '31405',
+  'lede': 'Foundation and crawl-space assessment in Midtown Savannah, GA: start with the building, drainage '
+          'and access at your address.',
+  'facts': 'Around Midtown and Ardsley Park, compare the original structure with any later addition. A '
+           'change at the junction can involve separate supports or drainage paths; the age of the '
+           'neighborhood alone does not explain it. Reference: <a href="https://www.thempc.org/Application" '
+           'target="_blank" rel="noopener">Metropolitan Planning Commission applications</a>.',
+  'note_head': 'Additions and original supports',
+  'note': 'Trace leaks, measure accessible timber moisture and inspect joists, sill plates, connections and '
+          'existing bearings. Damaged timber needs a repair design and moisture correction. Adding a jack '
+          'beneath weakened wood alone does not resolve the cause.',
+  'focus': ['A soft floor near a bathroom',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Midtown Savannah, GA?',
+            'The floor gives underfoot in one room rather than sloping evenly across the house. Photograph '
+            'the affected area safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Trace leaks, measure accessible timber moisture and inspect joists, sill plates, connections '
+            'and existing bearings. Damaged timber needs a repair design and moisture correction. Adding a '
+            'jack beneath weakened wood alone does not resolve the cause.'),
+           ('What local checks should happen before work?',
+            'Around Midtown and Ardsley Park, compare the original structure with any later addition. A '
+            'change at the junction can involve separate supports or drainage paths; the age of the '
+            'neighborhood alone does not explain it.')]},
+ {'slug': 'southside-savannah-ga',
+  'work': 'framing',
+  'photo': 'southside-cracked-driveway.jpg',
+  'photo_alt': 'Cracked concrete driveway running alongside a suburban house and garage',
+  'name': 'Southside Savannah',
+  'plain': 'Southside Savannah, GA',
+  'zip': '31406',
+  'lede': 'Foundation and crawl-space assessment in Southside Savannah, GA: start with the building, '
+          'drainage and access at your address.',
+  'facts': 'On a Southside property, identify whether damaged concrete is a driveway, patio or part of the '
+           'building foundation before discussing repair. Check where downspouts discharge and whether water '
+           'crosses the affected joint. Reference: <a '
+           'href="https://engineering.chathamcountyga.gov/FloodZones/FactsForCitizens" target="_blank" '
+           'rel="noopener">Chatham County flood-map guidance</a>.',
+  'note_head': 'Separate paving from structural slabs',
+  'note': 'Check panel condition, roots, washout and drainage; distinguish a walkway defect from movement in '
+          'the house. Leveling, replacement or drainage work may be appropriate. Repairing the walkway is '
+          'not evidence that the home needs underpinning.',
+  'focus': ['A trip edge on a concrete walkway',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Southside Savannah, GA?',
+            'Adjacent panels no longer meet evenly. Photograph the affected area safely, note when it '
+            'changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Check panel condition, roots, washout and drainage; distinguish a walkway defect from movement '
+            'in the house. Leveling, replacement or drainage work may be appropriate. Repairing the walkway '
+            'is not evidence that the home needs underpinning.'),
+           ('What local checks should happen before work?',
+            'On a Southside property, identify whether damaged concrete is a driveway, patio or part of the '
+            'building foundation before discussing repair. Check where downspouts discharge and whether '
+            'water crosses the affected joint.')]},
+ {'slug': 'isle-of-hope-ga',
+  'work': 'framing',
+  'photo': 'isle-of-hope-southern-home.jpg',
+  'photo_alt': 'Raised Southern house with double porches under live oaks draped in Spanish moss',
+  'name': 'Isle of Hope',
+  'plain': 'Isle of Hope, GA',
+  'zip': '31406',
+  'lede': 'Foundation and crawl-space assessment in Isle of Hope, GA: start with the building, drainage and '
+          'access at your address.',
+  'facts': 'At an Isle of Hope property, record the crawl-space opening, available clearance and the route '
+           'taken by rainwater. Check the address on the flood map rather than assuming that every lot near '
+           'a creek has the same exposure. Reference: <a '
+           'href="https://engineering.chathamcountyga.gov/FloodZones/FactsForCitizens" target="_blank" '
+           'rel="noopener">Chatham County flood-map guidance</a>.',
+  'note_head': 'Crawl-space access and runoff',
+  'note': 'Inspect for standing water, leaks, timber damage, ventilation and equipment that may affect an '
+          'enclosure design. Drainage and repairs come before enclosure. Membrane detailing and humidity '
+          'control must suit the actual crawl space.',
+  'focus': ['A damp crawl space with intact supports',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Isle of Hope, GA?',
+            'Condensation and a musty smell are present without confirmed structural damage. Photograph the '
+            'affected area safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Inspect for standing water, leaks, timber damage, ventilation and equipment that may affect an '
+            'enclosure design. Drainage and repairs come before enclosure. Membrane detailing and humidity '
+            'control must suit the actual crawl space.'),
+           ('What local checks should happen before work?',
+            'At an Isle of Hope property, record the crawl-space opening, available clearance and the route '
+            'taken by rainwater. Check the address on the flood map rather than assuming that every lot near '
+            'a creek has the same exposure.')]},
+ {'slug': 'thunderbolt-ga',
+  'work': 'excavation',
+  'photo': 'thunderbolt-shrimp-dock.jpg',
+  'photo_alt': 'Shrimp boat and stacked crab pots tied up at a working river dock',
+  'name': 'Thunderbolt',
+  'plain': 'Thunderbolt, GA',
+  'zip': '31404',
+  'lede': 'Foundation and crawl-space assessment in Thunderbolt, GA: start with the building, drainage and '
+          'access at your address.',
+  'facts': 'For Thunderbolt, confirm the municipal authority for the address and use parcel-specific flood '
+           'information. A nearby tidal waterway is a reason to investigate drainage and elevation, not '
+           'proof of foundation failure. Reference: <a '
+           'href="https://engineering.chathamcountyga.gov/FloodZones/FactsForCitizens" target="_blank" '
+           'rel="noopener">Chatham County flood-map guidance</a>.',
+  'note_head': 'Address-specific flood information',
+  'note': 'Follow roof discharge and surface runoff, inspect plumbing, and identify a lawful discharge route '
+          'before specifying equipment. Correct bulk-water entry first. A ground membrane or dehumidifier '
+          'addresses a different part of the moisture problem.',
+  'focus': ['Water collects at the crawl-space entrance',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Thunderbolt, GA?',
+            'A wet patch appears after heavy rain and the crawl space smells damp. Photograph the affected '
+            'area safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Follow roof discharge and surface runoff, inspect plumbing, and identify a lawful discharge '
+            'route before specifying equipment. Correct bulk-water entry first. A ground membrane or '
+            'dehumidifier addresses a different part of the moisture problem.'),
+           ('What local checks should happen before work?',
+            'For Thunderbolt, confirm the municipal authority for the address and use parcel-specific flood '
+            'information. A nearby tidal waterway is a reason to investigate drainage and elevation, not '
+            'proof of foundation failure.')]},
+ {'slug': 'whitemarsh-island-ga',
+  'work': 'drainage',
+  'photo': 'whitemarsh-tidal-creeks.jpg',
+  'photo_alt': 'Tidal creeks winding through salt marsh at the edge of an island community',
+  'name': 'Whitemarsh Island',
+  'plain': 'Whitemarsh Island, GA',
+  'zip': '31410',
+  'lede': 'Foundation and crawl-space assessment in Whitemarsh Island, GA: start with the building, drainage '
+          'and access at your address.',
+  'facts': 'On Whitemarsh Island, photographs taken safely after rainfall can help distinguish surface '
+           'runoff from persistent crawl-space dampness. Include the downspouts and yard slope, and check '
+           'the property flood information. Reference: <a '
+           'href="https://engineering.chathamcountyga.gov/FloodZones/FactsForCitizens" target="_blank" '
+           'rel="noopener">Chatham County flood-map guidance</a>.',
+  'note_head': 'After-rain observations',
+  'note': 'Follow roof discharge and surface runoff, inspect plumbing, and identify a lawful discharge route '
+          'before specifying equipment. Correct bulk-water entry first. A ground membrane or dehumidifier '
+          'addresses a different part of the moisture problem.',
+  'focus': ['Water collects at the crawl-space entrance',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Whitemarsh Island, GA?',
+            'A wet patch appears after heavy rain and the crawl space smells damp. Photograph the affected '
+            'area safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Follow roof discharge and surface runoff, inspect plumbing, and identify a lawful discharge '
+            'route before specifying equipment. Correct bulk-water entry first. A ground membrane or '
+            'dehumidifier addresses a different part of the moisture problem.'),
+           ('What local checks should happen before work?',
+            'On Whitemarsh Island, photographs taken safely after rainfall can help distinguish surface '
+            'runoff from persistent crawl-space dampness. Include the downspouts and yard slope, and check '
+            'the property flood information.')]},
+ {'slug': 'tybee-island-ga',
+  'work': 'excavation',
+  'photo': 'tybee-raised-beach-house.jpg',
+  'photo_alt': 'Beachfront house raised on pilings above the dune line',
+  'name': 'Tybee Island',
+  'plain': 'Tybee Island, GA',
+  'zip': '31328',
+  'lede': 'Foundation and crawl-space assessment in Tybee Island, GA: start with the building, drainage and '
+          'access at your address.',
+  'facts': 'At a Tybee property, establish the building elevation, flood designation and function of lower '
+           'enclosures before modifying them. A moisture proposal must not casually block flood openings or '
+           'change an engineered support system. Reference: <a '
+           'href="https://engineering.chathamcountyga.gov/FloodZones/FactsForCitizens" target="_blank" '
+           'rel="noopener">Chatham County flood-map guidance</a>.',
+  'note_head': 'Flood openings and elevated structures',
+  'note': 'Inspect for standing water, leaks, timber damage, ventilation and equipment that may affect an '
+          'enclosure design. Drainage and repairs come before enclosure. Membrane detailing and humidity '
+          'control must suit the actual crawl space.',
+  'focus': ['A damp crawl space with intact supports',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Tybee Island, GA?',
+            'Condensation and a musty smell are present without confirmed structural damage. Photograph the '
+            'affected area safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Inspect for standing water, leaks, timber damage, ventilation and equipment that may affect an '
+            'enclosure design. Drainage and repairs come before enclosure. Membrane detailing and humidity '
+            'control must suit the actual crawl space.'),
+           ('What local checks should happen before work?',
+            'At a Tybee property, establish the building elevation, flood designation and function of lower '
+            'enclosures before modifying them. A moisture proposal must not casually block flood openings or '
+            'change an engineered support system.')]},
+ {'slug': 'garden-city-ga',
+  'work': 'slab',
+  'photo': 'garden-city-port-terminal.jpg',
+  'photo_alt': 'Stacked shipping containers and a gantry crane at a river container terminal',
+  'name': 'Garden City',
+  'plain': 'Garden City, GA',
+  'zip': '31408',
+  'lede': 'Foundation and crawl-space assessment in Garden City, GA: start with the building, drainage and '
+          'access at your address.',
+  'facts': 'For a Garden City property, bring records of additions, converted spaces or prior support '
+           'repairs. Compare the observed movement with actual load paths; nearby industrial activity is not '
+           'evidence of a cause at the house. Reference: <a '
+           'href="https://engineering.chathamcountyga.gov/FloodZones/FactsForCitizens" target="_blank" '
+           'rel="noopener">Chatham County flood-map guidance</a>.',
+  'note_head': 'Loads and previous alterations',
+  'note': 'Review earlier repairs, drainage, footing access and loads; determine whether engineering or soil '
+          'investigation is needed. A support system is selected from measured conditions and design '
+          'requirements. A neighborhood name cannot establish bearing depth or pier quantity.',
+  'focus': ['Movement continues after a cosmetic repair',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Garden City, GA?',
+            'A repaired wall crack reopens and level readings show a change. Photograph the affected area '
+            'safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Review earlier repairs, drainage, footing access and loads; determine whether engineering or '
+            'soil investigation is needed. A support system is selected from measured conditions and design '
+            'requirements. A neighborhood name cannot establish bearing depth or pier quantity.'),
+           ('What local checks should happen before work?',
+            'For a Garden City property, bring records of additions, converted spaces or prior support '
+            'repairs. Compare the observed movement with actual load paths; nearby industrial activity is '
+            'not evidence of a cause at the house.')]},
+ {'slug': 'port-wentworth-ga',
+  'work': 'driveway',
+  'photo': 'port-wentworth-new-subdivision.jpg',
+  'photo_alt': 'Aerial view of a recently built subdivision of similar houses on curving streets',
+  'name': 'Port Wentworth',
+  'plain': 'Port Wentworth, GA',
+  'zip': '31407',
+  'lede': 'Foundation and crawl-space assessment in Port Wentworth, GA: start with the building, drainage '
+          'and access at your address.',
+  'facts': 'For Port Wentworth, note whether cracks cross an addition joint or occur only in outside '
+           'concrete. Construction records and level readings are more useful than assuming every local '
+           'house sits on the same fill. Reference: <a '
+           'href="https://engineering.chathamcountyga.gov/FloodZones/FactsForCitizens" target="_blank" '
+           'rel="noopener">Chatham County flood-map guidance</a>.',
+  'note_head': 'Old and new sections of a property',
+  'note': 'Check whether the panel is separate from the house foundation, map the level difference, and '
+          'inspect runoff and visible voids. Sound independent flatwork may be a lifting candidate. Broken '
+          'concrete, ongoing erosion or movement in a load-bearing slab changes the scope.',
+  'focus': ['A driveway edge drops beside the garage',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Port Wentworth, GA?',
+            'The outside concrete is lower than the garage floor after rain. Photograph the affected area '
+            'safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Check whether the panel is separate from the house foundation, map the level difference, and '
+            'inspect runoff and visible voids. Sound independent flatwork may be a lifting candidate. Broken '
+            'concrete, ongoing erosion or movement in a load-bearing slab changes the scope.'),
+           ('What local checks should happen before work?',
+            'For Port Wentworth, note whether cracks cross an addition joint or occur only in outside '
+            'concrete. Construction records and level readings are more useful than assuming every local '
+            'house sits on the same fill.')]},
+ {'slug': 'bloomingdale-ga',
+  'work': 'drainage',
+  'photo': 'bloomingdale-rural-lot.jpg',
+  'photo_alt': 'House set well back on a large rural lot with a gravel track and open field',
+  'name': 'Bloomingdale',
+  'plain': 'Bloomingdale, GA',
+  'zip': '31302',
+  'lede': 'Foundation and crawl-space assessment in Bloomingdale, GA: start with the building, drainage and '
+          'access at your address.',
+  'facts': 'For a Bloomingdale property with a detached garage or workshop, assess that foundation '
+           'separately from the house. Different loads, slab construction and drainage can require different '
+           'scopes even on one lot. Reference: <a '
+           'href="https://www.pooler-ga.gov/online-services/applications-forms/" target="_blank" '
+           'rel="noopener">City of Pooler applications and forms</a>.',
+  'note_head': 'Outbuildings need their own assessment',
+  'note': 'Check panel condition, roots, washout and drainage; distinguish a walkway defect from movement in '
+          'the house. Leveling, replacement or drainage work may be appropriate. Repairing the walkway is '
+          'not evidence that the home needs underpinning.',
+  'focus': ['A trip edge on a concrete walkway',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Bloomingdale, GA?',
+            'Adjacent panels no longer meet evenly. Photograph the affected area safely, note when it '
+            'changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Check panel condition, roots, washout and drainage; distinguish a walkway defect from movement '
+            'in the house. Leveling, replacement or drainage work may be appropriate. Repairing the walkway '
+            'is not evidence that the home needs underpinning.'),
+           ('What local checks should happen before work?',
+            'For a Bloomingdale property with a detached garage or workshop, assess that foundation '
+            'separately from the house. Different loads, slab construction and drainage can require '
+            'different scopes even on one lot.')]},
+ {'slug': 'rincon-ga',
+  'work': 'driveway',
+  'photo': 'rincon-house-framing.jpg',
+  'photo_alt': 'New house under construction with the wood framing up before the exterior goes on',
+  'name': 'Rincon',
+  'plain': 'Rincon, GA',
+  'zip': '31326',
+  'lede': 'Foundation and crawl-space assessment in Rincon, GA: start with the building, drainage and access '
+          'at your address.',
+  'facts': 'For a property inside Rincon, start with the city building office when checking permit '
+           'requirements. Provide the repair scope and address; an Effingham County mailing address alone '
+           'does not establish county jurisdiction. Reference: <a '
+           'href="https://www.cityofrincon.com/resources/planning-development/building-zoning-fees/" '
+           'target="_blank" rel="noopener">City of Rincon building and zoning</a>.',
+  'note_head': 'Use the correct building office',
+  'note': 'Take repeatable elevation readings and inspect the beam, pier footing and load path; note fragile '
+          'finishes and utility connections. The repair may involve timber, footing or support work. A '
+          'controlled adjustment target depends on the building, not a promise to make every floor perfectly '
+          'level.',
+  'focus': ['A hallway slopes toward an interior support',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Rincon, GA?',
+            'Furniture tilts near the center of a raised floor. Photograph the affected area safely, note '
+            'when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Take repeatable elevation readings and inspect the beam, pier footing and load path; note '
+            'fragile finishes and utility connections. The repair may involve timber, footing or support '
+            'work. A controlled adjustment target depends on the building, not a promise to make every floor '
+            'perfectly level.'),
+           ('What local checks should happen before work?',
+            'For a property inside Rincon, start with the city building office when checking permit '
+            'requirements. Provide the repair scope and address; an Effingham County mailing address alone '
+            'does not establish county jurisdiction.')]},
+ {'slug': 'springfield-ga',
+  'work': 'framing',
+  'photo': 'springfield-historic-corner.jpg',
+  'photo_alt': 'Old white timber building on a small-town street corner',
+  'name': 'Springfield',
+  'plain': 'Springfield, GA',
+  'zip': '31329',
+  'lede': 'Foundation and crawl-space assessment in Springfield, GA: start with the building, drainage and '
+          'access at your address.',
+  'facts': 'For a Springfield property, collect earlier foundation invoices or drawings and identify which '
+           'supports were changed. Check the city permit route for an address inside the city before '
+           'committing to structural alterations. Reference: <a href="https://springfieldga.org/" '
+           'target="_blank" rel="noopener">City of Springfield</a>.',
+  'note_head': 'Document earlier repairs',
+  'note': 'Review earlier repairs, drainage, footing access and loads; determine whether engineering or soil '
+          'investigation is needed. A support system is selected from measured conditions and design '
+          'requirements. A neighborhood name cannot establish bearing depth or pier quantity.',
+  'focus': ['Movement continues after a cosmetic repair',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Springfield, GA?',
+            'A repaired wall crack reopens and level readings show a change. Photograph the affected area '
+            'safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Review earlier repairs, drainage, footing access and loads; determine whether engineering or '
+            'soil investigation is needed. A support system is selected from measured conditions and design '
+            'requirements. A neighborhood name cannot establish bearing depth or pier quantity.'),
+           ('What local checks should happen before work?',
+            'For a Springfield property, collect earlier foundation invoices or drawings and identify which '
+            'supports were changed. Check the city permit route for an address inside the city before '
+            'committing to structural alterations.')]},
+ {'slug': 'hinesville-ga',
+  'work': 'level',
+  'photo': 'hinesville-brick-home.jpg',
+  'photo_alt': "Single-story brick home with a lawn and attached garage, typical of the area's rental "
+               'housing',
+  'name': 'Hinesville',
+  'plain': 'Hinesville, GA',
+  'zip': '31313',
+  'lede': 'Foundation and crawl-space assessment in Hinesville, GA: start with the building, drainage and '
+          'access at your address.',
+  'facts': 'For Hinesville, arrange owner authorization and access to all affected rooms and the crawl '
+           'space. Send the proposed structural scope to the relevant inspections office when confirming '
+           'permit requirements. Reference: <a '
+           'href="https://www.cityofhinesville.org/128/Inspections-Department" target="_blank" '
+           'rel="noopener">City of Hinesville inspections</a>.',
+  'note_head': 'Inspection access and repair records',
+  'note': 'Check hinges and seasonal swelling, then compare nearby cracks and elevations before attributing '
+          'it to settlement. Minor joinery issues may need no foundation work. Several connected signs '
+          'justify a closer structural assessment.',
+  'focus': ['A door starts sticking after a wet season',
+            'Documented levels and accessible support condition',
+            'Drainage and repair-scope review'],
+  'faqs': [('What should I record before an inspection in Hinesville, GA?',
+            'One door binds, but the owner has not recorded floor or crack changes. Photograph the affected '
+            'area safely, note when it changed, and bring any earlier repair records.'),
+           ('Does this symptom prove I need foundation repair?',
+            'Check hinges and seasonal swelling, then compare nearby cracks and elevations before '
+            'attributing it to settlement. Minor joinery issues may need no foundation work. Several '
+            'connected signs justify a closer structural assessment.'),
+           ('What local checks should happen before work?',
+            'For Hinesville, arrange owner authorization and access to all affected rooms and the crawl '
+            'space. Send the proposed structural scope to the relevant inspections office when confirming '
+            'permit requirements.')]}]
 
 # Geographic adjacency for the "We also work in these areas" block. Picking the
 # first three from the list would put the same three on all eighteen pages;
@@ -450,7 +622,7 @@ NEAR = {
 GROUPS = [
     ("Savannah proper", "The city itself, from the historic core out to the Southside.",
      ["downtown-savannah-ga", "midtown-savannah-ga", "southside-savannah-ga", "georgetown-ga"]),
-    ("The islands and the riverside", "Tidal ground, salt air, and the shallowest water table in the county.",
+    ("The islands and the riverside", "Address-specific flood information, crawl-space access and drainage checks.",
      ["isle-of-hope-ga", "thunderbolt-ga", "whitemarsh-island-ga", "wilmington-island-ga",
       "skidaway-island-ga", "tybee-island-ga"]),
     ("West Chatham", "Port-side industry, mid-century workforce housing, and the fastest new build in Georgia.",
@@ -614,7 +786,7 @@ def build_hub():
     <div class="container">
       <div class="breadcrumbs"><a href="../index.html">Home</a> / Service Areas</div>
       <h1>Service Areas – Savannah &amp; the Lowcountry</h1>
-      <p class="lede">Eighteen areas, and genuinely different foundation problems in each. Historic piers downtown, salt and shallow groundwater on the islands, fill settlement out west – written up one place at a time.</p>
+      <p class="lede">Find your area for inspection planning, local references and the property details that can affect a repair.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="../free-inspection.html">Get a Free Inspection</a>
         <a class="btn btn-ghost" href="tel:{PHONE_HREF}">Call {PHONE_DISPLAY}</a>
@@ -627,7 +799,7 @@ def build_hub():
       <div class="section-head">
         <span class="eyebrow">Where We Work</span>
         <h2>Pick your area</h2>
-        <p class="muted">Chatham County plus Bryan, Effingham and Liberty. Each page covers what actually fails in that specific place and why – the construction era, the soil and the moisture conditions are not the same from one side of the county to the other.</p>
+        <p class="muted">Explore Chatham County and nearby communities in Bryan, Effingham and Liberty. Check local inspection planning and permit contacts, then confirm coverage for your exact address.</p>
       </div>
     </div>
   </section>
@@ -638,8 +810,8 @@ def build_hub():
       <div class="two-col-layout">
         <div>
           <span class="eyebrow">Not Listed?</span>
-          <h2>Somewhere we haven't written up yet</h2>
-          <p>Eighteen pages covers the Savannah metro and the towns around it, but it is not every address in four counties. Smaller places in between – Vernonburg, Montgomery, Guyton, Ellabell, Pembroke – are usually still a yes.</p>
+          <h2>Check service at your address</h2>
+          <p>Send the property address and a short description of the issue so coverage and inspection access can be confirmed before an appointment.</p>
           <p>We would rather tell you plainly that somewhere is outside what we cover than take the call and then not turn up, so ask.</p>
         </div>
         <div class="feature-card">
