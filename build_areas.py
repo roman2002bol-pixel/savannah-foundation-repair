@@ -474,8 +474,8 @@ PAGES = [{'slug': 'downtown-savannah-ga',
   'facts': 'For a Bloomingdale property with a detached garage or workshop, assess that foundation '
            'separately from the house. Different loads, slab construction and drainage can require different '
            'scopes even on one lot. Reference: <a '
-           'href="https://www.pooler-ga.gov/online-services/applications-forms/" target="_blank" '
-           'rel="noopener">City of Pooler applications and forms</a>.',
+           'href="https://www.bloomingdale-ga.gov/planning-zoning" target="_blank" '
+           'rel="noopener">City of Bloomingdale planning and zoning</a>.',
   'note_head': 'Outbuildings need their own assessment',
   'note': 'Check panel condition, roots, washout and drainage; distinguish a walkway defect from movement in '
           'the house. Leveling, replacement or drainage work may be appropriate. Repairing the walkway is '
