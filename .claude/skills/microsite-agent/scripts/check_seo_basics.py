@@ -18,6 +18,7 @@ Checks, per page:
 Usage:  python check_seo_basics.py [project_root]
 Exit 0 = clean, exit 1 = problems found.
 """
+import html as _html
 import json
 import pathlib
 import re
@@ -44,7 +45,9 @@ def main(root_arg: str) -> int:
         if not m:
             problems.append(f"{rel}: no <title>")
         else:
-            title = re.sub("<[^>]+>", "", m.group(1)).strip()
+            # entities are ONE character in a SERP -- "&amp;" is 5 raw and 1
+            # rendered, and counting raw flagged a 157-char description at 161
+            title = _html.unescape(re.sub("<[^>]+>", "", m.group(1))).strip()
             titles.setdefault(title, []).append(rel)
             if len(title) > TITLE_MAX:
                 problems.append(
@@ -55,7 +58,7 @@ def main(root_arg: str) -> int:
         if not m:
             problems.append(f"{rel}: no meta description")
         else:
-            desc = m.group(1).strip()
+            desc = _html.unescape(m.group(1)).strip()
             descs.setdefault(desc, []).append(rel)
             if len(desc) > DESC_MAX:
                 problems.append(f"{rel}: meta description {len(desc)} chars (>{DESC_MAX})")
