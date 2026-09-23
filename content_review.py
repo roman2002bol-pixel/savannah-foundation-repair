@@ -141,6 +141,9 @@ def apply_site(site):
             if at<0: raise ValueError(path)
             text=text[:at]+addition+text[at:]
         if text!=original: path.write_text(text,encoding='utf-8')
+    if kind == 'foundation':
+        from local_research import apply_site as apply_local_research
+        apply_local_research(site)
     css=site/'css/style.css'; text=css.read_text(encoding='utf-8')
     if '/* Practical examples:' not in text: css.write_text(text+CSS,encoding='utf-8')
 

@@ -324,3 +324,11 @@ photos. Flagged to Roman rather than done unasked.
 Removed generic hero metrics and added clearly labeled illustrative service scenarios. These are educational examples, not completed jobs or testimonials. User reports two real jobs on Google Business Profile; project facts and photos are still needed before publishing case studies. Primary local references are linked beside the applicable guidance. Existing contact placeholders on Savannah previews still require owner-provided production details.
 
 Validation: all six existing static audits pass across the three sites (60 HTML pages). Mobile and desktop rendering reviewed in the local browser. Preserve these content changes when rebuilding; Foundation `build_pages.write` runs `content_review.apply_site`.
+
+## 2026-09-23 – source-backed local SEO content
+
+Reviewed two further Jesse Cunningham video transcripts and checked local primary sources. Added three researched area guides per site, descriptive links from related services, and area-hub summaries. Removed repeated illustrative service scenarios from all area pages while retaining local notes. Sources and limitations are recorded in LOCAL-RESEARCH.md; local_research.json is the editable content source. Foundation content_review preserves these additions during rebuilds.
+
+Tree: corrected outdated/overbroad Downtown and Landings FAQ claims; added generated sitemap.xml and robots.txt using the existing future production domain. Production contacts, working lead destination and domain configuration remain launch prerequisites.
+
+Validation: six static audits pass on all 51 HTML pages. Repeated content generation produces identical HTML. Desktop and 375px mobile checks show no horizontal overflow; researched sections and source links render correctly. No real customer work or reviews were invented.

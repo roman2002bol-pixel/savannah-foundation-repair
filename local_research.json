@@ -1,0 +1,86 @@
+{
+  "downtown-savannah-ga": {
+    "name": "Downtown Savannah",
+    "title": "Historic masonry and foundation work downtown",
+    "summary": "Check the historic-district review route and document masonry before choosing a structural repair or cosmetic repointing.",
+    "cards": [
+      [
+        "Check the preservation guidance",
+        "The Chatham County–Savannah Metropolitan Planning Commission publishes a masonry repointing policy for the Downtown Savannah Historic District, alongside building-documentation guidance. Check the property designation and ask preservation staff which review applies to the proposed exterior work.",
+        "https://www.thempc.org/Historic/Pai",
+        "MPC historic-district policies"
+      ],
+      [
+        "Separate a mortar repair from support movement",
+        "Before covering a crack, record its location, width and date, and compare nearby floors, openings and accessible supports. Repointing a joint does not establish that movement has stopped. Likewise, an old crack alone is not evidence that the house needs new piers.",
+        null,
+        null
+      ],
+      [
+        "Plan the repair around existing finishes",
+        "Ask how the proposed work protects masonry, plaster and utility connections. Record inaccessible areas and agree on a realistic adjustment target. Include lane access and material handling in the scope so the support repair and restoration work can be priced separately.",
+        null,
+        null
+      ]
+    ],
+    "next": "Use measured movement and the condition of the masonry to decide what a crack-repair proposal needs to address.",
+    "service": "foundation-crack-repair",
+    "anchor": "Foundation crack assessment and repair"
+  },
+  "midtown-savannah-ga": {
+    "name": "Midtown Savannah",
+    "title": "Midtown drainage: what Casey South can tell you",
+    "summary": "Use the Casey South drainage project as local context while tracing the actual water path at your property.",
+    "cards": [
+      [
+        "A documented drainage project nearby",
+        "Savannah’s Casey South project includes drainage improvements along 54th, 56th and 57th streets, with work described between Atlantic, Harmon and Abercorn. The city project updates provide local drainage context; they do not diagnose a particular home or guarantee that its yard will stay dry.",
+        "https://www.savannahga.gov/3911/Latest-Updates-Page",
+        "City of Savannah Casey South updates"
+      ],
+      [
+        "Record where water enters the property",
+        "From a safe, dry position after rain, photograph downspout discharge, yard low spots and the crawl-space entrance. Note whether the problem starts during rainfall or persists afterward. Share dates and earlier observations rather than attributing all dampness to a nearby street project.",
+        null,
+        null
+      ],
+      [
+        "Match the work to the observed problem",
+        "Standing water, humid air and damaged timber require separate checks. Establish the source and a suitable discharge route before specifying drainage equipment. Inspect joists and bearings where the floor has softened; a membrane by itself does not repair weakened framing.",
+        null,
+        null
+      ]
+    ],
+    "next": "If the floor changes when the crawl space becomes wet, ask for a support inspection alongside the moisture assessment.",
+    "service": "crawl-space-repair",
+    "anchor": "Crawl-space framing and support repair"
+  },
+  "pooler-ga": {
+    "name": "Pooler",
+    "title": "Pooler flood records and a property-level repair plan",
+    "summary": "Find available elevation records, distinguish flood information from settlement evidence and separate driveway work from structural repair.",
+    "cards": [
+      [
+        "Check records for the exact address",
+        "Pooler’s flood-protection page lists flood-map resources and elevation certificates by street and lot, including entries on Governor Treutlen Circle and Arbor Village Drive. Look for the actual property record and confirm the effective map with the city; a nearby listing is not a substitute.",
+        "https://www.pooler-ga.gov/resources/flood-protection/",
+        "Pooler flood resources and elevation certificates"
+      ],
+      [
+        "Flood elevation is not a settlement diagnosis",
+        "An elevation certificate and a floor-level survey answer different questions. Bring any existing certificate, building plans and repair records to the inspection, but use current measurements and the support condition to evaluate movement. A flood-zone label does not determine pier depth or repair quantity.",
+        null,
+        null
+      ],
+      [
+        "Identify which concrete has moved",
+        "Mark whether the crack or drop is in a driveway, garage apron or load-bearing part of the building. Ask the inspector to check panel condition, nearby runoff and visible erosion. A sound independent panel may have different repair options from a moving foundation.",
+        null,
+        null
+      ]
+    ],
+    "next": "For a driveway or walkway issue, compare lifting suitability, drainage correction and replacement before choosing the scope.",
+    "service": "concrete-slab-leveling",
+    "anchor": "Concrete slab leveling assessment"
+  }
+}
