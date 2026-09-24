@@ -21,3 +21,11 @@ Find available elevation records, distinguish flood information from settlement 
 - [Pooler flood resources and elevation certificates](https://www.pooler-ga.gov/resources/flood-protection/)
 
 Rebuild: run `python local_research.py` after any tree HTML edits. Foundation content_review calls it automatically. Data is in local_research.json. Existing preview contact placeholders and future-domain canonical URLs still need launch configuration; no Search Console submission was made.
+
+
+## Sources checked September 24, 2026
+
+- USDA Pooler series: https://soilseries.sc.egov.usda.gov/OSD_Docs/P/POOLER.html — used on Piering and Pooler; the documented series/type location does not identify every city parcel.
+- USDA Web Soil Survey: https://www.nrcs.usda.gov/resources/data-and-reports/web-soil-survey — soil-data lookup, not a substitute for a footing investigation.
+- DOE crawl-space moisture: https://bsesc.energy.gov/energy-basics/crawlspace-capillary-break-crawlspace-floors — physical moisture mechanisms and ground-barrier guidance; not a local prevalence statistic.
+- Previously verified MPC and Pooler municipal records are now linked directly in relevant service paragraphs. No housing-age statistic was added.

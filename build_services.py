@@ -21,11 +21,8 @@ PAGES = [
         "title": "Crawl Space Repair in Savannah, GA | Sagging Floor Jacks",
         "desc": "Crawl space repair in Savannah, GA – rotted joists, failed piers, and sagging floors stabilized with adjustable steel jacks on proper footings. Free inspection.",
         "service_type": "Crawl Space Repair",
-        "lede": "If the floor flexes when you walk across it, the problem is almost never the floor. It's the joists, girders, or support posts underneath – and in a Savannah crawl space, moisture is usually what weakened them.",
-        "intro": [
-            "Most Savannah homes sit on a raised crawl space, supported by a grid of piers and wood framing that was sized correctly the day it was built. Two things degrade that over the decades here: soil that shifts under the footings as it wets and dries, and humidity that never leaves the crawl space, softening the wood from below until it can no longer carry the span.",
-            "Repair means restoring the load path, not leveling the surface. We identify which support points have dropped and by how much, replace the framing that's gone soft, and set adjustable steel jacks on poured footings that bear on stable soil instead of loose fill.",
-        ],
+        "lede": 'A sagging or soft floor needs an assessment of the framing, bearings and moisture sources underneath it before choosing a repair.',
+        "intro": ['A raised floor can lose support through damaged timber, altered loads or movement at a footing. The <a href="https://bsesc.energy.gov/energy-basics/crawlspace-capillary-break-crawlspace-floors">U.S. Department of Energy crawl-space guidance</a> explains how moisture from the ground can reach framing and contribute to rot. Inspect timber condition separately from floor elevations to identify what actually needs repair.', 'The scope may involve framing repairs, revised supports or moisture correction. Footings and posts must suit the load and ground conditions; adding a jack without checking the material and bearing beneath it can leave the original problem unresolved.'],
         "situations_head": "What this covers",
         "situations": [
             "Floors that bounce, flex, or feel spongy underfoot",
@@ -49,7 +46,7 @@ PAGES = [
             "Crawl space headroom and access – a tight crawl is slower work",
             "Whether standing water or a moisture source has to be dealt with first",
         ],
-        "cost_note": "Local pricing for this work commonly runs from roughly $1,300 for a small run of joist and jack work up to about $4,900 when several bays need framing replaced. Broader structural jobs go higher. You get a firm number in writing after the inspection, never a phone estimate.",
+        "cost_note": 'Ask for a written breakdown of framing replacement, support work, access preparation and moisture correction. Quantities and inaccessible areas should be stated. There is no verified Savannah-wide price range published here.',
         "faqs": [
             ("Can you level the floor completely flat again?",
              "Usually we can recover most of it, but not always all of it. A house that settled over thirty years has finishes, plumbing, and door frames that adjusted to the new shape, and forcing it fully back can crack more than it fixes. The inspection gives you the actual measurements so the target is a decision you make with real numbers, not a promise made before anyone looked."),
@@ -71,11 +68,8 @@ PAGES = [
         "desc": "Helical and push pier installation in Savannah, GA – underpinning for settling foundations, sinking corners, and stair-step brick cracks. Free inspection.",
         "service_type": "Foundation Piering and Underpinning",
         "lede": "When part of the house is genuinely sinking, no amount of patching the symptoms helps. Piering transfers the weight off the soil that gave way and onto soil deep enough to hold it.",
-        "intro": [
-            "Savannah's coastal plain soil is sandy loam over clay layers, sitting above a water table that's rarely more than a few feet down. That profile carries a house perfectly well until something changes it – a long drought, a broken supply line, poorly compacted fill under an addition, or years of downspouts discharging against one corner.",
-            "When it does change, the footing goes with it. Piers are the structural answer: steel driven or screwed down past the unstable layer to soil that can carry the load, with brackets that transfer the building's weight onto them.",
-        ],
-        "situations_head": "Signs that point to piering rather than a surface repair",
+        "intro": ['Soil conditions should be checked at the property, not assigned from the city name. The <a href="https://soilseries.sc.egov.usda.gov/OSD_Docs/P/POOLER.html">USDA description of the Pooler soil series</a> documents poorly drained soils formed in marine sediments, with a type location in Chatham County. This is one documented local soil profile, not a description of every Savannah lot.', 'Start with the address in <a href="https://www.nrcs.usda.gov/resources/data-and-reports/web-soil-survey">USDA Web Soil Survey</a> to review mapped soil information. Fill, earlier construction and conditions at footing depth still need site investigation. A soil map alone cannot establish pier length, capacity or whether underpinning is needed.', 'Where investigation confirms a support problem, a designed pier system may transfer loads to suitable bearing material. The proposal should state the design loads, installation verification, corrosion protection and any limits on lifting existing finishes.'],
+        "situations_head": 'Signs that need a foundation assessment',
         "situations": [
             "Stair-step cracks through brick or block mortar joints",
             "One corner or one wall of the house visibly lower than the rest",
@@ -85,12 +79,7 @@ PAGES = [
             "A chimney separating from the wall it's attached to",
         ],
         "method_head": "Helical piers and push piers – the difference",
-        "method": [
-            "<strong>Helical piers</strong> are screwed into the ground with a measured torque that correlates to capacity, so you know what each one will hold as it goes in. They suit lighter loads and situations where you need confirmation of capacity during installation.",
-            "<strong>Push piers</strong> use the weight of the structure itself to drive sections down until they meet refusal on a firm bearing layer. They suit heavier loads and deeper unstable soil.",
-            "<strong>Galvanized steel, not raw.</strong> Within reach of salt air, corrosion protection on anything permanently in the ground isn't an upgrade, it's the baseline.",
-            "<strong>Stabilize, then lift where it's safe.</strong> Every pier job stops the movement. Recovering the original elevation is a separate judgement call, made from the measurements and what the structure can take.",
-        ],
+        "method": ['<strong>Helical piers</strong> advance into the ground by rotation. The designer specifies the system, required capacity and how installation measurements will be verified.', '<strong>Push piers</strong> are hydraulically advanced using the structure as a reaction. Suitability depends on the existing footing, available reaction load and ground conditions.', '<strong>Check durability.</strong> Specify corrosion protection for the actual soil and exposure conditions, along with the selected manufacturer’s requirements.', '<strong>Agree on a recovery target.</strong> Stabilization and lifting are separate objectives. The written design should state the intended outcome and the monitoring or verification needed.'],
         "cost_head": "What drives the cost",
         "cost": [
             "How many piers the affected span needs, and their spacing",
@@ -98,15 +87,8 @@ PAGES = [
             "Access for equipment around that side of the house",
             "Whether interior finishes need making good afterward",
         ],
-        "cost_note": "Piering is the highest-ticket repair on this list – a settling corner is usually a several-thousand-dollar job, and a full side of a house is more. That is exactly why the inspection and the elevation readings come first: if the movement turns out to be seasonal rather than progressive, piering may not be the right answer at all, and we would rather tell you that.",
-        "faqs": [
-            ("How do you know the foundation is still moving and not settled long ago?",
-             "Cracks that have been patched and reopened, doors that got worse over one season, and measurable elevation differences across the span all point to active movement. Where it isn't clear, the honest answer is to monitor it – marking and dating a crack and re-measuring in a few months costs nothing and tells you more than a guess."),
-            ("Will piers lift the house back to level?",
-             "Piers reliably stop further settlement. How much elevation comes back depends on what the structure will tolerate – brick, plaster, and tile all have limits, and pushing past them trades a foundation problem for a finishes problem. We give you the measurements and the realistic recovery before the work is scheduled."),
-            ("Is this disruptive to the inside of the house?",
-             "Most residential piering is done from outside, excavating at each pier location along the affected footing. The yard takes the disruption rather than your living space, and the excavations are backfilled when the work is complete."),
-        ],
+        "cost_note": "Compare proposals by pier quantity, installation criteria, design work, access and restoration. The inspection should establish why underpinning is proposed and what is excluded. A price without those details cannot be meaningfully compared with another quote.",
+        "faqs": [['How do you know whether the foundation is still moving?', 'Compare dated crack records, repeatable level measurements, changes at openings and earlier repair information. A single uneven-floor reading shows geometry, not the rate or cause of movement. Where the evidence is unclear, the assessor may recommend monitoring or further investigation.'], ['Will piers lift the house back to level?', 'The intended stabilization and lifting targets depend on the design, ground conditions and the building’s tolerance for movement. Ask for those targets and their limits in writing. No inspection should promise full recovery or permanent stability without establishing the cause and suitable repair scope.'], ['Is this disruptive to the inside of the house?', 'Access depends on the footing locations and chosen system. Some installations can be reached from outside; others may affect interior floors or utilities. The estimate should identify excavation, access openings, protection and restoration before work begins.']],
         "related": ["foundation-crack-repair", "crawl-space-repair"],
     },
     {
@@ -119,11 +101,8 @@ PAGES = [
         "title": "Concrete Slab Leveling in Savannah, GA | Polyjacking",
         "desc": "Concrete slab leveling in Savannah, GA – sunken driveways, patios, walkways, and garage slabs lifted with injected polyurethane foam. Usually done in hours.",
         "service_type": "Concrete Slab Leveling",
-        "lede": "A driveway slab that dropped at one edge doesn't need tearing out. Polyurethane foam injected underneath lifts it back and fills the void that let it drop – normally within a few hours.",
-        "intro": [
-            "Concrete outside a Savannah home sits on sandy soil that water moves through easily. Over time, rain running off the roof and along the drive washes fines out from under the slab, leaving a void. The slab is strong enough to span it for a while, then it settles into it – usually at one corner, usually where the water goes.",
-            "Polyjacking fixes the cause and the symptom together. Small ports are drilled through the slab, expanding polyurethane is injected below it, and the foam fills the void and lifts the concrete back to grade as it expands.",
-        ],
+        "lede": 'A sound sunken concrete panel may be a lifting candidate. First establish its condition, the cause of movement and whether it is separate from the house foundation.',
+        "intro": ['A settled driveway does not establish that the house foundation has failed. Identify the panel, measure the drop and inspect runoff, visible voids and cracks. For local flood-map and elevation-record context, <a href="https://www.pooler-ga.gov/resources/flood-protection/">Pooler publishes address-specific elevation certificates and flood resources</a>. Those records do not diagnose settlement beneath a panel.', 'Where lifting is appropriate, injection can fill a void and adjust the panel. Correcting a continuing water source is a separate part of the scope. Ask whether the panel is sound enough to lift and what would make replacement a better option.'],
         "situations_head": "What we lift",
         "situations": [
             "Driveway sections that dropped and now pond water",
@@ -138,7 +117,7 @@ PAGES = [
             "<strong>It is far lighter.</strong> Polyurethane weighs a fraction of a slurry mix, so it doesn't add load to the same soft soil that let the slab settle in the first place.",
             "<strong>Smaller holes.</strong> Injection ports are roughly the diameter of a pencil, against the much larger holes traditional mudjacking needs.",
             "<strong>It cures in minutes.</strong> The foam reaches strength quickly, so a driveway is normally back in use the same day rather than days later.",
-            "<strong>It does not wash out.</strong> Closed-cell foam is unaffected by the groundwater that erodes a soil-based slurry – which matters a great deal on this coast.",
+            "<strong>Check the material and drainage.</strong> Product suitability depends on the installation conditions. Obtain the product specification and correct any ongoing erosion rather than treating injected material as a drainage repair.",
         ],
         "cost_head": "What drives the cost",
         "cost": [
@@ -152,7 +131,7 @@ PAGES = [
             ("How long before I can drive on it?",
              "Usually the same day. The polyurethane reaches most of its strength within about fifteen to thirty minutes of injection, which is the main practical advantage over older mudjacking methods."),
             ("Will the slab settle again?",
-             "Not from the same void – the foam fills it permanently and doesn't wash away. What can cause new settling is the original water problem continuing, so if a downspout or a grading issue is feeding water under that slab, fixing it is part of the job rather than an afterthought."),
+             "Further movement is possible if supporting conditions change or the source of erosion continues. Ask how the proposal addresses drainage, how the result is checked and which limitations or warranty terms apply to the chosen material."),
             ("Can a cracked slab still be lifted?",
              "Often yes, if the pieces are still sound and the crack isn't crumbling. A slab broken into several loose sections is usually past lifting and better replaced – we'll tell you which one you have at the inspection instead of lifting something that won't hold."),
         ],
@@ -169,10 +148,7 @@ PAGES = [
         "desc": "Foundation crack repair in Savannah, GA – telling structural cracks from cosmetic ones, sealing block and concrete, and fixing the movement behind them.",
         "service_type": "Foundation Crack Repair",
         "lede": "The useful question about a foundation crack is not how to fill it. It is whether anything is still moving – because sealing a crack that's still opening just hides it for a season.",
-        "intro": [
-            "Concrete cracks. Some of it is ordinary curing shrinkage that appeared in the first year and has not changed since, and that genuinely is cosmetic. What matters is telling that apart from a crack that is tracking active movement in the footing below.",
-            "The pattern usually gives it away. Hairline vertical cracks in poured concrete are typically shrinkage. Stair-step cracks following the mortar joints in block or brick, cracks wider at one end than the other, and cracks that reopen after being patched are all movement – and the repair for those starts underneath, not at the surface.",
-        ],
+        "intro": ['Record a crack’s width, location and changes over time before covering it. The shape alone does not establish the cause: compare the masonry with floor measurements, openings, accessible supports and water entry.', 'For a property in Downtown Savannah’s historic district, the <a href="https://www.thempc.org/Historic/Pai">MPC masonry repointing policy and building-documentation guidance</a> are relevant starting points before exterior masonry work. Confirm the review route for the proposed scope. Repointing repairs a joint; it does not by itself establish that structural movement has stopped.'],
         "situations_head": "What we look at",
         "situations": [
             "Stair-step cracking through brick or block mortar joints",
@@ -217,11 +193,8 @@ PAGES = [
         "title": "Crawl Space Encapsulation in Savannah, GA | Dehumidifiers",
         "desc": "Crawl space encapsulation in Savannah, GA – sealed vapor barrier and sized dehumidifier to stop the ground moisture that rots framing in coastal Georgia.",
         "service_type": "Crawl Space Encapsulation",
-        "lede": "A vented crawl space in coastal Georgia doesn't dry out in summer – it pulls humid outside air onto cool surfaces and condenses it. Encapsulation ends that cycle.",
-        "intro": [
-            "The logic behind crawl space vents assumed outdoor air is drier than crawl space air. On the Georgia coast in July it very often isn't. Warm, humid air entering a cool crawl space raises the relative humidity against the framing, and wood that stays above roughly twenty percent moisture content is wood that rots and grows mold.",
-            "Encapsulation treats the crawl space as part of the building rather than as outdoors: a heavy sealed liner across the ground and up the piers and walls, vents closed, and a dehumidifier sized for the volume to hold the space at a stable humidity year-round.",
-        ],
+        "lede": 'Control ground moisture and water entry with a crawl-space plan based on drainage, framing condition and the building’s ventilation needs.',
+        "intro": ['The <a href="https://bsesc.energy.gov/energy-basics/crawlspace-capillary-break-crawlspace-floors">Department of Energy guide to crawl-space ground barriers</a> describes liquid water and water vapor entering from the soil. It recommends a continuous sealed ground barrier and measures such as grading and drainage to address bulk-water entry.', 'At a Savannah property, inspect standing water, plumbing leaks, timber and existing equipment before choosing an enclosure. The design should account for humidity control, combustion safety, termite inspection access and any required flood openings. A liner does not replace structural repairs.'],
         "situations_head": "Signs your crawl space needs it",
         "situations": [
             "Musty smell in the house, strongest near floor vents or closets",
@@ -250,9 +223,9 @@ PAGES = [
             ("Isn't a crawl space supposed to be vented?",
              "That was the standard assumption for decades, and it works in a dry climate. In coastal Georgia, outdoor summer air is often more humid than the crawl space it's venting into, so the vents raise humidity against the framing instead of lowering it. Sealed-and-conditioned is now the widely accepted approach for this climate."),
             ("Do I still need a dehumidifier if the crawl space is sealed?",
-             "In this climate, yes. The liner stops moisture coming up from the soil, but it can't remove what's already in the air or what enters when the hatch opens. A correctly sized dehumidifier is what actually holds the humidity down year-round, and without one an encapsulation underperforms."),
+             "Humidity control must be part of the design. A dehumidifier may be appropriate, but its need and size depend on measured conditions and the planned conditioning or ventilation approach. Ask how humidity will be controlled and verified after installation."),
             ("Will this fix a floor that already sags?",
-             "No – encapsulation stops the cause, it doesn't restore the structure. Framing that has already lost strength needs the structural repair as well. The two are usually done together for exactly that reason: one fixes what happened, the other stops it happening again."),
+             "No. Moisture control does not restore damaged framing or settled supports. Inspect those separately and repair what the findings justify; encapsulation should not be presented as a complete answer to every sagging floor."),
         ],
         "related": ["crawl-space-repair", "foundation-crack-repair"],
     },

@@ -22,7 +22,7 @@ BRAND = "Savannah Foundation Repair Co"
 PHONE_DISPLAY = "(912) 555-0142"
 PHONE_HREF = "+19125550142"
 EMAIL = "info@savannahfoundationrepairco.com"
-ASSET_V = "20260922"
+ASSET_V = "20260924"
 
 SERVICES = [
     ("crawl-space-repair", "Crawl Space Repair"),

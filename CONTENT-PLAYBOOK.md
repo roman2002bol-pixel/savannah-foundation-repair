@@ -41,3 +41,10 @@ Deep guides: Downtown Savannah, Midtown Savannah and Pooler. Repeated examples w
 The existing build_pages.write function calls content_review.apply_site, which now calls local_research.apply_site. This preserves researched blocks after the core, area or service generators run. A standalone `python local_research.py` refreshes researched content from its JSON data. Service examples remain managed by content_review.py. Do not bypass these post-processing steps when rebuilding.
 
 Published content commit: `e96514d5fe96f0802b3d358197341ded4d860005`.
+
+
+## September 24 update – visible citations and visual video review
+
+See VIDEO-REVIEW-2026-09-24.md for observed frames, the visible research prompt and an adapted reusable brief. Citation links must be recognizable without hover: underline and sufficient color contrast, including keyboard focus. Put the source in the paragraph containing its claim; do not rely on a distant reference box. CSS cache version is now 20260924 across public pages and Foundation generators.
+
+Researched local sections now appear after the page hero. Keep the single marked section and the idempotent local_research renderer. Foundation service citations belong in build_services.py; Tree service citations are in the static service HTML. Update these sources when rebuilding. The previous note that this pass made no CSS change applies only to September 23.

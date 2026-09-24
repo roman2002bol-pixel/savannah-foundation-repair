@@ -77,6 +77,12 @@
         "Mark whether the crack or drop is in a driveway, garage apron or load-bearing part of the building. Ask the inspector to check panel condition, nearby runoff and visible erosion. A sound independent panel may have different repair options from a moving foundation.",
         null,
         null
+      ],
+      [
+        "A local soil series, not a city-wide diagnosis",
+        "USDA established the Pooler soil series in Chatham County and records a type location in the Port Wentworth quadrangle. Its description identifies poor drainage and slow permeability. The name does not establish that a Pooler house sits on this soil: check the mapped unit and investigate the actual footing conditions.",
+        "https://soilseries.sc.egov.usda.gov/OSD_Docs/P/POOLER.html",
+        "USDA official Pooler soil-series description"
       ]
     ],
     "next": "For a driveway or walkway issue, compare lifting suitability, drainage correction and replacement before choosing the scope.",

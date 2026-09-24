@@ -13,10 +13,10 @@ def section(title, cards, intro='', tail=''):
             + '<div class="guide-grid">'+cards+'</div>'+tail+'</div></section>\n<!-- LOCAL-RESEARCH END -->\n')
 
 def insert(text, addition):
-    cta = text.rfind('<div class="cta-band">')
-    at = text.rfind('<section', 0, cta) if cta >= 0 else -1
-    if at < 0: at = text.find('</main>')
-    if at < 0: raise ValueError('Missing main/CTA insertion point')
+    hero = text.find('class="page-hero"')
+    end = text.find('</section>', hero) if hero >= 0 else -1
+    at = end + len('</section>') if end >= 0 else text.find('</main>')
+    if at < 0: raise ValueError('Missing main/hero insertion point')
     return text[:at].rstrip() + addition + text[at:]
 
 def apply_site(root=ROOT):
@@ -34,8 +34,8 @@ def apply_site(root=ROOT):
         if path.stem in DATA:
             d = DATA[path.stem]; cards = ''
             for title, body, url, label in d['cards']:
-                source = '<p class="guide-source"><a href="'+escape(url)+'">'+escape(label)+'</a></p>' if url else ''
-                cards += '<article><h3>'+escape(title)+'</h3><p>'+escape(body)+'</p>'+source+'</article>'
+                source = ' See the <a href="'+escape(url)+'">'+escape(label)+'</a>.' if url else ''
+                cards += '<article><h3>'+escape(title)+'</h3><p>'+escape(body)+source+'</p></article>'
             tail = '<p>'+escape(d['next'])+' <a href="../services/'+d['service']+'.html">'+escape(d['anchor'])+'</a>.</p><p class="guide-source">Local sources checked September 23, 2026. Confirm current requirements for the address and proposed scope.</p>'
             text = insert(text, section(d['title'], cards, tail=tail))
         elif path.stem == 'index':

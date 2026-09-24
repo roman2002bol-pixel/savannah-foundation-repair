@@ -95,7 +95,7 @@ def apply_site(site):
         text=path.read_text(encoding='utf-8'); original=text
         slug=path.stem; rel=path.relative_to(site).as_posix()
         text=re.sub(r'\n?<!-- FIELD-GUIDE START -->.*?<!-- FIELD-GUIDE END -->\n?', '', text, flags=re.S)
-        text=re.sub(r'(css/style\.css\?v=)[^"\s]+',r'\g<1>20260922',text)
+        text=re.sub(r'(css/style\.css\?v=)[^"\s]+',r'\g<1>20260924',text)
         cases=[]; local=None
         if kind=='foundation':
             if rel.startswith('service-areas/') and slug!='index':
@@ -139,7 +139,7 @@ def apply_site(site):
             if at<0: at=text.find('</main>')
             if at<0: at=text.find('<footer')
             if at<0: raise ValueError(path)
-            text=text[:at]+addition+text[at:]
+            text=text[:at].rstrip()+addition+text[at:]
         if text!=original: path.write_text(text,encoding='utf-8')
     if kind == 'foundation':
         from local_research import apply_site as apply_local_research

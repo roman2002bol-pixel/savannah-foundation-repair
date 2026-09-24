@@ -337,3 +337,12 @@ Validation: six static audits pass on all 51 HTML pages. Repeated content genera
 ## 2026-09-23 – documentation follow-through
 
 Added CONTENT-PLAYBOOK.md covering implemented techniques, data/rendering ownership, rebuild behavior, QA, verified publication and unfinished launch work. CLAUDE.md now points future sessions to it and records the user requirement to document every new change and useful technique. LOCAL-RESEARCH.md remains the source ledger. Content publication verified at commit `e96514d5fe96f0802b3d358197341ded4d860005`; this documentation update makes no website UI change.
+
+
+## 2026-09-24 – visible inline citations and supported service claims
+
+Addressed the user's inability to recognize source links: underlined, colored editorial links and keyboard focus styles; CSS cache bumped across all 51 pages. Integrated source citations into researched area paragraphs and moved those guides immediately after the hero. Added substantive source-linked explanations to all five service pages on each site. Reviewed selected YouTube frames visually; documented the visible prompt and limitations in VIDEO-REVIEW-2026-09-24.md.
+
+Foundation: replaced the unsupported city-wide soil/water-table description with carefully scoped USDA evidence and a link to Web Soil Survey; added a soil-series note to Pooler. Revised piering assessment/FAQ claims, removed an unverified crawl-repair price range, and qualified several unconditional repair claims. Tree: added UGA Extension and Georgia Power sources for root damage, pruning, stability and electrical hazards.
+
+Validation: six static audits across 51 pages; repeat rendering produces no HTML differences. Actual browser navigation from the Foundation Piering citation opened USDA's POOLER SERIES document. Desktop and mobile rendering checked. Publication confirmation is recorded below after deployment.
