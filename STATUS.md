@@ -346,3 +346,5 @@ Addressed the user's inability to recognize source links: underlined, colored ed
 Foundation: replaced the unsupported city-wide soil/water-table description with carefully scoped USDA evidence and a link to Web Soil Survey; added a soil-series note to Pooler. Revised piering assessment/FAQ claims, removed an unverified crawl-repair price range, and qualified several unconditional repair claims. Tree: added UGA Extension and Georgia Power sources for root damage, pruning, stability and electrical hazards.
 
 Validation: six static audits across 51 pages; repeat rendering produces no HTML differences. Actual browser navigation from the Foundation Piering citation opened USDA's POOLER SERIES document. Desktop and mobile rendering checked. Publication confirmation is recorded below after deployment.
+
+Publication confirmed: GitHub Pages built content commit 5c552bbb6a0bf8ce4cbcc012f1f5b89f223602c5; public service page verified with underlined source links on September 24, 2026.
