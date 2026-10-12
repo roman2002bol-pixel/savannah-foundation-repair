@@ -1,0 +1,17 @@
+# Files that are not website content. Cloudflare's static-asset deploy reads
+# this file and does not upload what it matches (gitignore syntax). GitHub
+# Pages ignores it, so the preview is unaffected; it matters at the Cloudflare
+# launch. Without it the whole repo would be public on the business domain --
+# exactly what happened on NEXUS (found 2026-10-12).
+.assetsignore
+.claude
+.git
+.github
+.gitignore
+.nojekyll
+*.md
+*.py
+*.pyc
+__pycache__
+images/.derivatives
+local_research.json
