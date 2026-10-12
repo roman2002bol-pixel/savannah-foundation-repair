@@ -1014,7 +1014,7 @@ not actually materialise, and quietly copying the claim would have.
 
 ## Launch on a real domain: four things to do on day one
 
-Learned on NEXUS, the first of these sites to go live, where all four were
+Learned on NEXUS, the first of these sites to go live, where all five were
 missed and Search Console reported half the site "not indexed"
 (2026-10-12). Both Savannah microsites are planned for Cloudflare and already
 advertise clean URLs, so items 1-2 are pre-done; 3-4 happen at cutover.
@@ -1036,6 +1036,10 @@ advertise clean URLs, so items 1-2 are pre-done; 3-4 happen at cutover.
 4. **Redirect the apex to `www` (or the reverse).** NEXUS's bare domain served
    the whole site with 200 -- a second copy of every page. This is a
    Cloudflare redirect rule, not something the repo can do.
+5. **Keep internal files off the domain.** Cloudflare deploys the whole
+   repo unless `.assetsignore` says otherwise. Both microsites already have
+   one (excludes `.claude`, `*.md`, `*.py`, `__pycache__`, research data);
+   after cutover `curl -I https://www.<domain>/STATUS.md` must be 404.
 
 Reading the report afterwards: "Alternate page with proper canonical tag" and
 "Page with redirect" for the twin of an indexed page are consolidation

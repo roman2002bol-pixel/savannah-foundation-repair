@@ -376,3 +376,7 @@ Then run all seven checks in `.claude/skills/microsite-agent/scripts/`. Do not r
 **Side effects of the full rebuild, checked.** Visible words are identical on all 31 pages (bag-of-words comparison against `HEAD`). On 15 area pages the local planning block moved up to directly after the hero -- the placement the September 24 generator change intended but which had never been re-rendered for those pages. `llms.txt` was regenerated from current area data, so it no longer lists the per-area claims removed from the pages in September (an audit finding). `main.js` references moved to the generator's current version and sitemap dates updated.
 
 **Verification.** All seven checks pass across 31 pages. Publication on the GitHub Pages preview is recorded below once verified. Launch steps for the real domain are in the skill's "Launch on a real domain" section; the domain is not live yet.
+
+### 2026-10-12 – `.assetsignore` for the Cloudflare launch
+
+Added `.assetsignore` so Cloudflare's static-asset deploy will not publish non-website files: `.claude`, `*.md`, `*.py`, `*.pyc`, `__pycache__`, `images/.derivatives`, `local_research.json`, `.gitignore`, `.nojekyll`. Checked against `git ls-files`: the only non-page files left to deploy are `robots.txt`, `sitemap.xml` and (where present) `llms.txt`. GitHub Pages ignores the file, so the preview is unchanged. Reason: NEXUS had its STATUS, README and skills publicly served on its business domain until today. At launch, `curl -I https://www.<domain>/STATUS.md` must return 404 (launch step 5 in the skill).
