@@ -70,4 +70,7 @@ def build_llms_areas():
 if __name__ == "__main__":
     build_sitemap()
     build_llms_areas()
+    from clean_urls import apply_site as clean_urls
+    from build_pages import SITE_DOMAIN
+    clean_urls(ROOT, SITE_DOMAIN)
     print("\nmeta files generated")

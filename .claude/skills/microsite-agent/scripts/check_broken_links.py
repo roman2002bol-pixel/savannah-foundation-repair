@@ -52,7 +52,12 @@ def check(root):
             if not path_part:
                 continue
             resolved = os.path.normpath(os.path.join(base_dir, path_part))
-            if not os.path.isfile(resolved):
+            # Clean URLs: Cloudflare and GitHub Pages both serve /about from
+            # about.html and ./ or ../ from index.html. A link written that
+            # way is not broken just because no file is literally named it.
+            candidates = [resolved, resolved + ".html",
+                          os.path.join(resolved, "index.html")]
+            if not any(os.path.isfile(c) for c in candidates):
                 broken.append((os.path.relpath(f, root), href, resolved))
     return files, broken
 

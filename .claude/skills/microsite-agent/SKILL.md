@@ -1012,15 +1012,45 @@ Roman has never once pushed back when told "the reference claims X, we do
 not have X, here is the true version" -- the objection people expect does
 not actually materialise, and quietly copying the claim would have.
 
+## Launch on a real domain: four things to do on day one
+
+Learned on NEXUS, the first of these sites to go live, where all four were
+missed and Search Console reported half the site "not indexed"
+(2026-10-12). Both Savannah microsites are planned for Cloudflare and already
+advertise clean URLs, so items 1-2 are pre-done; 3-4 happen at cutover.
+
+1. **Advertise clean URLs.** Cloudflare answers `/page.html` with a 307 to
+   `/page`. Canonical, `og:url`, JSON-LD, sitemap and links must name
+   `/page`. `check_clean_urls.py` enforces it. On the Foundation site the
+   generator does it in a final pass (`clean_urls.py`, called from
+   `build_pages.write()`, `patch_home_faq()` and `build_meta.py`).
+2. **Every sitemap URL must return 200 with a self-referencing canonical.**
+   After cutover:
+   `curl -s https://www.<domain>/sitemap.xml | grep -o '<loc>[^<]*' | sed 's/<loc>//' | xargs -n1 curl -s -o /dev/null -w '%{http_code} %{url_effective}
+'`
+3. **Submit the sitemap in Search Console the same day.** NEXUS never had one
+   submitted; three real pages were "URL is unknown to Google" months in.
+   Then request indexing for the money pages. A "Couldn't fetch" status right
+   after submitting is the initial state, not an error -- check that the file
+   returns 200 as `application/xml` and wait.
+4. **Redirect the apex to `www` (or the reverse).** NEXUS's bare domain served
+   the whole site with 200 -- a second copy of every page. This is a
+   Cloudflare redirect rule, not something the repo can do.
+
+Reading the report afterwards: "Alternate page with proper canonical tag" and
+"Page with redirect" for the twin of an indexed page are consolidation
+working, not lost pages. The pages that matter are the ones missing from both
+lists -- subtract the indexed list from the sitemap and URL-inspect the rest.
+
 ## Verification scripts
 
-Six scripts live in `scripts/` and should all be run after any batch of
+Seven scripts live in `scripts/` and should all be run after any batch of
 new or edited pages, before committing — each exits non-zero with a
 specific report if something's wrong, and 0 with a one-line summary if
 clean:
 
 ```bash
-for s in check_broken_links check_faq_schema check_markup_contract check_seo_basics check_us_english check_image_reuse; do
+for s in check_broken_links check_faq_schema check_markup_contract check_seo_basics check_us_english check_image_reuse check_clean_urls; do
   python ".claude/skills/microsite-agent/scripts/$s.py" .
 done
 ```
@@ -1074,6 +1104,13 @@ pure content edits.
   filenames to a checker, so without the manifest that repeat passes
   silently. With it, the crop counts as its source and the report names
   both.
+
+- **`check_clean_urls.py`** — no `.html` in canonicals, `og:url`, JSON-LD
+  url/item/@id, sitemap `<loc>` or relative links. Written after NEXUS
+  (2026-10-12): Cloudflare 307s every `/page.html` to `/page`, so `.html`
+  canonicals pointed at redirects and Search Console showed half the site
+  "not indexed". `check_broken_links.py` now resolves clean URLs the way the
+  hosts do (`/about` -> `about.html`, `./` -> `index.html`).
 
 The scripts are intentionally simple (regex over the raw HTML, no DOM
 parser dependency) so they run instantly with zero setup on any machine

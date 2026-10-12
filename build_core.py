@@ -81,6 +81,9 @@ def patch_home_faq():
         s, n = re.subn(pattern, lambda _m: start + nl + new + nl + end, s, flags=re.S)
         assert n == 1, f"marker {start} not found exactly once in index.html"
     path.write_text(s, encoding="utf-8")
+    from clean_urls import apply_site as clean_urls
+    from build_pages import SITE_DOMAIN
+    clean_urls(ROOT, SITE_DOMAIN)
     print(f"  patched index.html FAQ ({len(FAQS)} questions)")
 
 

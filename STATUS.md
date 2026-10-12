@@ -362,3 +362,17 @@ Roman asked for a full review of the Codex thread "Оціни три сайти"
 **Generator and published-file drift.** Running all four builders in a correctly named checkout succeeds, but differs from the committed files in three ways: `llms.txt` still lists the old per-area focus claims that were removed from the pages (build_meta.py was not re-run after the area data changed), committed pages reference `main.js?v=20260922` while generators emit `20260924`, and sitemap dates. `content_review.py` identifies the site from the folder name; a checkout named differently falls through to the NEXUS branch and fails with `KeyError: 'concrete-slab-leveling'`. It also holds the NEXUS and Tree scenario content, although it exists only in this repository.
 
 **Proposals, not implemented:** restore the verified per-area facts and scope limits with implied-experience wording removed; replace the templated lede, FAQ set and shared focus items with area-specific questions; re-run build_meta.py so llms.txt matches the pages; replace folder-name detection with an explicit site setting; add the overlap measurement as a check so this regression is caught automatically.
+
+## 2026-10-12 – Clean URLs in the generator, ahead of the Cloudflare launch
+
+**What changed.** New `clean_urls.py`: a final generator pass that rewrites every generated page plus `sitemap.xml` and `llms.txt` to extensionless URLs (canonical, `og:url`, JSON-LD, sitemap, links; `index.html` becomes `./`, `../` or the bare domain). Called last from `build_pages.write()` (after `content_review`/`local_research`), from `build_core.patch_home_faq()` and from `build_meta.py`, so every route that writes a file ends clean. It is idempotent. The ~90 template strings that build `.html` links were deliberately left alone.
+
+**Why.** Same failure as NEXUS: Cloudflare 307s `/page.html` to `/page`. This site is planned for Cloudflare.
+
+**Rebuild instructions (unchanged order, new requirement).** Run from a folder named `savannah-foundation-repair` (see the audit entry: `content_review.py` detects the site from the folder name) and without `python -I`, which blocks the local imports:
+`python build_services.py && python build_areas.py && python build_core.py && python build_meta.py`
+Then run all seven checks in `.claude/skills/microsite-agent/scripts/`. Do not remove the `clean_urls` calls; `check_clean_urls.py` fails if `.html` URLs reappear.
+
+**Side effects of the full rebuild, checked.** Visible words are identical on all 31 pages (bag-of-words comparison against `HEAD`). On 15 area pages the local planning block moved up to directly after the hero -- the placement the September 24 generator change intended but which had never been re-rendered for those pages. `llms.txt` was regenerated from current area data, so it no longer lists the per-area claims removed from the pages in September (an audit finding). `main.js` references moved to the generator's current version and sitemap dates updated.
+
+**Verification.** All seven checks pass across 31 pages. Publication on the GitHub Pages preview is recorded below once verified. Launch steps for the real domain are in the skill's "Launch on a real domain" section; the domain is not live yet.

@@ -18,6 +18,7 @@ import pathlib
 
 ROOT = pathlib.Path(__file__).parent
 SITE = "https://www.savannahfoundationrepairco.com"
+SITE_DOMAIN = "savannahfoundationrepairco.com"
 BRAND = "Savannah Foundation Repair Co"
 PHONE_DISPLAY = "(912) 555-0142"
 PHONE_HREF = "+19125550142"
@@ -287,4 +288,7 @@ def write(relpath, content):
     out.write_text(content, encoding="utf-8")
     from content_review import apply_site
     apply_site(ROOT)
+    # must stay last: content_review/local_research also write files
+    from clean_urls import apply_site as clean_urls
+    clean_urls(ROOT, SITE_DOMAIN)
     print("wrote", relpath)
