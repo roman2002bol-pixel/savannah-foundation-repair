@@ -1035,7 +1035,11 @@ advertise clean URLs, so items 1-2 are pre-done; 3-4 happen at cutover.
    returns 200 as `application/xml` and wait.
 4. **Redirect the apex to `www` (or the reverse).** NEXUS's bare domain served
    the whole site with 200 -- a second copy of every page. This is a
-   Cloudflare redirect rule, not something the repo can do.
+   Cloudflare redirect rule, not something the repo can do. Use a custom
+   filter `(http.host eq "<domain>")` with dynamic target
+   `concat("https://www.<domain>", http.request.uri.path)`, 301, preserve
+   query string; the built-in root-to-www template only matches `https://`.
+   Also turn on "Always Use HTTPS" so `http://www.` redirects too.
 5. **Keep internal files off the domain.** Cloudflare deploys the whole
    repo unless `.assetsignore` says otherwise. Both microsites already have
    one (excludes `.claude`, `*.md`, `*.py`, `__pycache__`, research data);
